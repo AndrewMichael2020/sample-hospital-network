@@ -1,10 +1,10 @@
 
-# Lower Mainland Synthetic Healthcare Dataset — Generation & MySQL Persistence Blueprint
+# Create Synthetic Healthcare Dataset — Generate data & MySQL Persistence: Blueprint
 
 **Goal:** Generate **realistic, non‑PHI synthetic data** for the **Lower Mainland region** to prototype clinical service forecasting (12 facilities × 16 programs × 3 subprograms) and ED projections — and **persist the outputs to MySQL** on a GCP VM.  
 **Audience:** Data analysts/engineers using GitHub Copilot, Codespaces, Microsoft Fabric, and Power BI.
 
-> **Naming rule:** All facility sites and geographic areas in this blueprint are **fictional**. Do **not** use real names or codes.
+> **Naming rule:** All facility sites and geographic areas in this blueprint are **fictional** (and slightly hilarious but graceful). Do **not** use real names or codes.
 
 ---
 
