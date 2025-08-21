@@ -37,6 +37,26 @@ make generate
 make load
 ```
 
+### Option 3: API Server
+```bash
+# Start REST API server with data generation
+make api-start
+
+# Or use CLI
+python cli.py serve --host localhost --port 8000
+
+# Access API documentation at: http://localhost:8000/docs
+```
+
+### Option 4: Command Line Interface
+```bash
+# Use the CLI for data management
+python cli.py --help
+python cli.py generate --patients 5000 --seed 42
+python cli.py validate --data-dir ./data
+python cli.py status
+```
+
 ### Option 3: SDV Synthetic Data Generation
 ```bash
 # Generate advanced synthetic data with higher-order correlations
@@ -128,14 +148,17 @@ ORDER BY age_group, gender;
 
 ```
 .
-├── requirements.txt          # Python dependencies (including SDV)
+├── requirements.txt          # Python dependencies (including FastAPI, Typer)
 ├── schema.sql               # MySQL DDL for all tables
 ├── generate_data.py         # Creates synthetic data as CSV files
 ├── load_data.py            # Loads CSV files into MySQL
 ├── setup.py               # Automated setup script
-├── Makefile              # Build automation (includes SDV targets)
-├── README.md            # This documentation
-├── sdv_models/          # SDV synthetic data generation
+├── api.py                # REST API server (FastAPI)
+├── api_models.py         # Pydantic models for API validation
+├── cli.py               # Command Line Interface (Typer)
+├── Makefile            # Build automation (includes API targets)
+├── README.md          # This documentation
+├── sdv_models/        # SDV synthetic data generation
 │   ├── metadata.json    # Multi-table schema definitions
 │   ├── constraints.py   # Business rules and data validation
 │   ├── train.py        # HMA1/CTGAN model training
@@ -151,6 +174,86 @@ ORDER BY age_group, gender;
     │   ├── ed_encounters_synthetic.csv
     │   └── ip_stays_synthetic.csv
     └── ...
+```
+
+## REST API
+
+The system now includes a comprehensive REST API built with FastAPI that provides programmatic access to all synthetic healthcare data.
+
+### API Features
+
+- **Instruction 00**: Pydantic models for data validation and configuration
+- **Instruction 01**: Dimension data endpoints (facilities, programs, LHAs)
+- **Instruction 02**: Population projections and baseline rates
+- **Instruction 03**: Patient demographics and medical encounters
+- Automatic API documentation via Swagger/OpenAPI
+- Pagination and filtering support
+- Data validation and quality metrics
+
+### API Endpoints
+
+#### Core Endpoints
+- `GET /` - API information and endpoint directory
+- `GET /health` - Health check
+- `GET /docs` - Interactive API documentation (Swagger UI)
+- `GET /redoc` - Alternative API documentation
+
+#### Dimension Data (Instruction 01)
+- `GET /api/v1/dimensions/sites` - Hospital facilities
+- `GET /api/v1/dimensions/programs` - Healthcare programs  
+- `GET /api/v1/dimensions/subprograms` - Healthcare subprograms
+- `GET /api/v1/dimensions/lhas` - Local Health Areas
+
+#### Population Data (Instruction 02)
+- `GET /api/v1/population/projections` - Population projections by year/LHA/demographics
+- `GET /api/v1/population/ed-rates` - Emergency Department utilization rates
+
+#### Patient Data (Instruction 03)
+- `GET /api/v1/patients` - Patient demographics and information
+- `GET /api/v1/encounters/ed` - Emergency Department encounters
+- `GET /api/v1/encounters/ip` - Inpatient stays
+
+#### Validation
+- `GET /api/v1/validation/summary` - Data validation and quality metrics
+
+### API Usage Examples
+
+```bash
+# Get first 10 hospital facilities
+curl "http://localhost:8000/api/v1/dimensions/sites?page=1&size=10"
+
+# Get patients filtered by age group and facility
+curl "http://localhost:8000/api/v1/patients?age_group=25-44&facility_id=1&page=1&size=20"
+
+# Get population projections for 2025
+curl "http://localhost:8000/api/v1/population/projections?year=2025&page=1&size=50"
+
+# Get ED encounters for a specific patient
+curl "http://localhost:8000/api/v1/encounters/ed?patient_id=P5A684D41E14C"
+
+# Validate data quality
+curl "http://localhost:8000/api/v1/validation/summary"
+```
+
+## Command Line Interface
+
+A comprehensive CLI built with Typer provides easy data management and API control:
+
+```bash
+# Generate data with custom parameters
+python cli.py generate --patients 5000 --seed 42 --format csv
+
+# Validate data quality
+python cli.py validate --data-dir ./data --output validation.json
+
+# Start API server  
+python cli.py serve --host 0.0.0.0 --port 8000 --reload
+
+# Check system status
+python cli.py status
+
+# Clean generated data
+python cli.py clean --data-dir ./data
 ```
 
 ## Customization

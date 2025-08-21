@@ -1,6 +1,6 @@
 # Makefile for synthetic healthcare database
 
-.PHONY: help setup generate load clean test sdv-train sdv-generate sdv-validate
+.PHONY: help setup generate load clean test sdv-train sdv-generate sdv-validate api-start api-test cli-test
 
 help: ## Show this help message
 	@echo "Available commands:"
@@ -28,6 +28,65 @@ test: ## Run basic tests
 	@test -f data/patients.csv && echo "✓ patients.csv exists" || echo "✗ patients.csv missing"
 	@test -f data/ed_encounters.csv && echo "✓ ed_encounters.csv exists" || echo "✗ ed_encounters.csv missing"
 	@echo "Basic tests passed!"
+
+# API targets
+api-setup: setup ## Install API dependencies
+	@echo "API dependencies already included in setup target"
+
+api-start: generate ## Start the API server (generates data if needed)
+	@echo "Starting API server on http://localhost:8000"
+	python -m uvicorn api:app --host 0.0.0.0 --port 8000 --reload
+
+api-test: generate ## Test API endpoints
+	@echo "Testing API endpoints..."
+	python -c "
+import requests, json, time, subprocess, signal, os
+from threading import Thread
+
+# Start server in background
+server_process = subprocess.Popen(['python', '-m', 'uvicorn', 'api:app', '--host', '127.0.0.1', '--port', '8001'], 
+                                 stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+time.sleep(3)  # Wait for server to start
+
+try:
+    # Test endpoints
+    base_url = 'http://127.0.0.1:8001'
+    
+    # Test root endpoint
+    r = requests.get(f'{base_url}/')
+    assert r.status_code == 200, f'Root endpoint failed: {r.status_code}'
+    print('✓ Root endpoint OK')
+    
+    # Test health endpoint
+    r = requests.get(f'{base_url}/health')
+    assert r.status_code == 200, f'Health endpoint failed: {r.status_code}'
+    print('✓ Health endpoint OK')
+    
+    # Test dimension endpoints
+    for endpoint in ['sites', 'programs', 'lhas']:
+        r = requests.get(f'{base_url}/api/v1/dimensions/{endpoint}')
+        assert r.status_code == 200, f'{endpoint} endpoint failed: {r.status_code}'
+        print(f'✓ {endpoint} endpoint OK')
+    
+    # Test patient endpoint
+    r = requests.get(f'{base_url}/api/v1/patients?page=1&size=10')
+    assert r.status_code == 200, f'Patients endpoint failed: {r.status_code}'
+    print('✓ Patients endpoint OK')
+    
+    print('All API tests passed!')
+    
+finally:
+    # Stop server
+    server_process.terminate()
+    server_process.wait()
+"
+
+# CLI targets
+cli-test: ## Test CLI commands
+	@echo "Testing CLI commands..."
+	python cli.py --help
+	python cli.py status
+	@echo "CLI tests passed!"
 
 # SDV-related targets
 sdv-train: setup generate ## Train SDV model on generated seed data
