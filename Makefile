@@ -1,6 +1,6 @@
 # Makefile for synthetic healthcare database
 
-.PHONY: help setup generate load clean test sdv-train sdv-generate sdv-validate
+.PHONY: help setup generate load clean test sdv-train sdv-generate sdv-validate api-start api-test cli-test
 
 help: ## Show this help message
 	@echo "Available commands:"
@@ -28,6 +28,25 @@ test: ## Run basic tests
 	@test -f data/patients.csv && echo "✓ patients.csv exists" || echo "✗ patients.csv missing"
 	@test -f data/ed_encounters.csv && echo "✓ ed_encounters.csv exists" || echo "✗ ed_encounters.csv missing"
 	@echo "Basic tests passed!"
+
+# API targets
+api-setup: setup ## Install API dependencies
+	@echo "API dependencies already included in setup target"
+
+api-start: generate ## Start the API server (generates data if needed)
+	@echo "Starting API server on http://localhost:8000"
+	python -m uvicorn api:app --host 0.0.0.0 --port 8000 --reload
+
+api-test: generate ## Test API endpoints
+	@echo "Testing API endpoints..."
+	@python test_api.py
+
+# CLI targets
+cli-test: ## Test CLI commands
+	@echo "Testing CLI commands..."
+	python cli.py --help
+	python cli.py status
+	@echo "CLI tests passed!"
 
 # SDV-related targets
 sdv-train: setup generate ## Train SDV model on generated seed data
