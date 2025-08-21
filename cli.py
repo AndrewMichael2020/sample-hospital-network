@@ -220,6 +220,102 @@ def setup_wizard():
         show_failure_message()
 
 
+@app.command()
+def setup_wizard(
+    auto: bool = typer.Option(False, "--auto", help="Run in non-interactive mode with defaults"),
+    method: Optional[str] = typer.Option(None, "--method", help="Setup method: docker, native, api, gcp"),
+    patients: int = typer.Option(1000, "--patients", help="Number of patients to generate"),
+):
+    """🧙 Interactive setup wizard for beginners - guides you through the entire process!"""
+    
+    if auto:
+        run_auto_setup(method, patients)
+        return
+        
+    console.print(Panel.fit(
+        "[bold blue]🏥 Welcome to the Healthcare Data System Setup Wizard![/bold blue]\n\n"
+        "This wizard will guide you through setting up your synthetic healthcare database\n"
+        "step-by-step. Perfect for beginners! ✨\n\n"
+        "[dim]We'll help you choose the best setup method, configure everything automatically,\n"
+        "and get you up and running with sample data and APIs.[/dim]",
+        title="🧙 Setup Wizard",
+        border_style="blue"
+    ))
+    
+    # Step 1: Environment Detection and Recommendations
+    env_info = detect_environment()
+    show_environment_info(env_info)
+    
+    # Step 2: Choose Setup Method
+    setup_method = choose_setup_method(env_info)
+    
+    # Step 3: Configure Based on Method
+    config = configure_setup(setup_method, env_info)
+    
+    # Step 4: Run Setup Process
+    success = run_setup_process(setup_method, config)
+    
+    # Step 5: Verification and Next Steps
+    if success:
+        show_success_message(setup_method, config)
+    else:
+        show_failure_message()
+
+
+def run_auto_setup(method: Optional[str], patients: int):
+    """Run automated setup with minimal user interaction."""
+    
+    console.print(Panel(
+        "[bold green]🚀 Automated Setup Mode[/bold green]\n\n"
+        "Running quick setup with default settings...\n"
+        f"• Method: {method or 'api-only'}\n"
+        f"• Patients: {patients}",
+        border_style="green"
+    ))
+    
+    env_info = detect_environment()
+    
+    # Choose method automatically based on environment or user preference
+    if not method:
+        if env_info['in_codespace']:
+            setup_method = 'codespace'
+        elif env_info['has_docker'] and env_info.get('has_docker_compose'):
+            setup_method = 'docker'
+        else:
+            setup_method = 'api_only'
+    else:
+        # Map method names
+        method_mapping = {
+            'api': 'api_only',
+            'docker': 'docker',
+            'native': 'native',
+            'gcp': 'gcp',
+            'codespace': 'codespace'
+        }
+        setup_method = method_mapping.get(method, 'api_only')
+    
+    # Configure with defaults
+    config = {
+        'method': setup_method,
+        'patients': patients,
+        'include_ed': True,
+        'include_ip': True,
+        'seed': 42
+    }
+    
+    console.print(f"\n[cyan]Selected method: {setup_method}[/cyan]")
+    
+    # Run setup
+    success = run_setup_process(setup_method, config)
+    
+    if success:
+        console.print("\n[bold green]✅ Automated setup completed successfully![/bold green]")
+        show_success_message(setup_method, config)
+    else:
+        console.print("\n[bold red]❌ Automated setup failed.[/bold red]")
+        console.print("Try running the interactive wizard: [cyan]python cli.py setup-wizard[/cyan]")
+
+
 def detect_environment() -> Dict:
     """Detect the current environment and available tools."""
     env_info = {

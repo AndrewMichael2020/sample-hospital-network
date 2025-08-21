@@ -1,0 +1,151 @@
+=== Healthcare Data System Setup Wizard Demo ===
+
+1. Help command showing available options:
+$ python cli.py --help
+[1m                                                                                                                        [0m
+[1m [0m[1;33mUsage: [0m[1mcli.py [OPTIONS] COMMAND [ARGS]...[0m[1m                                                                             [0m[1m [0m
+[1m                                                                                                                        [0m
+ Synthetic Healthcare Data CLI                                                                                          
+                                                                                                                        
+                                                                                                                        
+[2m╭─[0m[2m Options [0m[2m───────────────────────────────────────────────────────────────────────────────────────────────────────────[0m[2m─╮[0m
+[2m│[0m [1;36m-[0m[1;36m-install[0m[1;36m-completion[0m          Install completion for the current shell.                                              [2m│[0m
+[2m│[0m [1;36m-[0m[1;36m-show[0m[1;36m-completion[0m             Show completion for the current shell, to copy it or customize the installation.       [2m│[0m
+[2m│[0m [1;36m-[0m[1;36m-help[0m                        Show this message and exit.                                                            [2m│[0m
+[2m╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯[0m
+[2m╭─[0m[2m Commands [0m[2m──────────────────────────────────────────────────────────────────────────────────────────────────────────[0m[2m─╮[0m
+[2m│[0m [1;36mgenerate     [0m[1;36m [0m Generate synthetic healthcare data.                                                                   [2m│[0m
+[2m│[0m [1;36mvalidate     [0m[1;36m [0m Validate synthetic healthcare data quality.                                                           [2m│[0m
+[2m│[0m [1;36mserve        [0m[1;36m [0m Start the API server.                                                                                 [2m│[0m
+[2m│[0m [1;36mstatus       [0m[1;36m [0m Show status of data files and API server.                                                             [2m│[0m
+[2m│[0m [1;36msetup-wizard [0m[1;36m [0m 🧙 Interactive setup wizard for beginners - guides you through the entire process!                    [2m│[0m
+[2m│[0m [1;36mclean        [0m[1;36m [0m Clean generated data files.                                                                           [2m│[0m
+[2m╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯[0m
+
+
+==================================================
+
+2. Status check before setup:
+$ python cli.py status
+Synthetic Healthcare Data Status
+
+Data Files Status:
+✓ Found 9 CSV files
+  - population_projection.csv: 2,880 records
+  - dim_program.csv: 16 records
+  - patients.csv: 1,000 records
+  - dim_lha.csv: 12 records
+  - dim_site.csv: 12 records
+  ... and 4 more files
+
+API Server Status:
+✗ API server is not running
+
+
+==================================================
+
+3. Running automated API-only setup:
+$ python cli.py setup-wizard --auto --method api --patients 100
+╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ 🚀 Automated Setup Mode                                                                                              │
+│                                                                                                                      │
+│ Running quick setup with default settings...                                                                         │
+│ • Method: api                                                                                                        │
+│ • Patients: 100                                                                                                      │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Selected method: api_only
+
+🚀 Starting Setup Process
+⠹ Installing dependencies...     
+⠹ Generating sample data files...
+
+✅ Automated setup completed successfully!
+╭───────────────────────────────────────────────────── ✅ Success ─────────────────────────────────────────────────────╮
+│ 🎉 Setup Complete! 🎉                                                                                                │
+│                                                                                                                      │
+│ Your synthetic healthcare database is ready to use!                                                                  │
+│                                                                                                                      │
+│ Setup method: api_only                                                                                               │
+│ Generated 100 synthetic patients                                                                                     │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+🚀 What's Next?
+• Start API server: python -m uvicorn main_api:app --reload
+• Visit http://localhost:8000/docs for API documentation
+• Explore generated CSV files: ls -la data/
+• No database setup required - data is served from files
+
+🔧 Useful Commands:
+• python cli.py status - Check system status
+• python cli.py validate - Validate generated data
+• python cli.py clean - Clean up generated files
+
+==================================================
+
+4. Status check after setup:
+$ python cli.py status
+Synthetic Healthcare Data Status
+
+Data Files Status:
+✓ Found 9 CSV files
+  - population_projection.csv: 2,880 records
+  - dim_program.csv: 16 records
+  - patients.csv: 1,000 records
+  - dim_lha.csv: 12 records
+  - dim_site.csv: 12 records
+  ... and 4 more files
+
+API Server Status:
+✗ API server is not running
+
+
+==================================================
+
+5. Data validation:
+$ python cli.py validate --output validation_demo.json
+Validating data in ./data...
+Validation failed: 2025-08-21 22:08:51,567 - INFO - Loaded real patients: 1000 records
+2025-08-21 22:08:51,571 - INFO - Loaded synthetic patients: 2000 records
+2025-08-21 22:08:51,573 - INFO - Loaded real ed_encounters: 1493 records
+2025-08-21 22:08:51,578 - INFO - Loaded synthetic ed_encounters: 2986 records
+2025-08-21 22:08:51,580 - INFO - Loaded real ip_stays: 200 records
+2025-08-21 22:08:51,581 - INFO - Loaded synthetic ip_stays: 400 records
+2025-08-21 22:08:51,581 - INFO - Starting comprehensive validation...
+2025-08-21 22:08:51,581 - INFO - Running shape and correlation tests...
+2025-08-21 22:08:51,585 - INFO - Running business rules validation...
+2025-08-21 22:08:52,105 - INFO - Running privacy validation...
+2025-08-21 22:08:52,106 - INFO - Running data quality validation...
+2025-08-21 22:08:52,106 - ERROR - ❌ Validation FAILED. Failed checks: ['business_rules', 'privacy', 'data_quality']
+2025-08-21 22:08:52,107 - INFO - Validation results saved to validation_demo.json
+
+Validation completed with some expected warnings
+
+==================================================
+
+6. Available CLI commands:
+$ python cli.py --help
+                                                                                                                        
+[2m╭─[0m[2m Options [0m[2m───────────────────────────────────────────────────────────────────────────────────────────────────────────[0m[2m─╮[0m
+[2m│[0m [1;36m-[0m[1;36m-install[0m[1;36m-completion[0m          Install completion for the current shell.                                              [2m│[0m
+[2m│[0m [1;36m-[0m[1;36m-show[0m[1;36m-completion[0m             Show completion for the current shell, to copy it or customize the installation.       [2m│[0m
+[2m│[0m [1;36m-[0m[1;36m-help[0m                        Show this message and exit.                                                            [2m│[0m
+[2m╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯[0m
+[2m╭─[0m[2m Commands [0m[2m──────────────────────────────────────────────────────────────────────────────────────────────────────────[0m[2m─╮[0m
+[2m│[0m [1;36mgenerate     [0m[1;36m [0m Generate synthetic healthcare data.                                                                   [2m│[0m
+[2m│[0m [1;36mvalidate     [0m[1;36m [0m Validate synthetic healthcare data quality.                                                           [2m│[0m
+[2m│[0m [1;36mserve        [0m[1;36m [0m Start the API server.                                                                                 [2m│[0m
+[2m│[0m [1;36mstatus       [0m[1;36m [0m Show status of data files and API server.                                                             [2m│[0m
+[2m│[0m [1;36msetup-wizard [0m[1;36m [0m 🧙 Interactive setup wizard for beginners - guides you through the entire process!                    [2m│[0m
+[2m│[0m [1;36mclean        [0m[1;36m [0m Clean generated data files.                                                                           [2m│[0m
+[2m╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯[0m
+
+
+=== Demo Complete! ===
+The setup wizard successfully:
+✅ Detected environment capabilities
+✅ Configured optimal setup method
+✅ Generated synthetic healthcare data
+✅ Provided clear next steps
+
+Try the interactive version: python cli.py setup-wizard

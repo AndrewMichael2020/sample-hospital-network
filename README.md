@@ -27,6 +27,46 @@ This project creates and populates a MySQL database with synthetic healthcare da
 
 ## Quick Start
 
+### 🧙 **New! Interactive Setup Wizard (Recommended for Beginners)**
+
+The **easiest way** to get started is using our brand-new interactive setup wizard:
+
+```bash
+# Clone the repository
+git clone https://github.com/AndrewMichael2020/sample-hospital-network.git
+cd sample-hospital-network
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the interactive setup wizard
+python cli.py setup-wizard
+```
+
+The wizard will:
+- ✅ **Detect your environment** automatically (Docker, MySQL, OS, etc.)
+- 🎯 **Recommend the best setup method** for your system
+- 📋 **Guide you step-by-step** through configuration with clear explanations
+- 🎨 **Provide a colorful, user-friendly interface** with progress tracking
+- ⚡ **Automate the entire setup process** including dependencies, data generation, and database setup
+
+**For automated/scripted setups:**
+```bash
+# Quick API-only setup (no database required)
+python cli.py setup-wizard --auto --method api --patients 1000
+
+# Quick Docker setup
+python cli.py setup-wizard --auto --method docker --patients 5000
+```
+
+📚 **[Complete Setup Guide](docs/SETUP_GUIDE.md)** - Detailed documentation with screenshots and troubleshooting
+
+---
+
+### Alternative Setup Methods
+
+If you prefer manual setup or want to understand the process, choose one of the following options:
+
 ### Environment Setup
 
 Before getting started, you'll need to configure your environment:
