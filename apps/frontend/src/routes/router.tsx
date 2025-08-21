@@ -15,6 +15,7 @@ export const AppRouter: React.FC = () => {
             <Route path="/" element={<Navigate to="/scenario-builder" replace />} />
             <Route path="/scenario-builder" element={<ScenarioBuilder />} />
             <Route path="/results/:scenarioId?" element={<ResultsDashboard />} />
+            <Route path="/compare" element={<ScenarioCompare />} />
             <Route path="/compare/:scenarioAId/:scenarioBId?" element={<ScenarioCompare />} />
             <Route path="*" element={<Navigate to="/scenario-builder" replace />} />
           </Routes>

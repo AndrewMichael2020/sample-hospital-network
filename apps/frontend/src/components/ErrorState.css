@@ -31,6 +31,44 @@
   line-height: 1.5;
 }
 
+.error-help {
+  background-color: #f3f4f6;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 1rem;
+  margin: 0 0 1.5rem 0;
+  text-align: left;
+  max-width: 500px;
+}
+
+.error-help p {
+  margin: 0 0 0.5rem 0;
+  color: #374151;
+  font-size: 0.85rem;
+}
+
+.error-help details {
+  margin-top: 0.5rem;
+}
+
+.error-help summary {
+  cursor: pointer;
+  color: #1f2937;
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+.error-help code {
+  display: block;
+  background-color: #1f2937;
+  color: #e5e7eb;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-family: 'Monaco', 'Consolas', monospace;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}
+
 .error-retry-btn {
   background-color: #007acc;
   color: white;
