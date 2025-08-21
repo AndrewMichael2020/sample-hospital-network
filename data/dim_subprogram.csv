@@ -1,0 +1,19 @@
+program_id,subprogram_id,subprogram_name
+1,1,General Medicine
+1,2,Hospitalist
+1,3,ACE (Acute Care for Elderly)
+2,1,Adult Inpatient Psychiatry
+2,2,Psychiatric High Acuity/ICU
+2,3,Substance Use Stabilization
+3,1,Labour & Delivery
+3,2,Post-partum/Maternity
+3,3,Inpatient Pediatrics
+4,1,ICU (Med-Surg)
+4,2,High Acuity/Step-Down
+4,3,Rapid Response/Outreach
+5,1,Operating Room
+5,2,PACU/Day Surgery
+5,3,Surgical Inpatient Unit
+6,1,Adult ED
+6,2,Pediatric ED
+6,3,Urgent Care Centre
