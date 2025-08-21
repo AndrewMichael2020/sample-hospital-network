@@ -1,0 +1,747 @@
+encounter_id,patient_id,facility_id,ed_subservice,arrival_ts,acuity,dispo
+2002733,sdv-id-OSFdaN,3,Adult ED,2025-12-30 23:11:41.243482,4,Transfer
+470276,sdv-id-fNCjdG,11,Adult ED,2025-06-03 00:05:20.251818,1,Discharge
+15653399,sdv-id-tWQFtX,11,Urgent Care Centre,2025-10-12 20:52:25.396071,2,Death
+14540902,sdv-id-WsAUKs,7,Urgent Care Centre,2025-10-13 20:51:19.963898,3,Discharge
+4441073,sdv-id-WsAUKs,7,Urgent Care Centre,2025-06-09 14:12:12.181482,3,Discharge
+7460528,sdv-id-zfJcjI,4,Pediatric ED,2025-07-28 05:30:29.556431,3,Discharge
+5925124,sdv-id-zfJcjI,4,Pediatric ED,2025-06-23 16:53:16.999741,3,Discharge
+4082274,sdv-id-PepWIC,12,Adult ED,2025-06-19 03:57:52.409135,4,AMA
+3110146,sdv-id-FpveJt,4,Adult ED,2025-07-09 21:16:17.809827,1,Discharge
+1391419,sdv-id-FpveJt,4,Adult ED,2025-07-19 12:37:18.030684,3,Discharge
+5238271,sdv-id-yEIBgh,8,Urgent Care Centre,2025-10-06 03:28:32.901245,2,Discharge
+8857852,sdv-id-msAnjV,1,Urgent Care Centre,2025-12-30 23:11:41.243482,3,Discharge
+13518374,sdv-id-msAnjV,1,Urgent Care Centre,2025-10-15 04:06:08.678543,3,Discharge
+15852935,sdv-id-IBPFZu,8,Adult ED,2025-04-18 12:12:21.508643,4,Death
+4293242,sdv-id-IBPFZu,8,Adult ED,2025-07-06 15:45:51.299823,4,Transfer
+3398569,sdv-id-VEUXlq,5,Adult ED,2025-11-13 17:31:44.116919,4,Discharge
+9706291,sdv-id-VEUXlq,6,Adult ED,2025-11-10 07:56:41.238138,4,Discharge
+15160967,sdv-id-GzXOUZ,2,Adult ED,2025-09-08 02:41:22.956043,1,Discharge
+9748944,sdv-id-MSguGO,12,Adult ED,2025-09-26 09:17:38.179427,3,Discharge
+16357838,sdv-id-MSguGO,3,Adult ED,2025-10-21 00:09:18.832359,5,Admit
+14156074,sdv-id-dcMIBs,11,Adult ED,2025-10-05 14:04:54.752425,4,Discharge
+15874269,sdv-id-dcMIBs,11,Adult ED,2025-12-04 23:24:58.105809,4,Discharge
+14243228,sdv-id-FYyQpY,12,Adult ED,2025-05-24 06:33:45.609880,4,AMA
+7814844,sdv-id-lJnomO,4,Adult ED,2025-11-24 08:01:34.677368,3,Discharge
+6336826,sdv-id-xhIELP,8,Adult ED,2025-09-01 16:30:49.128494,4,Discharge
+1460702,sdv-id-xhIELP,8,Adult ED,2025-09-22 17:26:58.528987,4,Discharge
+1408498,sdv-id-cJVkcD,6,Adult ED,2025-09-24 18:34:18.424900,3,Discharge
+11838617,sdv-id-cJVkcD,6,Adult ED,2025-07-23 21:39:58.049449,3,Discharge
+4413031,sdv-id-ZdjafT,9,Urgent Care Centre,2025-03-11 04:34:14.637015,4,Discharge
+11392358,sdv-id-ZdjafT,11,Urgent Care Centre,2025-04-02 03:58:48.198884,2,Discharge
+3494028,sdv-id-pLaUKx,3,Adult ED,2025-03-28 01:52:33.932697,3,Discharge
+3009546,sdv-id-pLaUKx,12,Adult ED,2025-04-23 08:37:42.022867,5,Discharge
+2551096,sdv-id-zTOkdp,4,Adult ED,2025-12-30 23:11:41.243482,1,Discharge
+9753052,sdv-id-NFKtSf,12,Adult ED,2025-09-12 07:34:40.266583,4,Admit
+10216806,sdv-id-GiigaX,1,Pediatric ED,2025-11-11 13:17:13.789693,4,Admit
+15262602,sdv-id-xomXKq,4,Pediatric ED,2025-09-20 16:40:51.007336,4,Discharge
+44455,sdv-id-xomXKq,2,Pediatric ED,2025-09-02 10:29:00.804602,1,Discharge
+10507658,sdv-id-wisbBm,4,Pediatric ED,2025-12-08 08:02:52.495988,4,Admit
+8458499,sdv-id-mrnbzs,7,Adult ED,2025-11-09 04:05:08.508798,3,Discharge
+14499285,sdv-id-mrnbzs,7,Pediatric ED,2025-09-20 17:09:32.551237,3,Discharge
+12743711,sdv-id-HdiKfN,12,Adult ED,2025-03-18 22:02:58.282778,3,Admit
+3714330,sdv-id-HdiKfN,12,Adult ED,2025-06-11 03:59:53.755077,3,Death
+5332724,sdv-id-gXtVJE,6,Pediatric ED,2025-08-19 17:40:12.108763,4,Discharge
+11532651,sdv-id-ISMcpF,4,Adult ED,2025-12-12 11:45:02.081054,3,Death
+6074439,sdv-id-ierDuW,1,Pediatric ED,2025-06-10 08:00:47.209716,2,Discharge
+15782145,sdv-id-zBOYUa,5,Adult ED,2025-05-14 06:01:46.958757,4,Discharge
+14125741,sdv-id-zBOYUa,8,Adult ED,2025-05-20 15:37:05.467530,4,Admit
+16734976,sdv-id-yehhpC,11,Adult ED,2025-06-04 22:33:31.471317,3,Death
+5607030,sdv-id-iUJDNq,11,Adult ED,2025-08-07 17:10:16.072766,4,AMA
+882265,sdv-id-iUJDNq,11,Adult ED,2025-10-05 05:00:40.810821,4,Discharge
+7934929,sdv-id-IaIcDH,6,Pediatric ED,2025-08-18 13:11:18.491211,4,Discharge
+12345058,sdv-id-NtImgC,7,Adult ED,2025-12-22 14:04:42.724515,2,Discharge
+2037516,sdv-id-mmDolb,4,Urgent Care Centre,2025-07-12 18:50:08.355805,3,Transfer
+4249618,sdv-id-mmDolb,7,Adult ED,2025-06-15 14:47:31.988195,3,Discharge
+1299436,sdv-id-QYZRMW,11,Adult ED,2025-08-20 06:14:46.092310,1,Discharge
+8416183,sdv-id-Omwiyr,2,Urgent Care Centre,2025-09-24 22:39:38.214725,4,Discharge
+698245,sdv-id-sIeWsR,11,Adult ED,2025-08-26 22:15:17.612233,2,Discharge
+13698205,sdv-id-sIeWsR,4,Adult ED,2025-06-25 20:27:59.376695,2,Discharge
+803923,sdv-id-DEIxwn,3,Adult ED,2025-07-29 11:02:29.588032,4,Discharge
+11353510,sdv-id-UOviHf,5,Adult ED,2025-09-21 09:00:20.587299,4,Discharge
+14285848,sdv-id-CWzkBr,9,Adult ED,2025-05-31 14:36:34.312986,3,Discharge
+12256568,sdv-id-CWzkBr,3,Adult ED,2025-06-14 00:35:33.238493,3,Discharge
+7527594,sdv-id-JdQnyc,2,Pediatric ED,2025-08-13 19:14:31.307294,4,Discharge
+12676367,sdv-id-FwnNAW,3,Adult ED,2025-05-04 15:29:36.823317,4,Death
+12461345,sdv-id-xolBJN,12,Urgent Care Centre,2025-06-05 10:47:00.527679,3,Discharge
+5219351,sdv-id-xolBJN,9,Urgent Care Centre,2025-08-31 00:23:00.794827,3,Discharge
+3955598,sdv-id-VKyQaj,2,Pediatric ED,2025-08-21 08:48:34.006127,3,Discharge
+7207406,sdv-id-yfosoX,3,Adult ED,2025-10-21 13:38:55.817760,3,Discharge
+5602400,sdv-id-uouHEg,4,Adult ED,2025-12-30 23:11:41.243482,4,Discharge
+1391585,sdv-id-WoEqcN,6,Adult ED,2025-04-04 18:02:10.233111,4,Discharge
+10646416,sdv-id-jafptN,4,Adult ED,2025-08-01 10:55:37.829062,4,Discharge
+47566,sdv-id-jafptN,4,Adult ED,2025-05-18 17:16:18.058664,4,Discharge
+2533974,sdv-id-tvVMan,2,Urgent Care Centre,2025-12-30 23:11:41.243482,4,Discharge
+7376434,sdv-id-zfDCyK,3,Adult ED,2025-08-27 01:34:23.190025,4,Admit
+5065583,sdv-id-zfDCyK,7,Adult ED,2025-06-25 13:59:39.949577,2,Admit
+6174272,sdv-id-QRGKPj,11,Urgent Care Centre,2025-09-02 11:38:29.983981,4,Discharge
+137907,sdv-id-QRGKPj,9,Urgent Care Centre,2025-11-29 06:18:04.711926,4,Discharge
+5173323,sdv-id-DDfmNZ,9,Urgent Care Centre,2025-09-14 21:12:49.332818,4,Discharge
+5405050,sdv-id-DDfmNZ,9,Urgent Care Centre,2025-12-30 23:11:41.243482,1,Discharge
+9366496,sdv-id-qeYXmL,12,Adult ED,2025-04-16 22:10:42.278004,4,Admit
+4950705,sdv-id-fgeukU,12,Adult ED,2025-04-12 00:15:15.101627,2,Discharge
+15060586,sdv-id-WghijO,2,Adult ED,2025-10-31 20:39:56.945355,4,AMA
+9927647,sdv-id-WghijO,4,Adult ED,2025-12-30 23:11:41.243482,4,Discharge
+909963,sdv-id-lacBXE,1,Adult ED,2025-07-05 22:09:27.862538,2,Discharge
+13968730,sdv-id-DVSHSH,4,Adult ED,2025-12-30 23:11:41.243482,3,Discharge
+2496627,sdv-id-DVSHSH,4,Adult ED,2025-11-19 04:32:21.772824,3,Discharge
+12476112,sdv-id-jgYjoP,11,Urgent Care Centre,2025-12-30 23:11:41.243482,3,Discharge
+10342678,sdv-id-jgYjoP,11,Urgent Care Centre,2025-09-19 20:40:12.676105,3,Discharge
+1040015,sdv-id-nGfoYC,3,Urgent Care Centre,2025-06-05 07:01:10.116661,4,Death
+5888555,sdv-id-ITYYoj,4,Adult ED,2025-07-04 11:51:37.321950,3,Discharge
+12546405,sdv-id-cBvJOV,5,Pediatric ED,2025-07-11 20:07:00.863814,4,Discharge
+3738353,sdv-id-lXCacT,5,Pediatric ED,2025-11-10 06:07:53.950160,4,Discharge
+14129603,sdv-id-abuFbq,4,Urgent Care Centre,2025-05-30 23:04:47.770640,4,Admit
+4750049,sdv-id-twRmmK,8,Pediatric ED,2025-10-01 04:55:45.922980,4,Admit
+8173560,sdv-id-VVtJDK,11,Adult ED,2025-05-03 01:17:39.188263,4,Discharge
+11250929,sdv-id-ltvEwJ,8,Adult ED,2025-09-16 11:03:44.404678,4,Discharge
+1703345,sdv-id-CNCkfx,11,Adult ED,2025-03-30 10:45:37.496024,4,Discharge
+9205762,sdv-id-CNCkfx,11,Adult ED,2025-07-29 20:38:18.009855,4,Transfer
+5886254,sdv-id-wAYrGG,9,Urgent Care Centre,2025-08-18 13:32:29.834246,2,Admit
+1222727,sdv-id-wAYrGG,9,Urgent Care Centre,2025-05-04 15:20:48.275952,3,Admit
+2921769,sdv-id-VeyqrN,1,Pediatric ED,2025-07-21 20:58:23.287090,3,Discharge
+13907640,sdv-id-VeyqrN,10,Pediatric ED,2025-09-19 07:53:59.812876,5,Discharge
+10920630,sdv-id-eduhRo,11,Adult ED,2025-05-12 01:25:43.470133,3,Discharge
+15322519,sdv-id-eduhRo,7,Adult ED,2025-02-20 17:30:39.134526,3,Discharge
+5209917,sdv-id-GJseCm,10,Adult ED,2025-08-18 09:11:02.263565,4,AMA
+12928280,sdv-id-SgYSIY,8,Pediatric ED,2025-09-04 11:57:27.634146,3,Discharge
+8010652,sdv-id-HcbyUq,4,Adult ED,2025-04-04 08:18:16.170226,3,Discharge
+253795,sdv-id-ysJecU,4,Adult ED,2025-07-30 01:54:25.556028,4,Discharge
+3896167,sdv-id-ysJecU,4,Adult ED,2025-04-13 01:57:05.244632,1,Discharge
+13691043,sdv-id-mHbGpo,9,Pediatric ED,2025-06-14 18:43:39.936968,3,Discharge
+5398385,sdv-id-mHbGpo,9,Adult ED,2025-04-19 08:48:12.390730,3,Discharge
+4247157,sdv-id-bSlBqa,5,Urgent Care Centre,2025-06-12 23:56:34.617215,2,Discharge
+7712163,sdv-id-KAAkOR,2,Urgent Care Centre,2025-03-31 15:23:02.236206,3,Discharge
+11293520,sdv-id-eagHCu,3,Adult ED,2025-08-17 15:45:33.705605,2,Discharge
+6291548,sdv-id-eagHCu,7,Adult ED,2025-04-17 02:05:56.057484,2,Transfer
+3446419,sdv-id-rFyrRM,1,Adult ED,2025-08-08 09:34:45.025963,3,Discharge
+11706684,sdv-id-rFyrRM,10,Adult ED,2025-09-15 07:53:05.597246,3,Discharge
+8319288,sdv-id-IwDWKV,6,Pediatric ED,2025-10-25 09:21:39.396342,4,Transfer
+4430626,sdv-id-ZZGMMf,4,Adult ED,2025-08-18 18:37:51.178094,2,Discharge
+9218895,sdv-id-NCCMVl,8,Adult ED,2025-11-30 00:58:31.936419,4,Admit
+14049175,sdv-id-QbOJOf,3,Adult ED,2025-11-24 04:39:12.307062,4,Discharge
+15103996,sdv-id-QbOJOf,9,Pediatric ED,2025-10-05 07:16:47.057865,4,Discharge
+8328770,sdv-id-gmfGyW,7,Adult ED,2025-04-17 02:51:04.174938,4,AMA
+15138880,sdv-id-csaHOr,7,Adult ED,2025-12-15 12:27:24.703142,2,Discharge
+13728085,sdv-id-QXCNcl,9,Adult ED,2025-10-22 11:10:37.922493,3,Discharge
+138456,sdv-id-yfzMBA,4,Adult ED,2025-02-16 13:59:39.159161,3,AMA
+8858936,sdv-id-yfzMBA,11,Adult ED,2025-06-09 09:13:31.055838,5,Discharge
+8678919,sdv-id-QUnphX,5,Adult ED,2025-08-05 07:50:22.306602,4,Death
+4451851,sdv-id-lWFqIo,2,Adult ED,2025-06-07 01:14:06.330963,4,Discharge
+16659173,sdv-id-KwdASP,8,Adult ED,2025-03-10 13:13:16.584368,3,Discharge
+14665008,sdv-id-KwdASP,8,Adult ED,2025-05-19 02:59:22.139973,3,Discharge
+6282710,sdv-id-TTRToJ,1,Adult ED,2025-12-17 20:32:11.977975,4,Transfer
+2431856,sdv-id-TTRToJ,1,Adult ED,2025-12-30 23:11:41.243482,3,Transfer
+6599077,sdv-id-FLxihD,11,Adult ED,2025-05-16 10:46:36.054309,4,Discharge
+13248846,sdv-id-uXuiCw,8,Adult ED,2025-05-07 09:25:42.736343,1,Discharge
+7674261,sdv-id-uXuiCw,8,Adult ED,2025-06-12 22:28:44.918066,3,Discharge
+16511950,sdv-id-bqOlJU,3,Adult ED,2025-07-03 13:02:49.046323,4,Discharge
+6502710,sdv-id-JUpXHj,5,Adult ED,2025-09-18 12:21:02.161273,4,Discharge
+13899072,sdv-id-KKnPEy,8,Adult ED,2025-12-22 13:48:21.338855,4,Discharge
+4460599,sdv-id-KKnPEy,8,Adult ED,2025-12-30 23:11:41.243482,4,Discharge
+12130853,sdv-id-ftPeym,4,Adult ED,2025-12-30 23:11:41.243482,4,Transfer
+2333186,sdv-id-ftPeym,2,Adult ED,2025-10-05 10:37:44.478513,4,Discharge
+11986297,sdv-id-GvwJbY,9,Urgent Care Centre,2025-08-19 05:28:21.747554,4,Discharge
+16328920,sdv-id-GvwJbY,11,Urgent Care Centre,2025-08-04 11:22:03.300562,4,Discharge
+16407446,sdv-id-adkqyS,5,Adult ED,2025-10-19 16:34:28.913350,2,Discharge
+14435204,sdv-id-adkqyS,5,Urgent Care Centre,2025-07-29 00:47:28.479905,2,Admit
+8891502,sdv-id-ZqLPRj,11,Urgent Care Centre,2025-06-22 13:34:51.560237,3,Discharge
+940975,sdv-id-ZqLPRj,11,Urgent Care Centre,2025-04-02 20:43:17.647193,3,Discharge
+10973192,sdv-id-rUrHlT,4,Pediatric ED,2025-08-12 03:32:27.287406,4,Discharge
+164796,sdv-id-rUrHlT,4,Pediatric ED,2025-06-16 07:28:34.114837,2,Discharge
+10630504,sdv-id-KnyOcA,5,Pediatric ED,2025-01-22 11:24:36.958779,3,Discharge
+754001,sdv-id-KnyOcA,8,Pediatric ED,2025-03-12 23:04:52.679897,3,Discharge
+2402108,sdv-id-bbubLv,10,Urgent Care Centre,2025-12-07 22:08:45.015997,4,Discharge
+12734205,sdv-id-bbubLv,10,Adult ED,2025-07-21 04:18:16.743717,4,Discharge
+9673054,sdv-id-ejqlWv,3,Urgent Care Centre,2025-06-23 01:06:39.153474,3,Admit
+4130887,sdv-id-ejqlWv,3,Urgent Care Centre,2025-04-07 09:25:27.354342,5,Admit
+11687391,sdv-id-kPOElm,6,Adult ED,2025-05-05 02:12:18.275566,4,Discharge
+16005039,sdv-id-kPOElm,6,Adult ED,2025-03-04 07:04:37.362791,4,Discharge
+4319026,sdv-id-AwNizX,3,Adult ED,2025-02-16 05:44:16.173570,2,Discharge
+8745650,sdv-id-zFxhiD,11,Adult ED,2025-04-27 15:23:07.926278,2,Discharge
+13101133,sdv-id-PxeNqt,11,Urgent Care Centre,2025-07-20 06:47:16.336553,4,Discharge
+12689431,sdv-id-BvPFnU,2,Adult ED,2025-09-01 09:30:37.709212,4,Discharge
+15121387,sdv-id-BvPFnU,2,Adult ED,2025-11-24 14:13:49.203500,4,Discharge
+6778571,sdv-id-xVbGjN,2,Pediatric ED,2025-05-15 08:50:02.071709,4,Transfer
+760830,sdv-id-YyAmIP,4,Adult ED,2025-10-21 13:28:38.097996,4,Discharge
+4157494,sdv-id-YyAmIP,2,Adult ED,2025-08-31 16:41:07.343239,4,Discharge
+6905915,sdv-id-DwvRTD,12,Adult ED,2025-09-05 00:22:11.821058,1,Discharge
+4325334,sdv-id-DwvRTD,1,Adult ED,2025-08-09 23:10:46.420812,2,Discharge
+1025183,sdv-id-aXvBWZ,8,Pediatric ED,2025-07-03 04:33:31.964329,3,Discharge
+14497129,sdv-id-aXvBWZ,8,Pediatric ED,2025-05-01 13:34:04.930787,3,Discharge
+12520694,sdv-id-jdAous,12,Urgent Care Centre,2025-08-28 23:11:22.486855,4,Admit
+10875001,sdv-id-jdAous,1,Urgent Care Centre,2025-09-13 07:02:29.234365,4,Discharge
+12333354,sdv-id-kbciny,12,Adult ED,2025-07-21 23:01:12.062262,3,Discharge
+13889912,sdv-id-oObvdN,7,Adult ED,2025-07-18 07:30:38.542123,3,Discharge
+12458390,sdv-id-jaRpbz,11,Pediatric ED,2025-08-18 06:40:26.970437,3,Admit
+3298462,sdv-id-jaRpbz,11,Pediatric ED,2025-08-17 03:07:29.228098,5,Admit
+16156589,sdv-id-tcnRlY,11,Pediatric ED,2025-12-30 23:11:41.243482,4,Discharge
+4384816,sdv-id-lPyjLS,4,Adult ED,2025-04-19 01:40:56.634688,2,Discharge
+1685370,sdv-id-lPyjLS,4,Adult ED,2025-05-03 07:13:35.098053,2,Discharge
+8926445,sdv-id-OJWUxW,9,Pediatric ED,2025-07-13 21:48:37.443655,2,Discharge
+15334309,sdv-id-OJWUxW,7,Pediatric ED,2025-08-30 19:53:09.666512,3,Discharge
+4112556,sdv-id-GBaNmR,12,Urgent Care Centre,2025-04-04 03:05:15.944850,2,Discharge
+15210847,sdv-id-GBaNmR,10,Urgent Care Centre,2025-02-21 14:38:01.711276,3,Discharge
+1888479,sdv-id-IVkAyS,5,Adult ED,2025-08-24 11:20:16.629137,4,Discharge
+2933823,sdv-id-vSjFDr,4,Urgent Care Centre,2025-05-24 18:26:04.165371,4,Discharge
+15506066,sdv-id-vSjFDr,2,Urgent Care Centre,2025-03-24 16:53:16.767050,2,Discharge
+5887157,sdv-id-GQVQJw,4,Adult ED,2025-12-30 23:11:41.243482,4,Discharge
+9134659,sdv-id-aNiwBM,2,Pediatric ED,2025-03-06 01:30:38.863769,3,Discharge
+16336401,sdv-id-aNiwBM,4,Pediatric ED,2025-03-23 05:02:57.722446,3,Discharge
+6405136,sdv-id-ziUuMk,3,Adult ED,2025-12-13 13:16:29.861320,4,Discharge
+3913210,sdv-id-ziUuMk,3,Adult ED,2025-09-25 17:52:26.720735,3,Discharge
+13572817,sdv-id-RJsXvs,4,Adult ED,2025-06-22 11:00:34.816505,2,Discharge
+14240778,sdv-id-KswAcm,1,Adult ED,2025-05-23 11:27:08.936507,4,Discharge
+1001113,sdv-id-KswAcm,12,Adult ED,2025-05-15 15:04:06.291825,4,Discharge
+4562551,sdv-id-lEDWhF,7,Pediatric ED,2025-08-10 11:10:47.228806,4,Transfer
+13976843,sdv-id-BQPsTe,11,Pediatric ED,2025-01-27 12:57:56.354002,4,AMA
+4437608,sdv-id-BQPsTe,11,Pediatric ED,2025-05-16 11:11:14.566340,4,Discharge
+13322430,sdv-id-SNeobp,12,Adult ED,2025-06-02 23:58:37.327300,3,Discharge
+5474318,sdv-id-SNeobp,12,Adult ED,2025-04-28 11:15:49.672206,3,Discharge
+1851544,sdv-id-FAvIPK,4,Pediatric ED,2025-05-02 03:48:52.905062,4,Discharge
+5891718,sdv-id-FAvIPK,2,Pediatric ED,2025-04-19 23:33:42.625783,4,AMA
+11365199,sdv-id-EmXVXz,11,Adult ED,2025-08-29 14:32:50.875065,4,Discharge
+11237712,sdv-id-SpIgsf,4,Adult ED,2025-06-17 18:42:16.597980,4,Discharge
+12213806,sdv-id-SpIgsf,4,Adult ED,2025-03-27 21:00:13.524107,4,Discharge
+12900114,sdv-id-EpFOwy,8,Urgent Care Centre,2025-03-08 04:53:03.318561,3,Discharge
+1858163,sdv-id-EpFOwy,8,Adult ED,2025-05-25 17:42:55.995030,3,Discharge
+14923764,sdv-id-VUVLfF,2,Pediatric ED,2025-06-05 14:54:43.635326,3,Discharge
+10901116,sdv-id-VUVLfF,2,Pediatric ED,2025-11-14 20:39:13.137788,3,Discharge
+2028547,sdv-id-FTImnS,7,Adult ED,2025-12-02 09:39:20.807221,1,Discharge
+10015144,sdv-id-tpPEeL,2,Pediatric ED,2025-05-15 01:40:18.512041,2,Discharge
+6545756,sdv-id-tpPEeL,5,Pediatric ED,2025-04-23 07:40:26.261583,3,Discharge
+12303685,sdv-id-CRoiAa,4,Pediatric ED,2025-10-16 16:46:17.029918,4,Discharge
+13610449,sdv-id-lWKOFj,12,Pediatric ED,2025-12-15 23:47:44.159913,4,Admit
+649129,sdv-id-CefhTB,2,Pediatric ED,2025-12-10 13:03:51.572537,4,Discharge
+4263800,sdv-id-xJvJTN,9,Adult ED,2025-07-31 12:28:23.882426,3,Discharge
+9601535,sdv-id-rUWUCX,11,Pediatric ED,2025-05-14 11:46:57.860610,2,Death
+9711642,sdv-id-HejCgs,3,Adult ED,2025-08-12 03:03:29.952626,4,Admit
+5645905,sdv-id-NAaaFy,6,Urgent Care Centre,2025-05-23 07:17:02.056306,3,Discharge
+11081796,sdv-id-NAaaFy,5,Urgent Care Centre,2025-07-09 22:23:36.887467,3,Discharge
+16605002,sdv-id-OmxnRt,6,Pediatric ED,2025-08-16 01:11:45.908604,4,Death
+966510,sdv-id-nNDmmk,7,Adult ED,2025-08-04 09:38:28.065518,2,Discharge
+15498767,sdv-id-XJqTOO,3,Urgent Care Centre,2025-07-16 19:42:28.195013,4,Discharge
+5987775,sdv-id-jceGOV,12,Urgent Care Centre,2025-09-20 06:31:46.552188,3,Discharge
+11192160,sdv-id-jceGOV,12,Urgent Care Centre,2025-12-30 11:26:24.704909,5,Discharge
+12009567,sdv-id-MBfxUD,4,Pediatric ED,2025-10-16 23:23:34.490567,2,Discharge
+5826696,sdv-id-gSSZnN,9,Adult ED,2025-10-16 02:49:06.490743,2,Admit
+1895402,sdv-id-TMktYR,2,Adult ED,2025-08-25 20:20:36.266995,2,Discharge
+8336970,sdv-id-QjwRot,9,Adult ED,2025-08-14 14:51:06.859412,4,AMA
+2035246,sdv-id-OVFZYZ,10,Urgent Care Centre,2025-08-17 05:31:10.291355,1,Discharge
+9892194,sdv-id-OVFZYZ,10,Urgent Care Centre,2025-06-24 08:18:10.220988,3,Discharge
+4086789,sdv-id-guBrZk,1,Urgent Care Centre,2025-08-14 13:53:56.505313,4,Discharge
+8849669,sdv-id-guBrZk,1,Urgent Care Centre,2025-08-02 02:17:30.263679,1,AMA
+15491108,sdv-id-PkySeO,2,Urgent Care Centre,2025-09-25 13:07:56.589524,2,Transfer
+4141838,sdv-id-PkySeO,2,Urgent Care Centre,2025-07-25 00:47:07.191785,3,Discharge
+898458,sdv-id-QXdMrR,7,Pediatric ED,2025-05-14 01:47:42.774465,3,Discharge
+15310575,sdv-id-QXdMrR,7,Pediatric ED,2025-08-24 03:45:14.303875,3,Discharge
+8958471,sdv-id-tKkjSn,9,Urgent Care Centre,2025-08-30 01:52:45.720695,4,Death
+14138784,sdv-id-tKkjSn,11,Urgent Care Centre,2025-09-19 04:15:34.519425,4,AMA
+11346813,sdv-id-hBvsFc,5,Pediatric ED,2025-09-08 05:40:37.919439,4,Discharge
+12883055,sdv-id-eRpdxL,3,Adult ED,2025-07-12 14:38:34.211138,3,Discharge
+8898405,sdv-id-eRpdxL,12,Adult ED,2025-04-25 03:06:11.234715,3,Transfer
+10851851,sdv-id-DuFZJo,12,Pediatric ED,2025-06-09 10:45:35.229273,3,AMA
+280013,sdv-id-DuFZJo,12,Pediatric ED,2025-04-06 07:59:56.593376,3,Admit
+3164392,sdv-id-UmycBt,7,Pediatric ED,2025-07-25 18:52:53.596570,4,Admit
+14697010,sdv-id-oEhnvu,4,Pediatric ED,2025-09-28 08:43:34.750949,2,Discharge
+11312420,sdv-id-oEhnvu,4,Pediatric ED,2025-08-03 02:46:01.386247,3,Discharge
+8352235,sdv-id-CUwkGV,8,Adult ED,2025-09-11 22:11:38.626369,4,Discharge
+13195044,sdv-id-wZpkww,12,Urgent Care Centre,2025-02-26 13:39:07.578980,4,Discharge
+13623794,sdv-id-wZpkww,1,Urgent Care Centre,2025-04-25 18:24:52.958543,4,Discharge
+6282344,sdv-id-qTcbfV,3,Pediatric ED,2025-12-30 23:11:41.243482,4,Death
+23251,sdv-id-HVzwkI,1,Pediatric ED,2025-12-26 07:42:11.394867,3,Discharge
+15949429,sdv-id-HVzwkI,12,Pediatric ED,2025-11-07 18:38:36.989219,3,Discharge
+8470028,sdv-id-RoDiYh,6,Adult ED,2025-09-03 13:20:58.977850,2,Discharge
+8888099,sdv-id-vpOTXH,9,Adult ED,2025-07-15 02:02:37.002943,4,Discharge
+13130970,sdv-id-iQqNsY,5,Pediatric ED,2025-09-18 12:36:10.270315,2,Discharge
+6280377,sdv-id-iQqNsY,2,Pediatric ED,2025-07-30 09:40:34.968475,2,Discharge
+1342751,sdv-id-enLyUZ,1,Adult ED,2025-09-03 18:32:59.514019,4,Discharge
+7226671,sdv-id-akfFut,4,Adult ED,2025-12-30 23:11:41.243482,4,Discharge
+8893264,sdv-id-dVmREX,12,Adult ED,2025-05-03 21:19:57.234442,5,Discharge
+11962588,sdv-id-dVmREX,1,Adult ED,2025-06-06 19:15:41.603004,5,Discharge
+14775873,sdv-id-Fckquk,9,Adult ED,2025-08-15 23:07:05.560083,4,Discharge
+8905751,sdv-id-gkOvcS,2,Adult ED,2025-10-27 09:55:08.089933,4,AMA
+13472871,sdv-id-WEFsuo,12,Adult ED,2025-05-04 13:51:54.869937,3,Discharge
+11474882,sdv-id-WEFsuo,3,Adult ED,2025-08-07 14:30:02.589032,3,Discharge
+9522759,sdv-id-dLioRU,9,Adult ED,2025-08-06 11:18:38.373949,2,Death
+15076709,sdv-id-IxQaSp,11,Pediatric ED,2025-08-06 23:53:14.037617,3,Discharge
+3842861,sdv-id-HRIlvD,9,Pediatric ED,2025-08-26 17:45:08.112242,4,Admit
+5434254,sdv-id-cFHKMa,2,Pediatric ED,2025-09-13 03:22:26.763564,1,Discharge
+10360272,sdv-id-UMJdch,9,Urgent Care Centre,2025-05-16 03:19:44.148959,3,Discharge
+13861886,sdv-id-UMJdch,12,Urgent Care Centre,2025-05-31 15:27:55.570511,3,Discharge
+12373389,sdv-id-mChTtD,12,Adult ED,2025-12-30 23:11:41.243482,4,Death
+15069410,sdv-id-noKcYW,2,Adult ED,2025-08-30 11:01:30.681078,2,Discharge
+128267,sdv-id-VaidrA,4,Adult ED,2025-05-24 02:33:35.131317,4,Discharge
+9377012,sdv-id-VaidrA,11,Adult ED,2025-03-18 15:52:16.263442,4,Discharge
+14780640,sdv-id-kiCBUW,2,Adult ED,2025-03-16 05:22:58.919814,3,Discharge
+1083702,sdv-id-kiCBUW,4,Adult ED,2025-02-19 14:39:19.118905,5,Discharge
+3984017,sdv-id-oZygtQ,4,Adult ED,2025-06-14 19:56:22.487622,4,Discharge
+16699628,sdv-id-oZygtQ,4,Adult ED,2025-05-18 08:45:56.219155,2,Discharge
+15357049,sdv-id-vQuzbU,12,Adult ED,2025-07-04 11:02:45.311070,3,Discharge
+5431405,sdv-id-msSvpA,2,Adult ED,2025-07-04 21:26:55.594153,2,Admit
+5256844,sdv-id-IziHST,11,Adult ED,2025-06-03 03:22:05.293878,4,Discharge
+9831338,sdv-id-WEdbHA,8,Adult ED,2025-11-09 19:14:09.466155,2,AMA
+8845989,sdv-id-MvlLVx,10,Adult ED,2025-08-09 15:03:43.743847,4,Discharge
+8420346,sdv-id-YAbkwX,4,Adult ED,2025-09-25 09:28:29.470619,4,Discharge
+14599051,sdv-id-YAbkwX,4,Adult ED,2025-07-30 04:28:41.154336,4,Discharge
+11044982,sdv-id-WxQHaT,3,Pediatric ED,2025-10-24 15:52:06.230072,4,Discharge
+758984,sdv-id-KDHAGu,4,Adult ED,2025-12-30 23:11:41.243482,4,Transfer
+1321434,sdv-id-qhltGl,2,Pediatric ED,2025-12-30 23:11:41.243482,2,Admit
+11801232,sdv-id-qhltGl,2,Pediatric ED,2025-11-05 20:21:37.084171,3,Admit
+7854178,sdv-id-dJWFSW,4,Pediatric ED,2025-08-24 05:23:54.154471,4,Discharge
+2749100,sdv-id-CIfBfT,8,Urgent Care Centre,2025-12-15 17:13:53.861243,4,Discharge
+4435674,sdv-id-yGGtQP,9,Urgent Care Centre,2025-09-29 11:33:57.507985,2,Death
+12442713,sdv-id-GnGhOB,3,Adult ED,2025-08-26 17:13:39.659631,4,Transfer
+5189292,sdv-id-gavQGE,8,Pediatric ED,2025-06-07 19:15:14.205993,3,Discharge
+11741187,sdv-id-qLLjiZ,12,Urgent Care Centre,2025-11-09 23:23:34.666360,1,Discharge
+11170150,sdv-id-gHYaTz,10,Pediatric ED,2025-04-08 14:52:19.387285,4,Discharge
+5535028,sdv-id-gHYaTz,1,Pediatric ED,2025-07-19 17:52:45.532525,4,Discharge
+14824278,sdv-id-GnnfKU,12,Pediatric ED,2025-04-29 09:33:59.066240,3,Discharge
+13658414,sdv-id-GnnfKU,12,Pediatric ED,2025-03-25 20:42:31.392662,3,Discharge
+14517943,sdv-id-XeVDrS,3,Adult ED,2025-08-09 22:58:16.470420,3,Admit
+12798396,sdv-id-LZNkmO,10,Pediatric ED,2025-12-30 23:11:41.243482,1,Discharge
+3798824,sdv-id-QfQWFs,8,Adult ED,2025-07-30 18:57:00.515993,2,Discharge
+11974073,sdv-id-QfQWFs,8,Adult ED,2025-08-04 19:06:58.096941,3,Discharge
+15821441,sdv-id-aLAECv,11,Adult ED,2025-06-20 17:20:33.418768,4,Admit
+10400287,sdv-id-aLAECv,7,Urgent Care Centre,2025-06-22 17:40:16.943048,2,AMA
+3309076,sdv-id-zHQSLT,3,Urgent Care Centre,2025-04-16 02:45:04.248913,1,Discharge
+1334969,sdv-id-nefJlx,1,Urgent Care Centre,2025-05-18 13:10:01.187866,4,Discharge
+8437093,sdv-id-nefJlx,3,Urgent Care Centre,2025-07-14 19:49:33.969514,2,Discharge
+4309071,sdv-id-ZscjMf,2,Pediatric ED,2025-04-17 13:18:50.745997,3,Discharge
+8356054,sdv-id-ZscjMf,2,Pediatric ED,2025-02-17 13:02:47.027224,3,Discharge
+1100214,sdv-id-fvHbJE,1,Adult ED,2025-07-18 22:02:33.513014,3,Discharge
+12638230,sdv-id-fvHbJE,12,Adult ED,2025-08-31 13:31:51.525136,3,Discharge
+15510186,sdv-id-fSixcB,3,Adult ED,2025-03-07 14:30:00.693782,4,Discharge
+11761640,sdv-id-fSixcB,3,Adult ED,2025-05-03 11:24:30.461814,2,Discharge
+5042174,sdv-id-gbECDm,12,Adult ED,2025-08-21 13:47:20.581677,4,Death
+9795685,sdv-id-gbECDm,3,Adult ED,2025-07-12 13:33:19.757863,4,Admit
+7158990,sdv-id-XNuAyT,8,Adult ED,2025-05-09 13:20:01.447192,3,Discharge
+14047417,sdv-id-XNuAyT,8,Adult ED,2025-03-11 09:07:27.238187,3,Discharge
+5003525,sdv-id-epzdNq,7,Adult ED,2025-08-22 23:14:12.802076,3,Discharge
+4021293,sdv-id-epzdNq,3,Adult ED,2025-07-16 02:34:54.025754,3,Discharge
+9273572,sdv-id-heoEMt,5,Adult ED,2025-04-13 17:56:25.164060,2,Discharge
+7938853,sdv-id-kHKhxB,2,Adult ED,2025-08-17 06:43:10.176740,4,Discharge
+10345212,sdv-id-FwutBx,4,Adult ED,2025-10-13 05:28:34.102455,3,Discharge
+1597653,sdv-id-XAHNlE,4,Adult ED,2025-07-03 08:57:49.127234,1,Death
+1093666,sdv-id-XAHNlE,4,Adult ED,2025-09-06 03:35:29.962975,2,Admit
+3677505,sdv-id-ZSUDhF,7,Pediatric ED,2025-04-22 09:59:32.811328,2,Admit
+10384585,sdv-id-sXFKMO,12,Pediatric ED,2025-07-20 18:34:45.168917,3,Discharge
+10848719,sdv-id-sXFKMO,1,Pediatric ED,2025-07-19 01:00:49.058512,3,Discharge
+38375,sdv-id-XLzDXW,8,Adult ED,2025-10-10 09:46:54.965120,3,Discharge
+5554399,sdv-id-eTHehz,4,Pediatric ED,2025-06-30 11:53:59.178418,4,Discharge
+15443519,sdv-id-PIIIUY,11,Pediatric ED,2025-08-22 02:18:00.361802,4,Discharge
+520664,sdv-id-QdMKhy,10,Adult ED,2025-05-12 04:57:49.549796,4,Discharge
+12167304,sdv-id-QdMKhy,1,Adult ED,2025-05-04 15:05:55.384151,4,Discharge
+406287,sdv-id-daiSgk,12,Adult ED,2025-11-30 00:45:12.321876,4,Discharge
+4437441,sdv-id-ihNdUq,12,Adult ED,2025-02-28 18:30:38.003572,4,Admit
+11006956,sdv-id-ihNdUq,3,Adult ED,2025-02-24 21:33:55.558814,2,Admit
+15182975,sdv-id-EFIrim,8,Pediatric ED,2025-05-20 04:23:46.255231,3,Admit
+8704814,sdv-id-VCNXbX,5,Adult ED,2025-06-07 07:40:56.082949,2,Discharge
+14086524,sdv-id-VCNXbX,2,Urgent Care Centre,2025-07-02 15:37:27.160204,3,Discharge
+14517334,sdv-id-YiCUtN,8,Adult ED,2025-09-17 22:35:50.966519,4,AMA
+13294301,sdv-id-vrBnTi,8,Adult ED,2025-08-12 03:58:23.714503,3,Discharge
+1055470,sdv-id-vrBnTi,8,Adult ED,2025-07-24 17:50:39.753309,5,Discharge
+16007233,sdv-id-MsrlUT,2,Adult ED,2025-07-10 04:27:38.553596,3,Discharge
+8175097,sdv-id-xLZbnN,11,Adult ED,2025-08-21 04:53:17.146828,2,Discharge
+9449885,sdv-id-xLZbnN,4,Adult ED,2025-04-27 16:28:19.502716,3,Discharge
+10319001,sdv-id-dcSotn,6,Adult ED,2025-08-20 07:11:19.538544,4,Discharge
+2600867,sdv-id-dcSotn,5,Adult ED,2025-08-23 12:36:23.868935,4,Discharge
+5454443,sdv-id-OiFrCA,5,Pediatric ED,2025-09-17 10:44:12.314595,4,Discharge
+91537,sdv-id-OiFrCA,5,Pediatric ED,2025-08-19 12:43:17.005982,2,Discharge
+15929953,sdv-id-JGvvrw,10,Urgent Care Centre,2025-06-23 11:54:47.750359,2,Admit
+2681232,sdv-id-JGvvrw,12,Urgent Care Centre,2025-06-07 00:14:16.061479,2,Admit
+15418195,sdv-id-hFlxmZ,12,Pediatric ED,2025-06-03 03:25:51.602791,4,Discharge
+12598887,sdv-id-NDeObX,11,Urgent Care Centre,2025-09-12 23:21:45.863446,2,Death
+16690075,sdv-id-BfmDNr,2,Adult ED,2025-11-11 05:10:22.419267,2,Discharge
+12457343,sdv-id-BfmDNr,4,Adult ED,2025-10-16 17:22:27.995501,3,Discharge
+1835420,sdv-id-BtxybX,7,Pediatric ED,2025-06-08 21:42:39.547271,3,Discharge
+12547121,sdv-id-BtxybX,3,Adult ED,2025-07-11 04:01:30.465220,3,Discharge
+12901635,sdv-id-NSqjbx,4,Adult ED,2025-08-24 09:05:09.195907,3,AMA
+12990816,sdv-id-sIQPjv,10,Adult ED,2025-04-02 19:13:24.114031,3,Admit
+4746574,sdv-id-sIQPjv,1,Adult ED,2025-05-11 12:37:34.687243,3,Transfer
+10489676,sdv-id-jafRlN,10,Adult ED,2025-08-24 21:36:40.640211,4,Discharge
+9761131,sdv-id-jafRlN,10,Adult ED,2025-10-14 19:10:26.720416,3,Discharge
+7437111,sdv-id-GIVAno,8,Pediatric ED,2025-12-30 23:11:41.243482,3,Discharge
+15317575,sdv-id-JkoggH,10,Pediatric ED,2025-10-12 12:29:43.552582,3,Discharge
+12318024,sdv-id-JkoggH,1,Pediatric ED,2025-08-21 05:36:08.913183,3,Discharge
+164918,sdv-id-tJiBzj,12,Adult ED,2025-09-05 19:44:04.331089,3,Discharge
+10736349,sdv-id-ynPzUi,6,Urgent Care Centre,2025-06-04 10:37:48.913399,3,Admit
+8074981,sdv-id-ynPzUi,8,Urgent Care Centre,2025-05-23 11:48:48.779663,3,Death
+851614,sdv-id-xdCWmS,10,Adult ED,2025-09-03 01:02:22.903174,3,Discharge
+8521770,sdv-id-XMmetI,6,Pediatric ED,2025-03-18 05:55:54.624265,2,Discharge
+4094237,sdv-id-XMmetI,2,Pediatric ED,2025-03-06 15:03:47.505429,2,Discharge
+14275,sdv-id-JiIBnx,4,Pediatric ED,2025-10-13 11:13:00.574330,4,Discharge
+3753502,sdv-id-rgZLBL,5,Urgent Care Centre,2025-06-30 10:42:11.108122,3,Discharge
+16716618,sdv-id-rgZLBL,6,Adult ED,2025-03-24 23:17:53.805399,3,Discharge
+9218762,sdv-id-Xlbjkt,4,Adult ED,2025-08-27 05:30:09.821464,3,Discharge
+14620618,sdv-id-Xlbjkt,4,Adult ED,2025-09-26 07:39:22.681933,3,Discharge
+7616580,sdv-id-EWZsIC,12,Pediatric ED,2025-10-16 23:51:56.165733,4,Admit
+2090950,sdv-id-uqRlVd,4,Urgent Care Centre,2025-09-13 14:58:31.922257,2,Discharge
+6593678,sdv-id-uqRlVd,4,Urgent Care Centre,2025-10-07 10:31:20.408636,3,Discharge
+15916096,sdv-id-KUfYqz,1,Urgent Care Centre,2025-01-17 05:35:55.489676,2,Transfer
+5317016,sdv-id-KUfYqz,12,Urgent Care Centre,2025-03-30 08:19:14.236752,3,Discharge
+12192399,sdv-id-KsImOK,3,Adult ED,2025-08-20 06:38:53.637974,4,Discharge
+5536201,sdv-id-KsImOK,12,Adult ED,2025-07-05 17:54:03.946509,4,Discharge
+15155148,sdv-id-fLMvfu,12,Adult ED,2025-05-05 17:34:17.330400,1,Discharge
+8956663,sdv-id-fLMvfu,3,Adult ED,2025-07-21 00:05:29.410993,3,Discharge
+24311,sdv-id-CoDOHV,8,Urgent Care Centre,2025-10-25 17:12:38.658198,2,Discharge
+1591194,sdv-id-CoDOHV,8,Urgent Care Centre,2025-12-30 23:11:41.243482,3,Discharge
+6767082,sdv-id-tJspOf,5,Adult ED,2025-12-01 21:09:26.726388,3,Transfer
+11180412,sdv-id-vCmNmb,8,Adult ED,2025-06-26 10:18:29.326251,4,Discharge
+7815222,sdv-id-kvONxU,8,Adult ED,2025-05-03 22:36:42.139375,5,Discharge
+2676393,sdv-id-kvONxU,5,Adult ED,2025-07-12 08:25:20.285315,3,Discharge
+8605528,sdv-id-NwRHtb,6,Adult ED,2025-06-21 11:21:59.380204,2,Transfer
+12841373,sdv-id-NwRHtb,6,Adult ED,2025-10-15 03:02:36.489772,3,Discharge
+14064364,sdv-id-rFoxyD,9,Adult ED,2025-05-06 22:55:09.260186,3,Discharge
+1185519,sdv-id-rFoxyD,9,Adult ED,2025-05-16 13:17:17.923944,3,Discharge
+14744882,sdv-id-FNXMyd,5,Adult ED,2025-12-30 23:11:41.243482,4,Death
+1181620,sdv-id-eMoRgp,3,Pediatric ED,2025-08-29 09:20:18.833559,3,Discharge
+6916509,sdv-id-eMoRgp,3,Adult ED,2025-12-15 17:18:31.284062,3,Discharge
+6021926,sdv-id-SbKtqd,9,Adult ED,2025-06-02 13:38:11.682467,3,Discharge
+9390422,sdv-id-SbKtqd,11,Adult ED,2025-06-17 00:07:09.236346,3,Discharge
+8239613,sdv-id-KEvuWA,3,Urgent Care Centre,2025-07-08 21:04:27.301437,4,Discharge
+16376526,sdv-id-KEvuWA,7,Adult ED,2025-06-27 21:51:36.285763,2,Discharge
+14712737,sdv-id-FuXXjT,8,Pediatric ED,2025-07-02 19:55:36.297324,3,Admit
+5444866,sdv-id-gFXFJP,10,Pediatric ED,2025-08-13 14:04:35.086883,4,Discharge
+13305337,sdv-id-gFXFJP,12,Adult ED,2025-07-12 21:03:48.077547,2,Discharge
+4756472,sdv-id-HMikvK,5,Adult ED,2025-09-22 14:58:56.994333,3,Discharge
+4322750,sdv-id-HMikvK,5,Adult ED,2025-08-30 22:17:04.280788,3,Discharge
+6799404,sdv-id-eanGOW,3,Adult ED,2025-10-26 11:27:58.327324,4,Admit
+5918876,sdv-id-XTBrop,3,Urgent Care Centre,2025-05-24 09:43:17.559066,2,Discharge
+10554360,sdv-id-fbQpeI,11,Pediatric ED,2025-07-04 18:26:01.252362,4,Discharge
+3335175,sdv-id-OPjsdn,5,Pediatric ED,2025-02-12 22:26:44.957887,4,Discharge
+15217724,sdv-id-OPjsdn,5,Pediatric ED,2025-06-22 11:51:29.619934,4,AMA
+6208307,sdv-id-bOovQH,4,Urgent Care Centre,2025-12-02 00:18:02.270080,4,Admit
+16457000,sdv-id-xxLHpG,9,Pediatric ED,2025-11-27 22:06:44.094302,2,Admit
+15893331,sdv-id-DDbnRT,5,Adult ED,2025-12-07 09:41:45.618000,3,Discharge
+15794286,sdv-id-DDbnRT,5,Adult ED,2025-12-30 23:11:41.243482,3,Discharge
+269496,sdv-id-PKSCdi,12,Adult ED,2025-06-17 14:35:38.420756,4,Transfer
+11285835,sdv-id-RFaohV,2,Urgent Care Centre,2025-05-01 07:55:09.446052,4,Transfer
+11750143,sdv-id-iEQTuZ,2,Urgent Care Centre,2025-10-25 04:44:01.996671,2,Discharge
+56008,sdv-id-iEQTuZ,4,Urgent Care Centre,2025-12-14 00:37:28.322827,2,Discharge
+1234604,sdv-id-mYxapJ,1,Adult ED,2025-10-25 23:42:07.201810,1,Admit
+10414658,sdv-id-PkPDKO,5,Adult ED,2025-08-27 12:43:39.556189,3,Discharge
+10240291,sdv-id-PbyUdX,9,Pediatric ED,2025-08-22 03:26:37.071829,3,Death
+15875704,sdv-id-PbyUdX,7,Pediatric ED,2025-08-12 16:40:03.165107,3,Admit
+4670349,sdv-id-ijbTmd,11,Urgent Care Centre,2025-10-08 15:00:48.190600,3,Transfer
+13751420,sdv-id-SCLtBH,11,Pediatric ED,2025-07-25 23:43:39.385283,4,Admit
+927525,sdv-id-ReyxNN,2,Urgent Care Centre,2025-10-17 11:36:01.450823,4,Discharge
+700867,sdv-id-ReyxNN,4,Urgent Care Centre,2025-10-27 16:39:47.533791,4,Discharge
+13653139,sdv-id-JjipRk,11,Adult ED,2025-07-19 07:59:34.529472,4,Admit
+9937859,sdv-id-JjipRk,11,Adult ED,2025-12-30 23:11:41.243482,2,Admit
+970993,sdv-id-TOioKB,11,Pediatric ED,2025-07-04 12:35:08.433029,4,Discharge
+6443149,sdv-id-TOioKB,11,Adult ED,2025-09-19 17:25:22.958055,4,Discharge
+3228167,sdv-id-pCvvNi,8,Adult ED,2025-06-22 09:14:11.744061,4,Discharge
+4030995,sdv-id-pCvvNi,8,Adult ED,2025-06-17 18:27:18.911579,4,Admit
+7468833,sdv-id-TezJOS,12,Adult ED,2025-10-22 20:16:34.154332,4,Discharge
+14203302,sdv-id-uikzYS,8,Urgent Care Centre,2025-09-30 20:52:46.636496,4,Discharge
+9584636,sdv-id-lLCsGd,8,Adult ED,2025-05-04 08:13:57.043704,4,Death
+13391616,sdv-id-YvcDMi,8,Adult ED,2025-11-08 20:53:37.459713,4,Death
+5491820,sdv-id-VfpyRH,11,Pediatric ED,2025-07-04 08:42:50.870224,2,AMA
+11850216,sdv-id-VfpyRH,4,Adult ED,2025-06-10 19:58:26.590388,2,Death
+13603256,sdv-id-vxmOxD,3,Urgent Care Centre,2025-05-25 03:05:10.903770,4,Discharge
+8452934,sdv-id-tjwFUV,1,Pediatric ED,2025-04-26 12:14:59.583491,3,Admit
+3980939,sdv-id-tjwFUV,12,Pediatric ED,2025-07-19 18:11:35.378235,5,AMA
+4866282,sdv-id-nIchvK,4,Urgent Care Centre,2025-10-05 12:34:50.388766,3,Discharge
+5231799,sdv-id-nIchvK,4,Urgent Care Centre,2025-08-10 18:45:52.708236,3,Discharge
+2473374,sdv-id-eWYUyn,12,Pediatric ED,2025-08-22 13:30:54.709095,2,Discharge
+15005804,sdv-id-eWYUyn,3,Pediatric ED,2025-05-12 19:11:26.294691,3,Discharge
+13726025,sdv-id-dalSbQ,7,Adult ED,2025-09-18 22:57:30.790225,4,Admit
+5506811,sdv-id-PrFdEs,4,Pediatric ED,2025-08-10 17:28:13.818021,2,Discharge
+1330085,sdv-id-PrFdEs,9,Pediatric ED,2025-09-02 05:49:15.767700,2,Discharge
+7165546,sdv-id-Moxyir,2,Adult ED,2025-07-28 11:39:53.138270,1,Discharge
+5879721,sdv-id-BmkYSn,8,Adult ED,2025-05-29 06:55:43.958543,2,Admit
+10825578,sdv-id-BmkYSn,8,Adult ED,2025-04-02 09:25:12.336152,2,Admit
+3530465,sdv-id-qAghox,1,Pediatric ED,2025-10-25 07:45:47.370322,4,Discharge
+10559216,sdv-id-qAghox,1,Pediatric ED,2025-12-30 23:11:41.243482,2,Discharge
+12290884,sdv-id-AtJhgC,4,Adult ED,2025-07-16 15:16:25.235372,4,Discharge
+1964194,sdv-id-AtJhgC,4,Adult ED,2025-03-09 00:01:39.475389,4,Discharge
+9064616,sdv-id-JqJkOZ,8,Adult ED,2025-07-25 05:14:21.721324,4,AMA
+7606381,sdv-id-WVBLnm,8,Adult ED,2025-07-29 13:27:14.781023,4,Discharge
+7361960,sdv-id-EcMVtN,8,Pediatric ED,2025-07-06 02:33:08.647384,4,Discharge
+8000991,sdv-id-IBadEU,12,Adult ED,2025-07-21 17:04:50.265225,4,Discharge
+14497742,sdv-id-HkKqXr,12,Adult ED,2025-05-06 12:03:27.089072,4,Admit
+8267867,sdv-id-dVTfnO,9,Adult ED,2025-06-15 12:28:21.175270,2,Discharge
+5103883,sdv-id-ALmvaC,3,Adult ED,2025-11-09 00:43:44.702841,3,Discharge
+3930257,sdv-id-ALmvaC,3,Adult ED,2025-09-22 09:34:12.911587,5,Discharge
+4716327,sdv-id-oyQVfj,9,Pediatric ED,2025-05-29 19:14:28.579937,4,Discharge
+5812086,sdv-id-sRAfNP,3,Adult ED,2025-05-03 23:28:52.363290,4,Discharge
+15507425,sdv-id-sRAfNP,12,Adult ED,2025-03-23 12:25:16.234308,1,Discharge
+5849799,sdv-id-zDNSrm,5,Adult ED,2025-10-05 02:23:07.234786,3,Discharge
+5057188,sdv-id-zDNSrm,4,Adult ED,2025-11-02 14:51:01.996385,3,Discharge
+12739447,sdv-id-gzfzoJ,3,Urgent Care Centre,2025-06-05 03:10:39.776689,3,Admit
+9456890,sdv-id-gzfzoJ,7,Adult ED,2025-07-05 17:02:19.535128,3,Admit
+7029918,sdv-id-MbRZtZ,11,Adult ED,2025-05-17 07:17:01.174827,3,Discharge
+7518917,sdv-id-MbRZtZ,11,Adult ED,2025-06-11 05:37:26.356311,3,Discharge
+13644476,sdv-id-CbhAUT,7,Urgent Care Centre,2025-07-08 23:21:27.198847,4,Discharge
+5721939,sdv-id-CbhAUT,12,Urgent Care Centre,2025-07-04 11:13:15.578120,1,Discharge
+7447368,sdv-id-wVtsKi,4,Adult ED,2025-03-30 10:16:48.310782,4,Discharge
+16639764,sdv-id-KxdEvZ,5,Adult ED,2025-10-15 07:27:36.024116,4,Discharge
+4016800,sdv-id-RAeKid,3,Adult ED,2025-07-12 08:04:11.831364,3,Discharge
+3875308,sdv-id-Shhhqt,4,Adult ED,2025-08-26 18:40:16.686691,4,Discharge
+15566224,sdv-id-UzavwA,8,Adult ED,2025-12-30 23:11:41.243482,4,Discharge
+13746141,sdv-id-RHLVyw,7,Pediatric ED,2025-07-03 00:26:50.918681,3,Death
+15762050,sdv-id-aBBUMT,6,Pediatric ED,2025-10-14 06:45:41.931608,4,AMA
+7249911,sdv-id-hrWVwk,5,Adult ED,2025-06-04 01:31:22.399962,3,Discharge
+1461228,sdv-id-hrWVwk,5,Adult ED,2025-05-03 00:15:42.582027,3,Discharge
+14632890,sdv-id-oEBKJL,8,Adult ED,2025-07-27 08:32:48.830346,2,Discharge
+16558768,sdv-id-wgANmX,4,Urgent Care Centre,2025-10-20 01:56:38.157307,2,Discharge
+1969698,sdv-id-wgANmX,4,Urgent Care Centre,2025-07-19 09:52:42.459882,5,Discharge
+15726652,sdv-id-OCHtHA,11,Pediatric ED,2025-12-30 23:11:41.243482,4,Discharge
+8034114,sdv-id-vfbnHW,7,Urgent Care Centre,2025-02-25 17:45:10.619665,3,Discharge
+15234068,sdv-id-vfbnHW,7,Urgent Care Centre,2025-06-06 20:21:32.587139,5,Discharge
+4017577,sdv-id-hdgenS,8,Adult ED,2025-06-29 09:55:29.345699,4,Discharge
+13499686,sdv-id-soWsSk,5,Pediatric ED,2025-08-18 11:35:28.078836,3,Discharge
+14063119,sdv-id-soWsSk,5,Pediatric ED,2025-10-10 18:59:55.939472,3,Discharge
+3491200,sdv-id-zauRQu,3,Adult ED,2025-03-03 22:04:07.343868,4,Discharge
+14316339,sdv-id-RpinSf,9,Pediatric ED,2025-07-13 03:40:18.294772,4,Death
+8534481,sdv-id-vJfmuk,2,Pediatric ED,2025-03-24 06:11:53.524477,3,Discharge
+11322667,sdv-id-vJfmuk,6,Pediatric ED,2025-05-02 00:20:32.114713,3,Discharge
+4726702,sdv-id-XiCcvC,7,Adult ED,2025-07-15 19:35:40.624114,4,Discharge
+11104405,sdv-id-XiCcvC,3,Adult ED,2025-08-28 13:04:51.980778,4,Discharge
+6452835,sdv-id-uklWBF,1,Adult ED,2025-04-06 10:30:04.713888,4,Discharge
+8468487,sdv-id-uklWBF,1,Pediatric ED,2025-06-25 05:22:15.392081,4,Discharge
+5843839,sdv-id-LAKIlH,5,Adult ED,2025-09-10 06:32:40.308524,4,Discharge
+11647835,sdv-id-skFzkK,5,Adult ED,2025-05-11 11:19:34.978342,4,Discharge
+8408921,sdv-id-skFzkK,8,Adult ED,2025-05-08 19:07:59.236023,4,Discharge
+14440595,sdv-id-eRxhKj,2,Adult ED,2025-12-30 23:11:41.243482,4,Admit
+9161100,sdv-id-NmCEMW,6,Urgent Care Centre,2025-06-29 21:32:12.680427,2,Discharge
+13628372,sdv-id-MsSFhT,8,Adult ED,2025-12-30 23:11:41.243482,3,Discharge
+6759202,sdv-id-pPoFnP,11,Adult ED,2025-08-14 22:06:23.446488,4,Discharge
+7395043,sdv-id-nRBoLv,4,Pediatric ED,2025-04-18 23:03:56.733293,2,Discharge
+1246598,sdv-id-MNQWEm,3,Adult ED,2025-09-14 12:39:21.172200,2,Discharge
+7776865,sdv-id-MNQWEm,12,Adult ED,2025-10-16 02:25:47.975701,3,Discharge
+13138632,sdv-id-ilpAdE,8,Pediatric ED,2025-04-07 04:29:07.248578,4,AMA
+321302,sdv-id-ilpAdE,8,Pediatric ED,2025-02-04 14:23:50.503755,1,Discharge
+14652816,sdv-id-VNgceb,1,Adult ED,2025-11-09 21:35:17.822828,4,Discharge
+7607266,sdv-id-pKktVU,10,Adult ED,2025-06-04 17:26:59.710168,4,Discharge
+7807681,sdv-id-eEzOnJ,7,Urgent Care Centre,2025-08-18 06:51:47.144601,4,Death
+14389904,sdv-id-eEzOnJ,7,Urgent Care Centre,2025-09-28 21:35:27.386316,1,Discharge
+12626644,sdv-id-QiaSSn,12,Adult ED,2025-12-30 23:11:41.243482,4,Discharge
+11962069,sdv-id-UFBbjM,11,Urgent Care Centre,2025-04-25 04:57:07.847409,3,Discharge
+9188994,sdv-id-UFBbjM,11,Urgent Care Centre,2025-03-26 20:21:55.214094,3,Discharge
+14963790,sdv-id-CWamYa,12,Urgent Care Centre,2025-12-30 23:11:41.243482,4,Discharge
+4212050,sdv-id-CWamYa,3,Urgent Care Centre,2025-12-30 23:11:41.243482,4,Discharge
+7941749,sdv-id-pzyqGp,6,Pediatric ED,2025-11-25 19:48:12.476794,3,Discharge
+14896540,sdv-id-pzyqGp,5,Pediatric ED,2025-12-10 16:35:00.770615,3,Discharge
+15687172,sdv-id-yGCHDy,7,Adult ED,2025-07-25 01:56:30.003204,2,Discharge
+8331012,sdv-id-yGCHDy,7,Adult ED,2025-04-29 06:44:34.675718,2,Discharge
+6045860,sdv-id-DyVlWs,11,Adult ED,2025-02-13 03:37:02.348346,4,Discharge
+1920008,sdv-id-DyVlWs,11,Adult ED,2025-03-14 08:49:29.978962,4,Discharge
+4684879,sdv-id-CBIkbP,5,Pediatric ED,2025-07-06 02:02:20.195319,3,Death
+11813973,sdv-id-eTAKYk,1,Pediatric ED,2025-08-08 17:48:15.030603,4,Discharge
+2811613,sdv-id-PgXToW,1,Pediatric ED,2025-12-30 23:11:41.243482,4,Admit
+7887255,sdv-id-RrnMvS,12,Urgent Care Centre,2025-03-17 22:11:17.578278,4,Discharge
+2127488,sdv-id-RrnMvS,3,Urgent Care Centre,2025-02-24 18:40:20.030730,2,Discharge
+7466975,sdv-id-CGGkJx,9,Pediatric ED,2025-07-02 17:39:47.314385,2,Discharge
+7883508,sdv-id-eptDBv,5,Urgent Care Centre,2025-08-21 00:02:39.393872,4,Discharge
+12199417,sdv-id-eptDBv,5,Urgent Care Centre,2025-09-04 02:49:17.559133,4,Discharge
+5531958,sdv-id-QEKOEW,3,Adult ED,2025-03-20 15:14:57.819758,3,Discharge
+13965417,sdv-id-QEKOEW,3,Pediatric ED,2025-06-18 06:23:05.781547,3,Discharge
+10835794,sdv-id-GBJrri,7,Urgent Care Centre,2025-12-30 23:11:41.243482,4,Death
+11760625,sdv-id-LkUPaQ,8,Adult ED,2025-10-03 10:30:13.583022,4,Discharge
+8656246,sdv-id-ZSXMjz,7,Adult ED,2025-05-23 06:04:57.105352,3,Discharge
+4406679,sdv-id-ZSXMjz,9,Adult ED,2025-04-16 23:14:30.531933,3,Discharge
+14726065,sdv-id-OdUQEZ,8,Pediatric ED,2025-12-04 15:34:53.016644,4,Discharge
+11198260,sdv-id-sshcMT,12,Urgent Care Centre,2025-04-14 04:32:14.749747,2,Discharge
+16746827,sdv-id-sshcMT,12,Urgent Care Centre,2025-03-21 01:24:42.712523,3,Discharge
+14201112,sdv-id-ShLDFC,9,Pediatric ED,2025-06-03 15:45:02.166353,3,Discharge
+9905435,sdv-id-EtiupU,8,Pediatric ED,2025-05-25 05:43:14.892132,3,Discharge
+2531827,sdv-id-EtiupU,8,Pediatric ED,2025-10-19 06:03:48.254585,3,Discharge
+10761681,sdv-id-NeVtwC,9,Urgent Care Centre,2025-05-21 10:42:03.399077,4,Discharge
+15353800,sdv-id-NeVtwC,9,Urgent Care Centre,2025-08-17 13:54:50.738123,1,Discharge
+9150405,sdv-id-pTlCyO,2,Adult ED,2025-06-27 20:42:29.028316,4,Death
+1286659,sdv-id-YIUXnz,9,Adult ED,2025-08-11 17:03:46.198873,3,Discharge
+14844613,sdv-id-YIUXnz,3,Adult ED,2025-04-17 09:24:29.829622,3,Discharge
+5732041,sdv-id-MCKpZr,10,Adult ED,2025-07-31 14:23:23.322853,3,Admit
+14632355,sdv-id-XdOWNk,3,Adult ED,2025-03-29 15:29:28.031773,4,Death
+8021255,sdv-id-MRxWQf,5,Adult ED,2025-07-23 15:02:03.062915,4,Admit
+11282079,sdv-id-SfrHNr,5,Adult ED,2025-12-11 04:46:49.946858,4,Admit
+9339931,sdv-id-SfrHNr,8,Adult ED,2025-11-28 15:58:15.815999,2,Admit
+1316974,sdv-id-oSZMzS,9,Pediatric ED,2025-08-07 02:38:20.042082,2,Admit
+4665031,sdv-id-mZRAux,4,Pediatric ED,2025-09-11 17:16:11.673021,4,Discharge
+337638,sdv-id-mZRAux,4,Pediatric ED,2025-04-28 22:06:16.612302,3,Discharge
+13292844,sdv-id-iWjtSA,8,Pediatric ED,2025-08-07 23:26:54.310051,2,Discharge
+4089203,sdv-id-onlfgy,4,Adult ED,2025-06-02 06:15:11.114454,4,Transfer
+4061980,sdv-id-rijOde,8,Urgent Care Centre,2025-05-27 04:43:59.322348,2,Admit
+476500,sdv-id-rijOde,5,Urgent Care Centre,2025-09-26 14:23:32.320565,3,Admit
+4034147,sdv-id-hoRCbW,5,Adult ED,2025-05-27 03:29:47.945891,2,AMA
+11047321,sdv-id-hoRCbW,8,Adult ED,2025-03-06 11:20:39.130867,3,Discharge
+1028594,sdv-id-AYtgIs,11,Adult ED,2025-03-28 05:38:32.985760,3,Discharge
+2938057,sdv-id-zyXbik,6,Pediatric ED,2025-12-30 23:11:41.243482,4,Transfer
+16366210,sdv-id-UbXZvj,2,Urgent Care Centre,2025-05-02 08:38:10.929227,4,Discharge
+338347,sdv-id-fOGmTW,5,Pediatric ED,2025-03-08 01:39:46.553231,5,Discharge
+8750924,sdv-id-fOGmTW,8,Pediatric ED,2025-05-11 15:38:26.898303,3,Discharge
+1797936,sdv-id-ctBhTE,1,Adult ED,2025-03-10 09:05:15.296381,3,Discharge
+13998507,sdv-id-ctBhTE,10,Adult ED,2025-06-29 09:48:35.287333,3,Discharge
+10378908,sdv-id-oKGRkq,2,Urgent Care Centre,2025-06-07 14:05:29.531113,2,Discharge
+8808385,sdv-id-cprfde,2,Pediatric ED,2025-12-05 03:06:50.227665,4,Discharge
+6565116,sdv-id-XRnxuN,7,Urgent Care Centre,2025-03-18 01:40:19.078114,2,AMA
+15335881,sdv-id-XRnxuN,7,Urgent Care Centre,2025-04-09 18:30:28.035507,3,Discharge
+7026890,sdv-id-xDghHf,6,Pediatric ED,2025-10-23 11:14:22.943442,2,Death
+14700233,sdv-id-xDghHf,2,Pediatric ED,2025-09-23 05:19:41.212543,3,Death
+10170462,sdv-id-CSHwnA,1,Adult ED,2025-10-09 11:44:49.635154,3,Discharge
+11342753,sdv-id-uJMiEJ,2,Pediatric ED,2025-07-06 20:49:10.527912,4,Discharge
+4756071,sdv-id-wbkGDj,4,Pediatric ED,2025-10-14 23:58:08.496804,4,Discharge
+4606468,sdv-id-wbkGDj,2,Pediatric ED,2025-09-12 20:57:06.996894,1,Discharge
+1756433,sdv-id-SUACmI,3,Adult ED,2025-10-08 10:22:55.077198,4,Discharge
+16364957,sdv-id-LahCYu,9,Adult ED,2025-10-22 11:47:01.745656,4,Discharge
+8184419,sdv-id-LahCYu,3,Urgent Care Centre,2025-12-23 22:39:09.263865,4,Discharge
+6267830,sdv-id-rJfnQA,11,Adult ED,2025-03-02 12:42:09.403365,2,Discharge
+14432231,sdv-id-CUuvAH,2,Adult ED,2025-07-15 09:31:47.283755,4,Discharge
+1627901,sdv-id-CUuvAH,2,Adult ED,2025-06-04 23:06:41.498795,3,Transfer
+15758308,sdv-id-HqHJpp,1,Pediatric ED,2025-05-14 17:04:50.661792,2,Death
+5737778,sdv-id-RSsqCt,9,Adult ED,2025-09-16 06:19:52.587785,4,Death
+13424437,sdv-id-CZIWni,4,Pediatric ED,2025-09-18 07:28:59.785844,3,Discharge
+8327894,sdv-id-PbTnKU,4,Pediatric ED,2025-12-25 03:18:34.603956,4,Discharge
+15550209,sdv-id-HjhCdd,8,Adult ED,2025-08-18 19:04:48.119866,3,Discharge
+8396826,sdv-id-HjhCdd,8,Adult ED,2025-07-29 00:01:28.417646,5,Discharge
+9725148,sdv-id-LkiOAK,3,Urgent Care Centre,2025-04-25 07:04:23.120310,3,Discharge
+7616939,sdv-id-LkiOAK,3,Urgent Care Centre,2025-02-25 13:56:24.426334,3,Discharge
+5515483,sdv-id-sSnkvP,11,Pediatric ED,2025-08-13 05:40:40.336897,1,AMA
+13103458,sdv-id-dTlvky,8,Adult ED,2025-08-11 17:31:15.429308,1,Discharge
+2577873,sdv-id-dTlvky,8,Adult ED,2025-07-20 11:23:33.905035,3,Discharge
+2176337,sdv-id-VPTzxL,8,Adult ED,2025-05-30 04:43:28.446181,4,Admit
+7584604,sdv-id-VPTzxL,8,Adult ED,2025-05-13 06:42:34.193938,4,Discharge
+2081983,sdv-id-gKUFBM,8,Pediatric ED,2025-09-28 08:04:37.207677,2,Discharge
+11659360,sdv-id-gKUFBM,8,Pediatric ED,2025-08-31 15:47:19.073507,3,Discharge
+10093533,sdv-id-FiDwbv,4,Adult ED,2025-08-27 03:37:56.801241,2,Discharge
+3655071,sdv-id-nehSsF,4,Adult ED,2025-12-25 21:35:50.393302,2,Discharge
+8098456,sdv-id-QDqHmM,5,Adult ED,2025-08-10 07:48:52.230012,2,Discharge
+13514861,sdv-id-QDqHmM,5,Adult ED,2025-09-23 12:59:30.954536,4,Discharge
+7800967,sdv-id-pkVqoM,4,Urgent Care Centre,2025-04-28 14:40:31.407875,2,Discharge
+13808107,sdv-id-pkVqoM,11,Urgent Care Centre,2025-05-07 15:17:05.311623,2,Discharge
+15742192,sdv-id-pPmgyt,3,Adult ED,2025-06-05 17:56:49.048040,4,Discharge
+9936379,sdv-id-WYDxLb,7,Urgent Care Centre,2025-05-02 10:39:25.845920,2,Discharge
+4760273,sdv-id-WYDxLb,9,Adult ED,2025-04-27 23:26:26.455832,3,Discharge
+3285452,sdv-id-MSWBNE,10,Pediatric ED,2025-12-30 23:11:41.243482,4,Discharge
+7850386,sdv-id-MSWBNE,10,Pediatric ED,2025-12-03 13:35:56.725361,2,Discharge
+12356309,sdv-id-lDDAqs,3,Pediatric ED,2025-07-10 18:44:06.357517,2,Discharge
+11819276,sdv-id-lDDAqs,12,Pediatric ED,2025-10-26 05:11:52.959595,2,Discharge
+11337620,sdv-id-dwbYDO,7,Adult ED,2025-11-15 00:16:34.016116,4,Admit
+16497913,sdv-id-vDXqtc,1,Pediatric ED,2025-07-13 16:45:19.316015,4,Death
+561481,sdv-id-QrKfPW,7,Urgent Care Centre,2025-12-01 05:33:50.633123,2,Discharge
+645704,sdv-id-NaJFpk,1,Adult ED,2025-06-07 02:09:08.946784,3,Discharge
+7727279,sdv-id-XnnuOe,3,Adult ED,2025-05-16 04:36:51.769014,2,Death
+10636991,sdv-id-VxKdkc,10,Adult ED,2025-06-17 10:13:56.766517,4,Discharge
+13593817,sdv-id-KBadTv,12,Adult ED,2025-08-30 17:11:10.985410,4,Discharge
+8907116,sdv-id-KBadTv,12,Adult ED,2025-06-18 12:12:39.314922,2,Discharge
+7901677,sdv-id-jMTXXr,7,Adult ED,2025-08-01 13:35:11.415703,3,Discharge
+14393812,sdv-id-jMTXXr,7,Adult ED,2025-08-16 16:47:11.424209,3,Discharge
+16182484,sdv-id-MnOlPL,7,Adult ED,2025-07-01 05:49:35.544780,3,Death
+13092989,sdv-id-MnOlPL,3,Adult ED,2025-06-26 10:04:55.553195,5,Admit
+6470530,sdv-id-CEqrkZ,8,Adult ED,2025-04-12 23:34:35.616064,4,Death
+8527106,sdv-id-nDxLuV,6,Pediatric ED,2025-12-30 23:11:41.243482,2,Discharge
+11293475,sdv-id-vChQpZ,9,Adult ED,2025-11-15 03:02:12.046421,3,Discharge
+1472365,sdv-id-vChQpZ,7,Adult ED,2025-11-16 16:55:02.106880,3,Discharge
+5478791,sdv-id-PLKFDl,7,Adult ED,2025-10-04 09:07:02.687280,2,Discharge
+12608310,sdv-id-PLKFDl,3,Adult ED,2025-07-29 04:18:50.998380,3,Discharge
+2403876,sdv-id-BDtQsE,3,Adult ED,2025-05-12 09:31:30.884057,3,Discharge
+13317224,sdv-id-BDtQsE,3,Adult ED,2025-08-02 13:40:34.602180,3,Discharge
+12044250,sdv-id-lBEbxQ,8,Adult ED,2025-05-28 05:57:25.070583,4,Death
+3597268,sdv-id-lBEbxQ,8,Adult ED,2025-05-04 23:42:45.261973,2,Discharge
+2282219,sdv-id-UaZGtf,4,Adult ED,2025-11-16 01:39:18.660308,2,Discharge
+2812980,sdv-id-UaZGtf,2,Adult ED,2025-08-03 23:36:15.517280,3,Discharge
+9392667,sdv-id-eRjJhh,1,Adult ED,2025-04-04 12:28:31.923910,2,Discharge
+8919918,sdv-id-SMBttK,2,Adult ED,2025-04-27 13:40:47.124188,4,Discharge
+15273142,sdv-id-oCUENk,2,Pediatric ED,2025-05-03 13:00:25.488836,3,Discharge
+16045989,sdv-id-oCUENk,2,Pediatric ED,2025-08-07 16:19:01.255788,3,Discharge
+1201968,sdv-id-hTSIUv,3,Adult ED,2025-12-30 23:11:41.243482,2,Discharge
+13116769,sdv-id-DuMDJj,8,Adult ED,2025-10-03 13:55:02.486931,4,Discharge
+13152287,sdv-id-DQPmPc,5,Adult ED,2025-10-03 13:45:46.944075,3,Death
+1133196,sdv-id-DQPmPc,8,Adult ED,2025-10-24 16:45:57.473354,3,Death
+9454801,sdv-id-VsOmpf,1,Adult ED,2025-02-20 16:19:16.520808,1,Discharge
+8435433,sdv-id-VsOmpf,10,Adult ED,2025-03-30 09:40:38.296460,1,Discharge
+1583061,sdv-id-KpvgBu,4,Pediatric ED,2025-06-07 10:10:05.971187,4,Discharge
+5686614,sdv-id-KpvgBu,2,Pediatric ED,2025-04-10 14:32:49.944377,4,Discharge
+14782031,sdv-id-QJqhfF,4,Pediatric ED,2025-04-23 11:59:56.420242,4,Discharge
+1074206,sdv-id-HigjLL,11,Adult ED,2025-03-17 22:37:26.939886,3,Admit
+15868758,sdv-id-HigjLL,11,Adult ED,2025-06-07 08:28:49.885252,3,Admit
+1704907,sdv-id-jHIieG,1,Pediatric ED,2025-11-09 05:45:27.964873,3,Discharge
+980155,sdv-id-jHIieG,1,Pediatric ED,2025-07-30 06:20:50.178820,5,Discharge
+11719316,sdv-id-iQpEve,7,Urgent Care Centre,2025-08-17 13:20:09.241865,4,Discharge
+310959,sdv-id-VuiLMi,4,Adult ED,2025-11-13 10:52:13.149467,3,Discharge
+11673002,sdv-id-VuiLMi,4,Pediatric ED,2025-11-16 14:12:44.837725,3,Discharge
+13758735,sdv-id-lJBArP,4,Urgent Care Centre,2025-10-27 07:23:49.234561,2,Discharge
+5627135,sdv-id-XoTsoa,12,Adult ED,2025-10-29 23:21:20.359301,4,Discharge
+3726839,sdv-id-JFssLV,4,Pediatric ED,2025-11-02 10:57:09.014277,3,Discharge
+2672503,sdv-id-ptmDzl,1,Urgent Care Centre,2025-10-16 09:53:14.455854,3,Admit
+3454748,sdv-id-ptmDzl,1,Urgent Care Centre,2025-10-08 09:56:44.227490,3,Admit
+9526884,sdv-id-zmUlyy,11,Adult ED,2025-08-18 18:37:35.055968,2,Discharge
+848087,sdv-id-zmUlyy,11,Adult ED,2025-06-08 01:07:30.942072,2,Discharge
+8686941,sdv-id-FHLcfH,3,Adult ED,2025-07-27 01:03:34.625060,2,Discharge
+16408841,sdv-id-gXqVLy,8,Urgent Care Centre,2025-10-09 06:06:15.916830,4,Discharge
+10916416,sdv-id-VwBNXW,1,Adult ED,2025-06-24 19:51:35.365842,4,Discharge
+12926791,sdv-id-vXoxzf,8,Pediatric ED,2025-11-09 21:03:58.255810,4,Death
+4761073,sdv-id-lvDXrN,9,Pediatric ED,2025-07-21 01:04:53.899536,3,Discharge
+5105117,sdv-id-lvDXrN,3,Pediatric ED,2025-07-21 15:42:08.339492,3,Discharge
+8408993,sdv-id-nOKTPN,2,Adult ED,2025-08-02 00:16:05.893723,4,Discharge
+1352865,sdv-id-nOKTPN,2,Adult ED,2025-05-23 08:01:32.312964,4,Discharge
+13938483,sdv-id-eOkZqP,3,Adult ED,2025-06-08 20:43:40.947590,3,AMA
+11170532,sdv-id-TmdKsS,7,Pediatric ED,2025-12-19 03:10:49.696539,1,Admit
+13094534,sdv-id-ERNvGT,3,Adult ED,2025-07-26 13:02:53.203104,3,Transfer
+3796147,sdv-id-ERNvGT,3,Urgent Care Centre,2025-11-16 13:49:14.357335,3,Death
+4193489,sdv-id-VnIyPQ,8,Adult ED,2025-07-07 12:46:55.112523,4,Discharge
+4580039,sdv-id-VnIyPQ,8,Adult ED,2025-07-01 00:36:31.735869,2,Discharge
+3859118,sdv-id-FnZHjY,8,Adult ED,2025-10-06 09:38:29.936733,4,Death
+12215932,sdv-id-WYACqc,11,Adult ED,2025-11-20 20:50:02.607475,3,Discharge
+6501332,sdv-id-lKWQLX,2,Urgent Care Centre,2025-12-30 23:11:41.243482,4,Discharge
+9812238,sdv-id-jAbekk,7,Pediatric ED,2025-02-09 07:25:49.750750,2,Discharge
+4812470,sdv-id-jAbekk,9,Pediatric ED,2025-04-21 01:45:24.290306,2,Discharge
+10691482,sdv-id-qrwxmi,5,Urgent Care Centre,2025-11-01 04:27:02.517837,4,Discharge
+372369,sdv-id-zSNOhR,1,Urgent Care Centre,2025-04-02 10:47:45.049819,3,Discharge
+3012953,sdv-id-zSNOhR,12,Urgent Care Centre,2025-04-17 06:13:26.344780,3,Discharge
+11125164,sdv-id-QHEgxq,3,Adult ED,2025-10-05 17:40:14.897186,3,Discharge
+15259815,sdv-id-QHEgxq,9,Adult ED,2025-08-16 11:42:44.282778,3,Discharge
+2497988,sdv-id-YisSpr,3,Adult ED,2025-05-25 02:49:02.240083,1,Discharge
+734599,sdv-id-YisSpr,3,Adult ED,2025-05-12 23:05:00.680800,3,Discharge
+3783845,sdv-id-qiAwkM,8,Pediatric ED,2025-12-20 09:20:12.369374,4,Transfer
+1550522,sdv-id-qiAwkM,8,Pediatric ED,2025-12-09 13:30:14.084883,3,Discharge
+16376327,sdv-id-jdouww,5,Adult ED,2025-05-23 19:45:15.649948,3,Discharge
+12793881,sdv-id-ZnWivQ,9,Adult ED,2025-08-24 03:45:40.459488,2,Discharge
+8586461,sdv-id-GWbEvm,9,Adult ED,2025-06-30 21:04:23.093764,4,Death
+456822,sdv-id-NEZIVx,4,Pediatric ED,2025-03-22 20:31:27.917603,3,Discharge
+13379506,sdv-id-CNEJBf,7,Adult ED,2025-08-10 02:54:33.270304,4,Discharge
+65882,sdv-id-CNEJBf,3,Adult ED,2025-08-15 11:53:41.769890,4,Discharge
+1928799,sdv-id-rWAccw,12,Adult ED,2025-07-12 07:04:40.203671,4,Discharge
+13359021,sdv-id-rWAccw,12,Adult ED,2025-08-29 04:09:35.124339,4,Discharge
+16210678,sdv-id-yQmkwF,12,Adult ED,2025-04-27 16:55:32.189133,2,Transfer
+9192820,sdv-id-yQmkwF,12,Adult ED,2025-04-08 17:08:35.759868,3,AMA
+10998661,sdv-id-QXyIlE,4,Urgent Care Centre,2025-04-25 06:02:08.493108,3,Admit
+15045690,sdv-id-QXyIlE,11,Urgent Care Centre,2025-04-19 01:50:58.049961,3,Admit
+1633785,sdv-id-pRIdlv,11,Urgent Care Centre,2025-06-19 19:32:12.462883,3,Discharge
+12704657,sdv-id-hPQynr,11,Adult ED,2025-08-18 19:47:11.566130,4,Discharge
+9206655,sdv-id-hPQynr,4,Adult ED,2025-07-12 02:11:41.124976,4,Discharge
+9189596,sdv-id-LsiLXD,10,Adult ED,2025-05-15 06:20:37.472049,3,Discharge
+1325053,sdv-id-LsiLXD,1,Adult ED,2025-07-18 03:11:38.994632,3,Discharge
+15365069,sdv-id-MfROyj,3,Adult ED,2025-11-09 18:20:48.179531,4,Discharge
+9173160,sdv-id-MfROyj,3,Adult ED,2025-11-04 03:38:22.646870,3,Discharge
+1947620,sdv-id-dnvLVY,2,Pediatric ED,2025-08-24 14:42:28.860638,3,Discharge
+8467935,sdv-id-dnvLVY,6,Pediatric ED,2025-12-17 09:58:53.235493,3,Discharge
+16043469,sdv-id-FcwkqM,2,Adult ED,2025-12-27 21:12:11.526529,2,Admit
+1914485,sdv-id-FcwkqM,4,Adult ED,2025-10-29 22:09:35.101289,3,Admit
+4975633,sdv-id-CbldPf,7,Adult ED,2025-07-31 22:05:51.728138,2,Discharge
+13078108,sdv-id-CbldPf,7,Adult ED,2025-08-06 15:15:13.176990,3,Discharge
+2393899,sdv-id-CNAYpQ,4,Pediatric ED,2025-11-10 12:51:12.165628,4,Discharge
+12845996,sdv-id-lufApK,5,Urgent Care Centre,2025-07-22 03:00:38.920800,3,Discharge
+13417576,sdv-id-lufApK,5,Urgent Care Centre,2025-09-19 08:11:51.298280,3,Discharge
+1251523,sdv-id-EbqmEn,10,Adult ED,2025-12-09 07:00:08.459452,3,Discharge
+7435860,sdv-id-EbqmEn,10,Adult ED,2025-08-06 09:53:51.377632,3,Discharge
+837124,sdv-id-bEpumF,3,Pediatric ED,2025-05-31 02:15:50.519075,1,Discharge
+8992188,sdv-id-bEpumF,7,Pediatric ED,2025-07-24 14:17:49.519407,1,Discharge
+83317,sdv-id-EkFapc,4,Adult ED,2025-06-13 02:00:35.022982,2,Discharge
+12152636,sdv-id-kASEUY,8,Adult ED,2025-06-08 10:15:14.788830,2,Discharge
+8610146,sdv-id-lVcype,3,Adult ED,2025-11-20 11:15:04.633816,3,AMA
+4514819,sdv-id-AeCIsb,11,Adult ED,2025-07-20 21:13:07.068737,4,Discharge
+12398108,sdv-id-AeCIsb,4,Adult ED,2025-06-13 20:43:18.256161,4,Discharge
+15152722,sdv-id-SnTVkK,2,Pediatric ED,2025-06-29 07:11:22.018136,3,Discharge
+15834768,sdv-id-SnTVkK,6,Pediatric ED,2025-06-03 02:04:54.249941,5,Discharge
+4899111,sdv-id-RCzLvY,11,Urgent Care Centre,2025-10-11 03:25:47.078224,4,Discharge
+6209501,sdv-id-sCDpyp,11,Urgent Care Centre,2025-09-12 08:38:21.953873,4,Discharge
+13690443,sdv-id-sCDpyp,11,Urgent Care Centre,2025-09-07 03:18:08.304654,2,Discharge
+2966385,sdv-id-pnvjWz,2,Pediatric ED,2025-04-22 21:39:58.093584,4,Discharge
+13682790,sdv-id-pnvjWz,2,Pediatric ED,2025-05-24 04:50:27.818394,2,Discharge
+10454552,sdv-id-xugVzK,12,Pediatric ED,2025-08-14 22:58:37.337518,4,Death
+12012009,sdv-id-xugVzK,12,Pediatric ED,2025-07-02 19:50:27.450371,4,Transfer
+14323434,sdv-id-fHacTX,11,Adult ED,2025-12-03 07:22:41.962183,4,Admit
+2909648,sdv-id-EumBBH,2,Adult ED,2025-08-21 15:59:59.602521,4,Admit

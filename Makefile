@@ -1,10 +1,10 @@
 # Makefile for synthetic healthcare database
 
-.PHONY: help setup generate load clean test
+.PHONY: help setup generate load clean test sdv-train sdv-generate sdv-validate
 
 help: ## Show this help message
 	@echo "Available commands:"
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  %-10s %s\n", $$1, $$2}'
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  %-15s %s\n", $$1, $$2}'
 
 setup: ## Install dependencies
 	pip install -r requirements.txt
@@ -28,6 +28,24 @@ test: ## Run basic tests
 	@test -f data/patients.csv && echo "✓ patients.csv exists" || echo "✗ patients.csv missing"
 	@test -f data/ed_encounters.csv && echo "✓ ed_encounters.csv exists" || echo "✗ ed_encounters.csv missing"
 	@echo "Basic tests passed!"
+
+# SDV-related targets
+sdv-train: setup generate ## Train SDV model on generated seed data
+	@echo "Training SDV model..."
+	python sdv_models/train.py --model-type hma --epochs 100 --patients 2000 --save-name healthcare_hma_model
+
+sdv-generate: ## Generate synthetic data using trained SDV model
+	@echo "Generating synthetic data..."
+	python sdv_models/train.py --generate-only --patients 5000 --save-name healthcare_hma_model
+
+sdv-validate: ## Validate synthetic data quality
+	@echo "Validating synthetic data..."
+	python sdv_models/validate.py --real-data-dir data --synthetic-data-dir data/synthetic
+
+sdv-pipeline: ## Complete SDV pipeline: train, generate, validate
+	$(MAKE) sdv-train
+	$(MAKE) sdv-generate
+	$(MAKE) sdv-validate
 
 # Convenience targets with parameters
 setup-db: ## Create database schema (requires MySQL)
