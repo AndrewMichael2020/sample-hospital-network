@@ -79,7 +79,7 @@ class ScenarioService:
             kpis=kpis,
             by_site=site_results,
             metadata={
-                "request_params": request.dict(),
+                "request_params": request.model_dump(),
                 "calculation_date": "2025-01-01",  # Would be datetime.now() in real implementation
                 "model_version": "1.0"
             }
