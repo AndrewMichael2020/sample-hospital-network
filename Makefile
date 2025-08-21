@@ -1,6 +1,7 @@
 # Makefile for synthetic healthcare database
 
 .PHONY: help setup generate load clean test sdv-train sdv-generate sdv-validate api-start api-test cli-test
+.PHONY: schema-ext seed-ext generate-refs load-refs api-ext-start
 
 help: ## Show this help message
 	@echo "Available commands:"
@@ -65,6 +66,23 @@ sdv-pipeline: ## Complete SDV pipeline: train, generate, validate
 	$(MAKE) sdv-train
 	$(MAKE) sdv-generate
 	$(MAKE) sdv-validate
+
+# EXTENSION: New targets for extended functionality
+schema-ext: ## Apply extended schema (new tables)
+	mysql lm_synth < schema_ext.sql
+
+seed-ext: ## Load seed data for extended tables
+	mysql lm_synth < seed_ext.sql
+
+generate-refs: ## Generate reference data CSV files
+	python generate_refs.py
+
+load-refs: ## Load reference data into MySQL
+	python load_refs.py
+
+api-ext-start: generate generate-refs ## Start extended API server
+	@echo "Starting extended API server on http://localhost:8080"
+	python -m uvicorn api.main:app --host 0.0.0.0 --port 8080 --reload
 
 # Convenience targets with parameters
 setup-db: ## Create database schema (requires MySQL)
