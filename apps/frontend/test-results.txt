@@ -1,0 +1,40 @@
+
+> frontend@0.0.0 test
+> vitest run --reporter=verbose
+
+
+[1m[46m RUN [49m[22m [36mv3.2.4 [39m[90m/home/runner/work/sample-hospital-network/sample-hospital-network/apps/frontend[39m
+
+ [32m✓[39m src/lib/format.test.ts[2m > [22mFormat Utilities[2m > [22mformatNumber[2m > [22mformats integers correctly[32m 29[2mms[22m[39m
+ [32m✓[39m src/lib/format.test.ts[2m > [22mFormat Utilities[2m > [22mformatNumber[2m > [22mformats decimals with options[32m 4[2mms[22m[39m
+ [32m✓[39m src/lib/format.test.ts[2m > [22mFormat Utilities[2m > [22mformatGap[2m > [22mformats positive numbers with + sign[32m 1[2mms[22m[39m
+ [32m✓[39m src/lib/format.test.ts[2m > [22mFormat Utilities[2m > [22mformatGap[2m > [22mformats negative numbers correctly[32m 0[2mms[22m[39m
+ [32m✓[39m src/lib/format.test.ts[2m > [22mFormat Utilities[2m > [22mformatGap[2m > [22mformats zero correctly[32m 0[2mms[22m[39m
+ [32m✓[39m src/lib/format.test.ts[2m > [22mFormat Utilities[2m > [22mformatFTE[2m > [22mformats FTE values with one decimal place[32m 1[2mms[22m[39m
+ [32m✓[39m src/lib/format.test.ts[2m > [22mFormat Utilities[2m > [22mformatFTE[2m > [22mrounds to one decimal place[32m 0[2mms[22m[39m
+ [32m✓[39m src/lib/format.test.ts[2m > [22mValidation Utilities[2m > [22mvalidateOccupancyTarget[2m > [22mreturns null for valid values[32m 0[2mms[22m[39m
+ [32m✓[39m src/lib/format.test.ts[2m > [22mValidation Utilities[2m > [22mvalidateOccupancyTarget[2m > [22mreturns error for invalid values[32m 0[2mms[22m[39m
+ [32m✓[39m src/lib/format.test.ts[2m > [22mValidation Utilities[2m > [22mvalidateLOSDelta[2m > [22mreturns null for valid values[32m 0[2mms[22m[39m
+ [32m✓[39m src/lib/format.test.ts[2m > [22mValidation Utilities[2m > [22mvalidateLOSDelta[2m > [22mreturns error for invalid values[32m 0[2mms[22m[39m
+ [32m✓[39m src/lib/format.test.ts[2m > [22mValidation Utilities[2m > [22mvalidateALCTarget[2m > [22mreturns null for valid values[32m 0[2mms[22m[39m
+ [32m✓[39m src/lib/format.test.ts[2m > [22mValidation Utilities[2m > [22mvalidateALCTarget[2m > [22mreturns error for invalid values[32m 3[2mms[22m[39m
+ [32m✓[39m src/lib/format.test.ts[2m > [22mValidation Utilities[2m > [22mvalidateGrowthRate[2m > [22mreturns null for valid values[32m 1[2mms[22m[39m
+ [32m✓[39m src/lib/format.test.ts[2m > [22mValidation Utilities[2m > [22mvalidateGrowthRate[2m > [22mreturns error for invalid values[32m 0[2mms[22m[39m
+ [32m✓[39m src/components/KpiCard.test.tsx[2m > [22mKpiCard[2m > [22mrenders title and value correctly[32m 48[2mms[22m[39m
+ [32m✓[39m src/components/KpiCard.test.tsx[2m > [22mKpiCard[2m > [22mformats gap values with + sign[32m 4[2mms[22m[39m
+ [32m✓[39m src/components/KpiCard.test.tsx[2m > [22mKpiCard[2m > [22mformats negative gap values correctly[32m 3[2mms[22m[39m
+ [32m✓[39m src/components/KpiCard.test.tsx[2m > [22mKpiCard[2m > [22mformats FTE values with decimal places[32m 3[2mms[22m[39m
+ [32m✓[39m src/components/KpiCard.test.tsx[2m > [22mKpiCard[2m > [22mrenders subtitle when provided[32m 3[2mms[22m[39m
+ [32m✓[39m src/components/KpiCard.test.tsx[2m > [22mKpiCard[2m > [22mrenders trend indicators[32m 3[2mms[22m[39m
+ [32m✓[39m src/components/KpiCard.test.tsx[2m > [22mKpiCard[2m > [22mhandles null values gracefully[32m 2[2mms[22m[39m
+ [32m✓[39m src/components/Loading.test.tsx[2m > [22mLoading[2m > [22mrenders with default message[32m 33[2mms[22m[39m
+ [32m✓[39m src/components/Loading.test.tsx[2m > [22mLoading[2m > [22mrenders with custom message[32m 5[2mms[22m[39m
+ [32m✓[39m src/components/Loading.test.tsx[2m > [22mLoading[2m > [22mapplies correct size class[32m 6[2mms[22m[39m
+ [32m✓[39m src/components/Loading.test.tsx[2m > [22mLoading[2m > [22mapplies custom className[32m 3[2mms[22m[39m
+ [32m✓[39m src/components/Loading.test.tsx[2m > [22mLoading[2m > [22mrenders spinner element[32m 3[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m3 passed[39m[22m[90m (3)[39m
+[2m      Tests [22m [1m[32m27 passed[39m[22m[90m (27)[39m
+[2m   Start at [22m 19:18:55
+[2m   Duration [22m 1.17s[2m (transform 138ms, setup 208ms, collect 362ms, tests 162ms, environment 1.68s, prepare 343ms)[22m
+

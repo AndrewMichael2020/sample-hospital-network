@@ -1,0 +1,32 @@
+
+> frontend@0.0.0 test
+> vitest run --reporter=verbose
+
+
+[1m[46m RUN [49m[22m [36mv3.2.4 [39m[90m/home/runner/work/sample-hospital-network/sample-hospital-network/apps/frontend[39m
+
+ [32m✓[39m src/lib/format.test.ts[2m > [22mFormat Utilities[2m > [22mformatNumber[2m > [22mformats integers correctly[32m 26[2mms[22m[39m
+ [32m✓[39m src/lib/format.test.ts[2m > [22mFormat Utilities[2m > [22mformatNumber[2m > [22mformats decimals with options[32m 1[2mms[22m[39m
+ [32m✓[39m src/lib/format.test.ts[2m > [22mFormat Utilities[2m > [22mformatGap[2m > [22mformats positive numbers with + sign[32m 1[2mms[22m[39m
+ [32m✓[39m src/lib/format.test.ts[2m > [22mFormat Utilities[2m > [22mformatGap[2m > [22mformats negative numbers correctly[32m 0[2mms[22m[39m
+ [32m✓[39m src/lib/format.test.ts[2m > [22mFormat Utilities[2m > [22mformatGap[2m > [22mformats zero correctly[32m 0[2mms[22m[39m
+ [32m✓[39m src/lib/format.test.ts[2m > [22mFormat Utilities[2m > [22mformatFTE[2m > [22mformats FTE values with one decimal place[32m 1[2mms[22m[39m
+ [32m✓[39m src/lib/format.test.ts[2m > [22mFormat Utilities[2m > [22mformatFTE[2m > [22mrounds to one decimal place[32m 0[2mms[22m[39m
+ [32m✓[39m src/components/Loading.test.tsx[2m > [22mLoading[2m > [22mrenders with default message[32m 29[2mms[22m[39m
+ [32m✓[39m src/components/Loading.test.tsx[2m > [22mLoading[2m > [22mrenders with custom message[32m 3[2mms[22m[39m
+ [32m✓[39m src/components/Loading.test.tsx[2m > [22mLoading[2m > [22mapplies correct size class[32m 4[2mms[22m[39m
+ [32m✓[39m src/components/Loading.test.tsx[2m > [22mLoading[2m > [22mapplies custom className[32m 3[2mms[22m[39m
+ [32m✓[39m src/components/Loading.test.tsx[2m > [22mLoading[2m > [22mrenders spinner element[32m 2[2mms[22m[39m
+ [32m✓[39m src/components/KpiCard.test.tsx[2m > [22mKpiCard[2m > [22mrenders title and value correctly[32m 58[2mms[22m[39m
+ [32m✓[39m src/components/KpiCard.test.tsx[2m > [22mKpiCard[2m > [22mformats gap values with + sign[32m 5[2mms[22m[39m
+ [32m✓[39m src/components/KpiCard.test.tsx[2m > [22mKpiCard[2m > [22mformats negative gap values correctly[32m 5[2mms[22m[39m
+ [32m✓[39m src/components/KpiCard.test.tsx[2m > [22mKpiCard[2m > [22mformats FTE values with decimal places[32m 4[2mms[22m[39m
+ [32m✓[39m src/components/KpiCard.test.tsx[2m > [22mKpiCard[2m > [22mrenders subtitle when provided[32m 5[2mms[22m[39m
+ [32m✓[39m src/components/KpiCard.test.tsx[2m > [22mKpiCard[2m > [22mrenders trend indicators[32m 4[2mms[22m[39m
+ [32m✓[39m src/components/KpiCard.test.tsx[2m > [22mKpiCard[2m > [22mhandles null values gracefully[32m 3[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m3 passed[39m[22m[90m (3)[39m
+[2m      Tests [22m [1m[32m19 passed[39m[22m[90m (19)[39m
+[2m   Start at [22m 19:16:04
+[2m   Duration [22m 1.19s[2m (transform 107ms, setup 219ms, collect 384ms, tests 161ms, environment 1.67s, prepare 345ms)[22m
+
