@@ -37,6 +37,27 @@ make generate
 make load
 ```
 
+### Option 3: SDV Synthetic Data Generation
+```bash
+# Generate advanced synthetic data with higher-order correlations
+make sdv-pipeline    # Complete: train model, generate data, validate
+
+# Individual steps:
+make sdv-train      # Train HMA1 model on seed data  
+make sdv-generate   # Generate larger synthetic datasets
+make sdv-validate   # Validate data quality and privacy
+
+# See sdv_models/README.md for detailed SDV documentation
+```
+mysql lm_synth < schema.sql
+
+# 3. Generate sample data
+make generate
+
+# 4. Load data into MySQL
+make load
+```
+
 ## Database Schema
 
 The database contains the following tables:
@@ -107,18 +128,28 @@ ORDER BY age_group, gender;
 
 ```
 .
-├── requirements.txt          # Python dependencies
+├── requirements.txt          # Python dependencies (including SDV)
 ├── schema.sql               # MySQL DDL for all tables
 ├── generate_data.py         # Creates synthetic data as CSV files
 ├── load_data.py            # Loads CSV files into MySQL
 ├── setup.py               # Automated setup script
-├── Makefile              # Build automation
+├── Makefile              # Build automation (includes SDV targets)
 ├── README.md            # This documentation
+├── sdv_models/          # SDV synthetic data generation
+│   ├── metadata.json    # Multi-table schema definitions
+│   ├── constraints.py   # Business rules and data validation
+│   ├── train.py        # HMA1/CTGAN model training
+│   ├── validate.py     # Quality gates and privacy checks
+│   └── README.md       # SDV usage documentation
 └── data/               # Generated CSV files
     ├── dim_site.csv
     ├── dim_program.csv
     ├── patients.csv
     ├── ed_encounters.csv
+    ├── synthetic/      # SDV-generated synthetic data
+    │   ├── patients_synthetic.csv
+    │   ├── ed_encounters_synthetic.csv
+    │   └── ip_stays_synthetic.csv
     └── ...
 ```
 
@@ -132,6 +163,33 @@ Modify the population projection logic in `generate_population_projection()` to 
 
 ### Additional Programs
 Add more programs to the `PROGRAMS` constant and corresponding subprograms to `SUBPROGRAMS`.
+
+## SDV Synthetic Data Generation
+
+This project includes advanced synthetic data generation using **SDV (Synthetic Data Vault)** to establish higher-order correlations between tables and generate more realistic multi-table datasets.
+
+### Key Features
+- **Multi-table relationships**: Maintains referential integrity between Patients, ED_Encounters, and IP_Stays
+- **Business rule enforcement**: Age/DOB consistency, LOS constraints, pediatric ED rules
+- **Privacy validation**: K-anonymity checks, quasi-identifier uniqueness
+- **Quality metrics**: Statistical similarity validation and correlation preservation
+
+### Quick SDV Usage
+```bash
+# Generate advanced synthetic data (2000+ patients with realistic correlations)
+make sdv-pipeline
+
+# Train custom model with specific parameters  
+python sdv_models/train.py --model-type hma --epochs 200 --patients 5000
+
+# Generate from existing model
+python sdv_models/train.py --generate-only --patients 10000
+
+# Validate quality and privacy
+python sdv_models/validate.py --strict
+```
+
+For detailed SDV documentation, see [`sdv_models/README.md`](sdv_models/README.md).
 
 ## Data Quality & Validation
 
