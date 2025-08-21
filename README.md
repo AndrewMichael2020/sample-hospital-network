@@ -6,12 +6,81 @@ This project creates and populates a MySQL database with synthetic healthcare da
 
 ## Quick Start
 
+### Environment Setup
+
+Before getting started, you'll need to configure your environment:
+
+1. **Copy the environment template:**
+   ```bash
+   cp .env.example .env
+   ```
+
+2. **Edit `.env` with your MySQL credentials:**
+   ```bash
+   # For local MySQL installation
+   MYSQL_HOST=localhost
+   MYSQL_PORT=3306
+   MYSQL_USER=root
+   MYSQL_PASSWORD=your_mysql_password
+   MYSQL_DATABASE=lm_synth
+   ```
+
+3. **For Docker/GitHub Codespaces users:** The default values in `.env.example` work out-of-the-box with the provided Docker setup.
+
+### Docker & GitHub Codespaces Setup
+
+#### Option A: GitHub Codespaces (Recommended for beginners)
+1. **Open in GitHub Codespaces:** Click the "Code" button → "Codespaces" → "Create codespace on main"
+2. **Wait for setup:** The devcontainer will automatically:
+   - Set up MySQL database
+   - Install Python dependencies  
+   - Generate initial sample data
+   - Start the API server on port 8000
+3. **Access the API:** Once setup completes, the API will be available at the forwarded port URL
+
+#### Option B: Local Docker Compose  
+```bash
+# Copy environment file and customize if needed
+cp .env.example .env
+
+# Start all services (MySQL + API)
+docker compose up -d
+
+# Generate sample data (first time only)
+docker compose exec app python generate_data.py
+
+# Load data into MySQL (first time only)
+docker compose exec app python load_data.py
+
+# Access API at: http://localhost:8000/docs
+```
+
 ### Prerequisites
+
+Choose one of the following setups:
+
+#### For GitHub Codespaces (Easiest)
+- GitHub account with Codespaces access
+- No local setup required!
+
+#### For Docker (Local Development)
+- Docker and Docker Compose installed
+- 4GB+ RAM available for containers
+
+#### For Native/Manual Setup
 - Python 3.8+
 - MySQL 8.0+ (running and accessible)
 - Basic MySQL user with database creation privileges
 
-### Option 1: Automated Setup
+### Setup Options
+
+#### Option 1: GitHub Codespaces (Recommended)
+See the "Docker & GitHub Codespaces Setup" section above.
+
+#### Option 2: Docker Compose (Local Development)
+See the "Docker & GitHub Codespaces Setup" section above.
+
+#### Option 3: Automated Native Setup
 ```bash
 # Install dependencies and run complete setup
 pip install -r requirements.txt
@@ -21,7 +90,7 @@ python setup.py
 python setup.py --host localhost --user myuser --password mypass
 ```
 
-### Option 2: Manual Setup
+#### Option 4: Manual Native Setup
 ```bash
 # 1. Install dependencies
 make setup
@@ -37,7 +106,7 @@ make generate
 make load
 ```
 
-### Option 3: API Server
+#### Option 5: API Server Only
 ```bash
 # Start REST API server with data generation
 make api-start
@@ -48,7 +117,7 @@ python cli.py serve --host localhost --port 8000
 # Access API documentation at: http://localhost:8000/docs
 ```
 
-### Option 4: Command Line Interface
+#### Option 6: Command Line Interface
 ```bash
 # Use the CLI for data management
 python cli.py --help
@@ -57,7 +126,7 @@ python cli.py validate --data-dir ./data
 python cli.py status
 ```
 
-### Option 3: SDV Synthetic Data Generation
+#### Option 7: Advanced SDV Synthetic Data Generation
 ```bash
 # Generate advanced synthetic data with higher-order correlations
 make sdv-pipeline    # Complete: train model, generate data, validate
@@ -68,14 +137,6 @@ make sdv-generate   # Generate larger synthetic datasets
 make sdv-validate   # Validate data quality and privacy
 
 # See sdv_models/README.md for detailed SDV documentation
-```
-mysql lm_synth < schema.sql
-
-# 3. Generate sample data
-make generate
-
-# 4. Load data into MySQL
-make load
 ```
 
 ## Database Schema
@@ -311,6 +372,35 @@ The generated data includes:
 - No real addresses, names, or identifiable information
 
 ## Troubleshooting
+
+### Environment Variables
+If you're having configuration issues:
+```bash
+# Check if .env file exists and has correct values
+cat .env
+
+# Copy fresh template if needed  
+cp .env.example .env
+```
+
+### GitHub Codespaces Issues
+- **Port not accessible:** Wait for the postCreateCommand to finish (check terminal output)
+- **Database connection failed:** Restart the codespace or rebuild the container
+- **API not starting:** Check the logs with `docker-compose logs app`
+
+### Docker Issues  
+```bash
+# Check if services are running
+docker compose ps
+
+# View logs for troubleshooting
+docker compose logs mysql
+docker compose logs app
+
+# Restart services if needed
+docker compose down
+docker compose up -d
+```
 
 ### MySQL Connection Issues
 ```bash
