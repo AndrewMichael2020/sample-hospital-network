@@ -1,0 +1,142 @@
+{
+  "METADATA_SPEC_VERSION": "MULTI_TABLE_V1",
+  "relationships": [
+    {
+      "parent_table_name": "patients",
+      "parent_primary_key": "patient_id",
+      "child_table_name": "ed_encounters",
+      "child_foreign_key": "patient_id"
+    },
+    {
+      "parent_table_name": "patients",
+      "parent_primary_key": "patient_id",
+      "child_table_name": "ip_stays",
+      "child_foreign_key": "patient_id"
+    }
+  ],
+  "tables": {
+    "patients": {
+      "fields": {
+        "patient_id": {
+          "type": "id",
+          "subtype": "string"
+        },
+        "lha_id": {
+          "type": "categorical",
+          "subtype": "integer"
+        },
+        "facility_home_id": {
+          "type": "categorical",
+          "subtype": "integer"
+        },
+        "age_group": {
+          "type": "categorical",
+          "subtype": "string"
+        },
+        "gender": {
+          "type": "categorical",
+          "subtype": "string"
+        },
+        "dob": {
+          "type": "datetime",
+          "format": "%Y-%m-%d"
+        },
+        "primary_ed_subservice": {
+          "type": "categorical",
+          "subtype": "string"
+        },
+        "expected_ed_rate": {
+          "type": "numerical",
+          "subtype": "float"
+        },
+        "ed_visits_year": {
+          "type": "numerical",
+          "subtype": "integer"
+        }
+      },
+      "primary_key": "patient_id"
+    },
+    "ed_encounters": {
+      "fields": {
+        "encounter_id": {
+          "type": "id",
+          "subtype": "integer"
+        },
+        "patient_id": {
+          "type": "id",
+          "subtype": "string",
+          "ref": {
+            "table": "patients",
+            "field": "patient_id"
+          }
+        },
+        "facility_id": {
+          "type": "categorical",
+          "subtype": "integer"
+        },
+        "ed_subservice": {
+          "type": "categorical",
+          "subtype": "string"
+        },
+        "arrival_ts": {
+          "type": "datetime",
+          "format": "%Y-%m-%d %H:%M:%S.%f"
+        },
+        "acuity": {
+          "type": "categorical",
+          "subtype": "integer"
+        },
+        "dispo": {
+          "type": "categorical",
+          "subtype": "string"
+        }
+      },
+      "primary_key": "encounter_id"
+    },
+    "ip_stays": {
+      "fields": {
+        "stay_id": {
+          "type": "id",
+          "subtype": "integer"
+        },
+        "patient_id": {
+          "type": "id",
+          "subtype": "string",
+          "ref": {
+            "table": "patients",
+            "field": "patient_id"
+          }
+        },
+        "facility_id": {
+          "type": "categorical",
+          "subtype": "integer"
+        },
+        "program_id": {
+          "type": "categorical",
+          "subtype": "integer"
+        },
+        "subprogram_id": {
+          "type": "categorical",
+          "subtype": "integer"
+        },
+        "admit_ts": {
+          "type": "datetime",
+          "format": "%Y-%m-%d %H:%M:%S.%f"
+        },
+        "discharge_ts": {
+          "type": "datetime",
+          "format": "%Y-%m-%d %H:%M:%S.%f"
+        },
+        "los_days": {
+          "type": "numerical",
+          "subtype": "float"
+        },
+        "alc_flag": {
+          "type": "categorical",
+          "subtype": "integer"
+        }
+      },
+      "primary_key": "stay_id"
+    }
+  }
+}

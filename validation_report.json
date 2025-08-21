@@ -1,0 +1,199 @@
+{
+  "overall_pass": false,
+  "validation_timestamp": "2025-08-21T08:53:29.808708",
+  "checks": {
+    "shape_correlation": {
+      "pass": true,
+      "details": {
+        "patients": {
+          "pass": true,
+          "shape_score": 1.0,
+          "shape_pass": true,
+          "correlation_score": 0.8399400373299962,
+          "correlation_pass": "True"
+        },
+        "ed_encounters": {
+          "pass": true,
+          "shape_score": 1.0,
+          "shape_pass": true,
+          "correlation_score": 0.9854921125089742,
+          "correlation_pass": "True"
+        },
+        "ip_stays": {
+          "pass": true,
+          "shape_score": 1.0,
+          "shape_pass": true,
+          "correlation_score": 0.9416829770092476,
+          "correlation_pass": "True"
+        }
+      }
+    },
+    "business_rules": {
+      "pass": false,
+      "details": {
+        "marginals": {
+          "pass": false,
+          "details": {
+            "lha_id": {
+              "max_difference": 0.13380279805594408,
+              "pass": "False"
+            },
+            "age_group": {
+              "max_difference": 25550000.0,
+              "pass": "False"
+            },
+            "gender": {
+              "max_difference": 0.17391296786392701,
+              "pass": "False"
+            }
+          }
+        },
+        "los_medians": {
+          "pass": false,
+          "details": {
+            "program_1_subprogram_1": {
+              "real_median": 4.025,
+              "synthetic_median": 4.445,
+              "relative_difference": 0.10434782582770724,
+              "pass": "True"
+            },
+            "program_1_subprogram_2": {
+              "real_median": 2.96,
+              "synthetic_median": 5.33,
+              "relative_difference": 0.8006756729706903,
+              "pass": "False"
+            },
+            "program_1_subprogram_3": {
+              "real_median": 3.24,
+              "synthetic_median": 2.55,
+              "relative_difference": 0.21296296230566997,
+              "pass": "False"
+            },
+            "program_2_subprogram_1": {
+              "real_median": 4.5649999999999995,
+              "synthetic_median": 6.25,
+              "relative_difference": 0.36911281408737623,
+              "pass": "False"
+            },
+            "program_3_subprogram_1": {
+              "real_median": 3.44,
+              "synthetic_median": 5.83,
+              "relative_difference": 0.6947674398407924,
+              "pass": "False"
+            },
+            "program_3_subprogram_2": {
+              "real_median": 2.6950000000000003,
+              "synthetic_median": 0.85,
+              "relative_difference": 0.6846011106322779,
+              "pass": "False"
+            },
+            "program_3_subprogram_3": {
+              "real_median": 2.95,
+              "synthetic_median": 5.84,
+              "relative_difference": 0.9796610136282676,
+              "pass": "False"
+            },
+            "program_4_subprogram_1": {
+              "real_median": 6.525,
+              "synthetic_median": 5.055,
+              "relative_difference": 0.22528735597657118,
+              "pass": "False"
+            },
+            "program_4_subprogram_2": {
+              "real_median": 5.24,
+              "synthetic_median": 1.925,
+              "relative_difference": 0.6326335865789436,
+              "pass": "False"
+            },
+            "program_4_subprogram_3": {
+              "real_median": 3.7600000000000002,
+              "synthetic_median": 12.82,
+              "relative_difference": 2.4095744616766637,
+              "pass": "False"
+            },
+            "program_5_subprogram_1": {
+              "real_median": 3.09,
+              "synthetic_median": 4.890000000000001,
+              "relative_difference": 0.5825242699594686,
+              "pass": "False"
+            },
+            "program_6_subprogram_1": {
+              "real_median": 2.07,
+              "synthetic_median": 3.9850000000000003,
+              "relative_difference": 0.9251207684776778,
+              "pass": "False"
+            },
+            "program_6_subprogram_2": {
+              "real_median": 2.7800000000000002,
+              "synthetic_median": 6.0,
+              "relative_difference": 1.158273377128513,
+              "pass": "False"
+            },
+            "program_6_subprogram_3": {
+              "real_median": 3.25,
+              "synthetic_median": 4.74,
+              "relative_difference": 0.45846153705088766,
+              "pass": "False"
+            }
+          }
+        },
+        "pediatric_ed": {
+          "pass": false,
+          "details": {
+            "pediatric_ed_young_share": {
+              "share": 0.47151898734177217,
+              "threshold": 0.7,
+              "pass": "False"
+            },
+            "pediatric_ed_adult_share": {
+              "share": 0.20426829268292682,
+              "threshold": 0.1,
+              "pass": "False"
+            }
+          }
+        },
+        "data_consistency": {
+          "pass": true,
+          "details": {
+            "age_consistency": {
+              "inconsistencies": "0",
+              "pass": "True"
+            },
+            "min_los": {
+              "violations": "0",
+              "pass": "True"
+            },
+            "timestamp_order": {
+              "violations": "0",
+              "pass": "True"
+            }
+          }
+        }
+      }
+    },
+    "privacy": {
+      "pass": false,
+      "details": {
+        "quasi_identifier_duplicates": {
+          "duplicates": "7",
+          "columns_checked": [
+            "dob",
+            "lha_id",
+            "gender"
+          ],
+          "pass": "False"
+        }
+      }
+    },
+    "data_quality": {
+      "pass": false,
+      "overall_quality": 0.4000000000000001,
+      "threshold": 0.75
+    }
+  },
+  "failed_checks": [
+    "business_rules",
+    "privacy",
+    "data_quality"
+  ]
+}
