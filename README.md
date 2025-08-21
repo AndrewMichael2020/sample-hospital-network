@@ -4,14 +4,114 @@
 
 This project creates and populates a MySQL database with synthetic healthcare data for a fictional Lower Mainland hospital network. The data includes facilities, patients, emergency department encounters, inpatient stays, and population projections.
 
+## Table of Contents
+
+- [Quick Start](#quick-start)
+  - [Environment Setup](#environment-setup) 
+  - [Docker & GitHub Codespaces Setup](#docker--github-codespaces-setup)
+  - [Prerequisites](#prerequisites)
+  - [Setup Options](#setup-options)
+- [Verifying Your Setup](#verifying-your-setup)
+- [Database Schema](#database-schema)
+- [Sample Data Characteristics](#sample-data-characteristics)
+- [Sample Queries](#sample-queries)
+- [REST API](#rest-api)
+- [Command Line Interface](#command-line-interface)
+- [Customization](#customization)
+- [SDV Synthetic Data Generation](#sdv-synthetic-data-generation)
+- [Data Quality & Validation](#data-quality--validation)
+- [Privacy & Compliance](#privacy--compliance)
+- [Troubleshooting](#troubleshooting)
+- [Development](#development)
+
 ## Quick Start
 
+### Environment Setup
+
+Before getting started, you'll need to configure your environment:
+
+1. **Copy the environment template:**
+   ```bash
+   cp .env.example .env
+   ```
+
+2. **Edit `.env` with your MySQL credentials:**
+   ```bash
+   # For local MySQL installation
+   MYSQL_HOST=localhost
+   MYSQL_PORT=3306
+   MYSQL_USER=root
+   MYSQL_PASSWORD=your_mysql_password
+   MYSQL_DATABASE=lm_synth
+   ```
+
+3. **For Docker/GitHub Codespaces users:** The default values in `.env.example` work out-of-the-box with the provided Docker setup.
+
+   > **Note:** The `.env` file is automatically ignored by git (see `.gitignore`) so your credentials stay secure.
+
+### Docker & GitHub Codespaces Setup
+
+#### Option A: GitHub Codespaces (Recommended for beginners)
+1. **Open in GitHub Codespaces:** Click the "Code" button → "Codespaces" → "Create codespace on main"
+2. **Wait for setup:** The devcontainer will automatically:
+   - Set up MySQL database
+   - Install Python dependencies  
+   - Generate initial sample data
+   - Start the API server on port 8000
+3. **Access the API:** Once setup completes, the API will be available at the forwarded port URL
+
+#### Option B: Local Docker Compose  
+```bash
+# Copy environment file and customize if needed
+cp .env.example .env
+
+# Start all services (MySQL + API)
+docker compose up -d
+
+# Generate sample data (first time only)
+docker compose exec app python generate_data.py
+
+# Load data into MySQL (first time only)
+docker compose exec app python load_data.py
+
+# Access API at: http://localhost:8000/docs
+```
+
 ### Prerequisites
+
+Choose one of the following setups:
+
+#### For GitHub Codespaces (Easiest)
+- GitHub account with Codespaces access
+- No local setup required!
+
+#### For Docker (Local Development)
+- Docker and Docker Compose installed
+- 4GB+ RAM available for containers
+
+#### For Native/Manual Setup
 - Python 3.8+
 - MySQL 8.0+ (running and accessible)
 - Basic MySQL user with database creation privileges
 
-### Option 1: Automated Setup
+### Setup Options
+
+**Choose the option that best fits your needs:**
+- 🚀 **Option 1** (Codespaces): Perfect for quick experimentation, no local setup required
+- 🐳 **Option 2** (Docker): Best for local development, consistent environment  
+- ⚡ **Option 3** (Automated): Fastest if you already have MySQL running locally
+- 🔧 **Option 4** (Manual): Maximum control, understand each step
+- 📊 **Option 5** (API Only): Just want to explore the REST API
+- 💻 **Option 6** (CLI Only): Command-line data generation and management
+- 🧪 **Option 7** (SDV): Advanced users wanting realistic synthetic data correlations
+
+#### Option 1: GitHub Codespaces (Recommended)
+See the "Docker & GitHub Codespaces Setup" section above.
+
+#### Option 2: Docker Compose (Local Development)
+See the "Docker & GitHub Codespaces Setup" section above.
+
+#### Option 3: Automated Native Setup
 ```bash
 # Install dependencies and run complete setup
 pip install -r requirements.txt
@@ -21,7 +121,7 @@ python setup.py
 python setup.py --host localhost --user myuser --password mypass
 ```
 
-### Option 2: Manual Setup
+#### Option 4: Manual Native Setup
 ```bash
 # 1. Install dependencies
 make setup
@@ -37,7 +137,7 @@ make generate
 make load
 ```
 
-### Option 3: API Server
+#### Option 5: API Server Only
 ```bash
 # Start REST API server with data generation
 make api-start
@@ -48,7 +148,7 @@ python cli.py serve --host localhost --port 8000
 # Access API documentation at: http://localhost:8000/docs
 ```
 
-### Option 4: Command Line Interface
+#### Option 6: Command Line Interface
 ```bash
 # Use the CLI for data management
 python cli.py --help
@@ -57,7 +157,7 @@ python cli.py validate --data-dir ./data
 python cli.py status
 ```
 
-### Option 3: SDV Synthetic Data Generation
+#### Option 7: Advanced SDV Synthetic Data Generation
 ```bash
 # Generate advanced synthetic data with higher-order correlations
 make sdv-pipeline    # Complete: train model, generate data, validate
@@ -69,13 +169,43 @@ make sdv-validate   # Validate data quality and privacy
 
 # See sdv_models/README.md for detailed SDV documentation
 ```
-mysql lm_synth < schema.sql
 
-# 3. Generate sample data
-make generate
+## Verifying Your Setup
 
-# 4. Load data into MySQL
-make load
+After following any of the setup options above, you can verify everything is working:
+
+### Test Data Generation
+```bash
+# Check if sample data was created
+ls -la data/
+# Should show: patients.csv, ed_encounters.csv, dim_site.csv, etc.
+
+# Verify data content
+head data/patients.csv
+```
+
+### Test API Server (if using API options)
+```bash
+# Health check
+curl http://localhost:8000/health
+
+# Browse interactive docs
+open http://localhost:8000/docs  # or visit in browser
+
+# Test a data endpoint
+curl "http://localhost:8000/api/v1/dimensions/sites?page=1&size=5"
+```
+
+### Test CLI Commands
+```bash
+# Check system status
+python cli.py status
+
+# Generate fresh data with custom parameters
+python cli.py generate --patients 500 --seed 123
+
+# Validate data quality
+python cli.py validate --data-dir ./data
 ```
 
 ## Database Schema
@@ -311,6 +441,71 @@ The generated data includes:
 - No real addresses, names, or identifiable information
 
 ## Troubleshooting
+
+### Environment Variables
+If you're having configuration issues:
+```bash
+# Check if .env file exists and has correct values
+cat .env
+
+# Copy fresh template if needed  
+cp .env.example .env
+```
+
+### GitHub Codespaces Issues
+- **Port not accessible:** Wait for the postCreateCommand to finish (check terminal output)
+- **Database connection failed:** Restart the codespace or rebuild the container
+- **API not starting:** Check the logs with `docker-compose logs app`
+
+### Docker Issues  
+```bash
+# Check if services are running
+docker compose ps
+
+# View logs for troubleshooting
+docker compose logs mysql
+docker compose logs app
+
+# Restart services if needed
+docker compose down
+docker compose up -d
+```
+
+### Native MySQL Issues
+```bash
+# Test MySQL connectivity
+mysql -h localhost -u root -p -e "SELECT 1;"
+
+# Check if database exists
+mysql -h localhost -u root -p -e "SHOW DATABASES LIKE 'lm_synth';"
+
+# Reset database if needed
+mysql -h localhost -u root -p -e "DROP DATABASE IF EXISTS lm_synth;"
+python setup.py  # Will recreate database
+```
+
+### Missing Data Files
+```bash
+# Clean and regenerate data files
+make clean
+make generate
+
+# Or use CLI with custom parameters
+python cli.py clean --data-dir ./data
+python cli.py generate --patients 1000 --seed 42
+```
+
+### API Not Starting
+```bash
+# Check if port is already in use
+lsof -i :8000
+
+# Try different port
+python cli.py serve --port 8001
+
+# Check Python path and dependencies
+python -c "import fastapi, uvicorn; print('FastAPI ready')"
+```
 
 ### MySQL Connection Issues
 ```bash
