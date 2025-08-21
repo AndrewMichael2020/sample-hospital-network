@@ -47,6 +47,8 @@ Before getting started, you'll need to configure your environment:
 
 3. **For Docker/GitHub Codespaces users:** The default values in `.env.example` work out-of-the-box with the provided Docker setup.
 
+   > **Note:** The `.env` file is automatically ignored by git (see `.gitignore`) so your credentials stay secure.
+
 ### Docker & GitHub Codespaces Setup
 
 #### Option A: GitHub Codespaces (Recommended for beginners)
