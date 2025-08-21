@@ -314,7 +314,7 @@ ORDER BY projected_volumes DESC;
 
 ---
 
-## 14) Persist data in **MySQL** on a **GCP VM** (self‑managed)
+## 14) Persist data in **MySQL** on a **GCP VM** (self‑managed) -- later. Right now save in csvs in the directory tofgether with the code.
 
 **Goal:** Load generated CSV/Parquet into a MySQL 8.0 database running on your GCP VM so downstream tools can query it.
 
