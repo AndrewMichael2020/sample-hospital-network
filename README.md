@@ -16,6 +16,7 @@ This project creates and populates a MySQL database with synthetic healthcare da
 - [Sample Data Characteristics](#sample-data-characteristics)
 - [Sample Queries](#sample-queries)
 - [REST API](#rest-api)
+- [Frontend Application](#frontend-application)
 - [Command Line Interface](#command-line-interface)
 - [Customization](#customization)
 - [SDV Synthetic Data Generation](#sdv-synthetic-data-generation)
@@ -364,6 +365,128 @@ curl "http://localhost:8000/api/v1/encounters/ed?patient_id=P5A684D41E14C"
 # Validate data quality
 curl "http://localhost:8000/api/v1/validation/summary"
 ```
+
+## Frontend Application
+
+A modern React-based web application provides an intuitive interface for healthcare scenario planning and capacity analysis.
+
+### Technology Stack
+
+- **React 19** with TypeScript for type-safe development
+- **Vite** for fast development and optimized builds
+- **React Router** for client-side navigation
+- **TanStack Query** for efficient API data fetching and caching
+- **TanStack Table** for advanced data tables
+- **Recharts** for data visualization and charts
+- **Zod** for runtime type validation
+- **Vitest** with Testing Library for comprehensive testing
+
+### Getting Started
+
+1. **Navigate to the frontend directory:**
+   ```bash
+   cd apps/frontend
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser to:**
+   ```
+   http://localhost:5173
+   ```
+
+### Application Features
+
+The frontend provides three main screens:
+
+#### Scenario Builder
+Interactive form for creating healthcare capacity scenarios with:
+- Site and program selection
+- Parameter configuration (occupancy targets, LOS deltas, ALC targets)
+- Real-time validation and error checking
+- Preset scenario templates (Baseline, Target, Stress, Best)
+
+![Scenario Builder](docs/images/frontend-scenario-builder.png)
+
+#### Results Dashboard  
+Comprehensive view of scenario calculations featuring:
+- Key Performance Indicators (KPIs) cards
+- Capacity gaps and FTE requirements
+- Site-by-site analysis with data tables
+- Interactive charts and visualizations
+
+![Results Dashboard](docs/images/frontend-results-page.png)
+
+#### Scenario Comparison
+Side-by-side comparison of different scenarios with:
+- Delta analysis between scenarios
+- ASCII bar charts for visual comparison
+- Export functionality for reports
+
+![Frontend Homepage](docs/images/frontend-homepage.png)
+
+### Testing
+
+The frontend includes comprehensive test coverage with **27 passing tests** across multiple categories:
+
+- **Component Tests**: UI components (KpiCard, Loading, etc.)
+- **Utility Tests**: Formatting and validation functions  
+- **Integration Tests**: End-to-end user workflows
+
+**Run the test suite:**
+```bash
+# Run all tests
+npm test
+
+# Run tests with verbose output
+npm test -- --reporter=verbose
+
+# Run tests in watch mode for development
+npm run test:ui
+```
+
+**Latest Test Results:**
+```
+✓ src/lib/format.test.ts (15 tests) - Format & validation utilities
+✓ src/components/KpiCard.test.tsx (7 tests) - KPI display component
+✓ src/components/Loading.test.tsx (5 tests) - Loading state component
+
+Test Files  3 passed (3)
+Tests      27 passed (27)
+Duration   1.17s
+```
+
+### Development Workflow
+
+1. **Lint code:**
+   ```bash
+   npm run lint
+   ```
+
+2. **Build for production:**
+   ```bash
+   npm run build
+   ```
+
+3. **Preview production build:**
+   ```bash
+   npm run preview
+   ```
+
+4. **Run end-to-end tests:**
+   ```bash
+   npm run e2e
+   ```
+
+The frontend integrates seamlessly with the REST API (runs on port 8080) to provide real-time healthcare capacity planning capabilities.
 
 ## Command Line Interface
 
