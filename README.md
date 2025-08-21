@@ -4,6 +4,26 @@
 
 This project creates and populates a MySQL database with synthetic healthcare data for a fictional Lower Mainland hospital network. The data includes facilities, patients, emergency department encounters, inpatient stays, and population projections.
 
+## Table of Contents
+
+- [Quick Start](#quick-start)
+  - [Environment Setup](#environment-setup) 
+  - [Docker & GitHub Codespaces Setup](#docker--github-codespaces-setup)
+  - [Prerequisites](#prerequisites)
+  - [Setup Options](#setup-options)
+- [Verifying Your Setup](#verifying-your-setup)
+- [Database Schema](#database-schema)
+- [Sample Data Characteristics](#sample-data-characteristics)
+- [Sample Queries](#sample-queries)
+- [REST API](#rest-api)
+- [Command Line Interface](#command-line-interface)
+- [Customization](#customization)
+- [SDV Synthetic Data Generation](#sdv-synthetic-data-generation)
+- [Data Quality & Validation](#data-quality--validation)
+- [Privacy & Compliance](#privacy--compliance)
+- [Troubleshooting](#troubleshooting)
+- [Development](#development)
+
 ## Quick Start
 
 ### Environment Setup
@@ -74,6 +94,15 @@ Choose one of the following setups:
 
 ### Setup Options
 
+**Choose the option that best fits your needs:**
+- 🚀 **Option 1** (Codespaces): Perfect for quick experimentation, no local setup required
+- 🐳 **Option 2** (Docker): Best for local development, consistent environment  
+- ⚡ **Option 3** (Automated): Fastest if you already have MySQL running locally
+- 🔧 **Option 4** (Manual): Maximum control, understand each step
+- 📊 **Option 5** (API Only): Just want to explore the REST API
+- 💻 **Option 6** (CLI Only): Command-line data generation and management
+- 🧪 **Option 7** (SDV): Advanced users wanting realistic synthetic data correlations
+
 #### Option 1: GitHub Codespaces (Recommended)
 See the "Docker & GitHub Codespaces Setup" section above.
 
@@ -137,6 +166,44 @@ make sdv-generate   # Generate larger synthetic datasets
 make sdv-validate   # Validate data quality and privacy
 
 # See sdv_models/README.md for detailed SDV documentation
+```
+
+## Verifying Your Setup
+
+After following any of the setup options above, you can verify everything is working:
+
+### Test Data Generation
+```bash
+# Check if sample data was created
+ls -la data/
+# Should show: patients.csv, ed_encounters.csv, dim_site.csv, etc.
+
+# Verify data content
+head data/patients.csv
+```
+
+### Test API Server (if using API options)
+```bash
+# Health check
+curl http://localhost:8000/health
+
+# Browse interactive docs
+open http://localhost:8000/docs  # or visit in browser
+
+# Test a data endpoint
+curl "http://localhost:8000/api/v1/dimensions/sites?page=1&size=5"
+```
+
+### Test CLI Commands
+```bash
+# Check system status
+python cli.py status
+
+# Generate fresh data with custom parameters
+python cli.py generate --patients 500 --seed 123
+
+# Validate data quality
+python cli.py validate --data-dir ./data
 ```
 
 ## Database Schema
@@ -400,6 +467,42 @@ docker compose logs app
 # Restart services if needed
 docker compose down
 docker compose up -d
+```
+
+### Native MySQL Issues
+```bash
+# Test MySQL connectivity
+mysql -h localhost -u root -p -e "SELECT 1;"
+
+# Check if database exists
+mysql -h localhost -u root -p -e "SHOW DATABASES LIKE 'lm_synth';"
+
+# Reset database if needed
+mysql -h localhost -u root -p -e "DROP DATABASE IF EXISTS lm_synth;"
+python setup.py  # Will recreate database
+```
+
+### Missing Data Files
+```bash
+# Clean and regenerate data files
+make clean
+make generate
+
+# Or use CLI with custom parameters
+python cli.py clean --data-dir ./data
+python cli.py generate --patients 1000 --seed 42
+```
+
+### API Not Starting
+```bash
+# Check if port is already in use
+lsof -i :8000
+
+# Try different port
+python cli.py serve --port 8001
+
+# Check Python path and dependencies
+python -c "import fastapi, uvicorn; print('FastAPI ready')"
 ```
 
 ### MySQL Connection Issues
