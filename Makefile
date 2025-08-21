@@ -39,47 +39,7 @@ api-start: generate ## Start the API server (generates data if needed)
 
 api-test: generate ## Test API endpoints
 	@echo "Testing API endpoints..."
-	python -c "
-import requests, json, time, subprocess, signal, os
-from threading import Thread
-
-# Start server in background
-server_process = subprocess.Popen(['python', '-m', 'uvicorn', 'api:app', '--host', '127.0.0.1', '--port', '8001'], 
-                                 stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-time.sleep(3)  # Wait for server to start
-
-try:
-    # Test endpoints
-    base_url = 'http://127.0.0.1:8001'
-    
-    # Test root endpoint
-    r = requests.get(f'{base_url}/')
-    assert r.status_code == 200, f'Root endpoint failed: {r.status_code}'
-    print('✓ Root endpoint OK')
-    
-    # Test health endpoint
-    r = requests.get(f'{base_url}/health')
-    assert r.status_code == 200, f'Health endpoint failed: {r.status_code}'
-    print('✓ Health endpoint OK')
-    
-    # Test dimension endpoints
-    for endpoint in ['sites', 'programs', 'lhas']:
-        r = requests.get(f'{base_url}/api/v1/dimensions/{endpoint}')
-        assert r.status_code == 200, f'{endpoint} endpoint failed: {r.status_code}'
-        print(f'✓ {endpoint} endpoint OK')
-    
-    # Test patient endpoint
-    r = requests.get(f'{base_url}/api/v1/patients?page=1&size=10')
-    assert r.status_code == 200, f'Patients endpoint failed: {r.status_code}'
-    print('✓ Patients endpoint OK')
-    
-    print('All API tests passed!')
-    
-finally:
-    # Stop server
-    server_process.terminate()
-    server_process.wait()
-"
+	@python test_api.py
 
 # CLI targets
 cli-test: ## Test CLI commands
