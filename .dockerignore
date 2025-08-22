@@ -1,0 +1,29 @@
+# Ignore virtualenvs and local caches
+.venv
+venv
+__pycache__
+*.pyc
+.git
+.gitignore
+.cache
+.cache/
+.env
+.env.*
+
+# Data and generated files
+data/
+sdv_models/
+*.csv
+*.sqlite
+*.db
+
+# VS Code and other editor config
+.vscode
+.vscode-remote
+
+# Node modules
+**/node_modules
+
+# docker-related
+Dockerfile
+docker-compose.yml

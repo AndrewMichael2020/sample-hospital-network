@@ -5,10 +5,12 @@ services:
     image: mysql:8.0
     container_name: hospital_mysql
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-devpassword123}
-      MYSQL_DATABASE: ${MYSQL_DATABASE:-lm_synth}
-      MYSQL_USER: ${MYSQL_USER:-hospital_user}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-devpassword}
+      MYSQL_ROOT_PASSWORD: "devpassword123"
+      MYSQL_DATABASE: "lm_synth"
+      # Do not use host MYSQL_USER interpolation here: if the host has MYSQL_USER=root it
+      # causes the container entrypoint to error. Use an explicit app user.
+      MYSQL_USER: "hospital_user"
+      MYSQL_PASSWORD: "devpassword"
     ports:
       - "${MYSQL_PORT:-3306}:3306"
     volumes:
@@ -27,11 +29,11 @@ services:
       dockerfile: Dockerfile
     container_name: hospital_app
     environment:
-      MYSQL_HOST: mysql
-      MYSQL_PORT: 3306
-      MYSQL_USER: ${MYSQL_USER:-hospital_user}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-devpassword}
-      MYSQL_DATABASE: ${MYSQL_DATABASE:-lm_synth}
+      MYSQL_HOST: "mysql"
+      MYSQL_PORT: "3306"
+      MYSQL_USER: "hospital_user"
+      MYSQL_PASSWORD: "devpassword"
+      MYSQL_DATABASE: "lm_synth"
     ports:
       - "${API_PORT:-8000}:8000"
     depends_on:
