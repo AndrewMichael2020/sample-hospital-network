@@ -137,6 +137,16 @@ export const apiClientFunctions = {
     return data as { id: string; path: string };
   },
   
+  async saveScenarioLabel(label: 'A' | 'B' | 'C', payload: any): Promise<any> {
+    const response = await apiClient.post('/scenarios/save-label', payload, { params: { label } });
+    return response.data && response.data.data ? response.data.data : response.data;
+  },
+
+  async getLabeledScenarios(): Promise<Record<string, any>> {
+    const response = await apiClient.get('/scenarios/labels');
+    return response.data && response.data.data ? response.data.data : response.data;
+  },
+  
     async getSavedScenarios(): Promise<any[]> {
       const response = await apiClient.get('/scenarios/saved');
       return response.data; // TODO: Add proper schema validation

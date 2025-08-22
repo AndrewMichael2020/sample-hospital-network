@@ -158,7 +158,7 @@ export const ScenarioBuilder: React.FC = () => {
 
       <div className="scenario-form">
         <div className="form-row">
-          <div className="form-group">
+          <div className="form-group wide">
             <label htmlFor="scenario-name">Scenario Name:</label>
             <input
               id="scenario-name"
@@ -433,9 +433,43 @@ export const ScenarioBuilder: React.FC = () => {
               'Calculate'
             )}
           </button>
-          <button className="btn btn-secondary" disabled>
-            Save Scenario
-          </button>
+          <div style={{ display: 'inline-block' }}>
+            <button className="btn btn-secondary" onClick={() => {
+              // Default save (label-less)
+              // eslint-disable-next-line @typescript-eslint/no-floating-promises
+              (async () => {
+                try {
+                  const payload = { form };
+                  const res = await (await import('../api/client')).apiClientFunctions.saveScenario(payload);
+                  alert('Scenario saved');
+                } catch (e) { alert('Save failed'); }
+              })();
+            }}>
+              Save Scenario
+            </button>
+
+            <div className="label-saves" style={{ display: 'inline-block', marginLeft: 8 }}>
+              {(['A','B','C'] as const).map(lbl => (
+                <button
+                  key={lbl}
+                  className="btn btn-tertiary"
+                  onClick={() => {
+                    (async () => {
+                      try {
+                        const payload = { form };
+                        await (await import('../api/client')).apiClientFunctions.saveScenarioLabel(lbl as any, payload);
+                        alert(`Saved as ${lbl}`);
+                      } catch (e) {
+                        alert('Save label failed');
+                      }
+                    })();
+                  }}
+                >
+                  Save as {lbl}
+                </button>
+              ))}
+            </div>
+          </div>
           <button 
             className="btn btn-secondary" 
             onClick={() => {

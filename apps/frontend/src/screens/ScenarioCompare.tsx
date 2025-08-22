@@ -1,9 +1,25 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ScenarioCompare.css';
+import { useEffect, useState } from 'react';
+import { apiClientFunctions } from '../api/client';
 
 export const ScenarioCompare: React.FC = () => {
   const navigate = useNavigate();
+  const [labels, setLabels] = useState<Record<string, any> | null>(null);
+
+  useEffect(() => {
+    let mounted = true;
+    (async () => {
+      try {
+        const data = await apiClientFunctions.getLabeledScenarios();
+        if (mounted) setLabels(data);
+      } catch (e) {
+        if (mounted) setLabels({ A: null, B: null, C: null });
+      }
+    })();
+    return () => { mounted = false };
+  }, []);
 
   return (
     <div className="scenario-compare">
@@ -13,13 +29,11 @@ export const ScenarioCompare: React.FC = () => {
 
       <div className="compare-content">
         <div className="scenario-labels">
-          <div className="scenario-label">
-            A: "Target-0.90 / LOS −3% / ALC 12% / Growth 2%"
-          </div>
+          <div className="scenario-label">A: {labels ? (labels.A ? JSON.stringify(labels.A).slice(0,120) : '--- empty ---') : 'Loading...'}</div>
           <div className="vs-divider">vs</div>
-          <div className="scenario-label">
-            B: "Baseline-0.85 / LOS 0% / ALC 14% / Growth 0%"
-          </div>
+          <div className="scenario-label">B: {labels ? (labels.B ? JSON.stringify(labels.B).slice(0,120) : '--- empty ---') : 'Loading...'}</div>
+          <div className="vs-divider">vs</div>
+          <div className="scenario-label">C: {labels ? (labels.C ? JSON.stringify(labels.C).slice(0,120) : '--- empty ---') : 'Loading...'}</div>
         </div>
 
         <div className="global-kpis-section">

@@ -1,0 +1,23 @@
+{
+  "label": "A",
+  "saved_at": "2025-08-22T04:25:23.748266",
+  "payload": {
+    "form": {
+      "name": "",
+      "preset": "target",
+      "baseline_year": 2022,
+      "horizon_years": 3,
+      "selected_sites": [],
+      "program_id": 1,
+      "selected_programs": [],
+      "params": {
+        "occupancy_target": 0.9,
+        "los_delta": -0.03,
+        "alc_target": 0.12,
+        "growth_pct": 0.02,
+        "schedule_code": "Sched-A",
+        "seasonality": false
+      }
+    }
+  }
+}

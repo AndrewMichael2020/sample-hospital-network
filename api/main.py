@@ -28,6 +28,11 @@ async def lifespan(app: FastAPI):
     # Startup
     # Allow tests to skip DB init by setting SKIP_DB_INIT=1 in the environment.
     if os.getenv('SKIP_DB_INIT', '0') != '1':
+        # Print effective DB connection info for troubleshooting (do not print passwords)
+        try:
+            print(f"[STARTUP] DB host={settings.mysql_host} port={settings.mysql_port} user={settings.mysql_user}")
+        except Exception:
+            pass
         await init_db()
     yield
     # Shutdown
@@ -44,11 +49,41 @@ app = FastAPI(
     lifespan=lifespan
 )
 
+
+@app.get('/debug/db')
+async def debug_db():
+    """Return effective DB connection info (debug only).
+
+    This endpoint is intentionally gated by the `debug` setting to avoid
+    leaking configuration in production. It helps diagnose which DB host/user
+    the running process is using (useful for Codespaces / preview environments).
+    """
+    from fastapi import HTTPException
+
+    # NOTE: This endpoint is intentionally permissive in this development
+    # environment to help diagnose configuration issues such as the
+    # 'Access denied for user' error seen when the wrong DB credentials are used.
+    return {
+        'mysql_host': settings.mysql_host,
+        'mysql_port': settings.mysql_port,
+        'mysql_user': settings.mysql_user,
+        'mysql_password_set': bool(settings.mysql_password),
+        'env_mysql_user': os.getenv('MYSQL_USER'),
+        'env_mysql_password_set': bool(os.getenv('MYSQL_PASSWORD'))
+    }
+
+
 # Add CORS middleware
+# Configure CORS. When allow_origins contains '*' we must not set allow_credentials=True
+# because browsers will reject Access-Control-Allow-Origin='*' with credentials.
+allow_credentials = True
+if isinstance(settings.cors_origins, list) and len(settings.cors_origins) == 1 and settings.cors_origins[0] == '*':
+    allow_credentials = False
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.cors_origins,
-    allow_credentials=True,
+    allow_credentials=allow_credentials,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -173,6 +208,56 @@ async def save_scenario_endpoint(payload: dict):
         return ApiResponse(data={"id": save_id, "path": str(filename)})
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Save error: {str(e)}")
+
+
+@app.post('/scenarios/save-label', response_model=ApiResponse)
+async def save_scenario_label(label: str = Query(..., description='Label for saved scenario (A/B/C)'), payload: dict = None):
+    """Save a scenario under a label (A, B, or C). Overwrites existing labelled saves."""
+    try:
+        if label not in ('A', 'B', 'C'):
+            raise HTTPException(status_code=400, detail='Label must be A, B, or C')
+
+        saves_dir = Path.cwd() / 'saved_scenarios'
+        saves_dir.mkdir(parents=True, exist_ok=True)
+        filename = saves_dir / f'scenario_label_{label}.json'
+
+        content = {
+            'label': label,
+            'saved_at': datetime.utcnow().isoformat(),
+            'payload': payload,
+        }
+
+        with filename.open('w', encoding='utf-8') as fh:
+            json.dump(content, fh, ensure_ascii=False, indent=2)
+
+        return ApiResponse(data={'label': label, 'path': str(filename)})
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Save-label error: {str(e)}")
+
+
+@app.get('/scenarios/labels', response_model=ApiResponse)
+async def list_labeled_scenarios():
+    """Return labelled scenarios A/B/C (dev/demo)."""
+    try:
+        saves_dir = Path.cwd() / 'saved_scenarios'
+        result = {}
+        for label in ('A', 'B', 'C'):
+            p = saves_dir / f'scenario_label_{label}.json'
+            if p.exists():
+                try:
+                    with p.open('r', encoding='utf-8') as fh:
+                        content = json.load(fh)
+                    result[label] = content.get('payload')
+                except Exception:
+                    result[label] = None
+            else:
+                result[label] = None
+
+        return ApiResponse(data=result, meta={'count': 3})
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f'List-labels error: {str(e)}')
 
 
 @app.get("/scenarios/saved", response_model=ApiResponse)

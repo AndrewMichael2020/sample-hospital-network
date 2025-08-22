@@ -16,6 +16,8 @@ _connection_pool = None
 async def init_db():
     """Initialize database connection pool."""
     global _connection_pool
+    # Log the connection parameters (avoid logging passwords in real prod)
+    print(f"[DB INIT] Connecting to MySQL at {settings.mysql_host}:{settings.mysql_port} as user={settings.mysql_user}")
     _connection_pool = await asyncmy.create_pool(
         host=settings.mysql_host,
         port=settings.mysql_port,

@@ -12,6 +12,7 @@ click>=8.0.0
 rich>=13.0.0
 requests>=2.31.0
 asyncmy>=0.2.0
+cryptography>=40.0.0
 
 # Note: heavy ML/SDV-related packages (sdv, sdmetrics, torch, nvidia-*) are intentionally
 # omitted from this runtime requirements file to keep the Docker image small. If you need

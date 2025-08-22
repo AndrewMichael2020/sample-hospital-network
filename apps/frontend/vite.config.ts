@@ -11,25 +11,18 @@ export default defineConfig({
   // Allow all hosts in dev so Codespaces / preview domains can reach the dev server.
   // This is safe for local development but should not be used in production builds.
   allowedHosts: true,
-    proxy: {
-      // Proxy API requests to backend running on the Codespace host
-      '/reference': {
-        target: 'http://localhost:8080',
-        changeOrigin: true
-      },
-      '/scenarios': {
-        target: 'http://localhost:8080',
-        changeOrigin: true
-      },
-      '/facilities': {
-        target: 'http://localhost:8080',
-        changeOrigin: true
-      },
-      '/patients': {
-        target: 'http://localhost:8080',
-        changeOrigin: true
-      }
-    }
+    // Allow configurable API target via environment variable VITE_API_PROXY_TARGET (useful in Codespaces)
+    // Default to http://localhost:8000 which matches `make api-start`. For the extended API use
+    // VITE_API_PROXY_TARGET=http://localhost:8080 when launching the extended backend.
+    proxy: (() => {
+      const apiTarget = process.env.VITE_API_PROXY_TARGET || 'http://localhost:8000';
+      return {
+        '/reference': { target: apiTarget, changeOrigin: true },
+        '/scenarios': { target: apiTarget, changeOrigin: true },
+        '/facilities': { target: apiTarget, changeOrigin: true },
+        '/patients': { target: apiTarget, changeOrigin: true },
+      };
+    })()
   },
   test: {
     globals: true,

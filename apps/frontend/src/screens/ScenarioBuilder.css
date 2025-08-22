@@ -37,6 +37,10 @@
   min-width: 200px;
 }
 
+.form-group.wide {
+  min-width: 420px;
+}
+
 .form-group label {
   font-weight: 500;
   color: #374151;
@@ -112,6 +116,10 @@
   border: 1px solid #d1d5db;
   border-radius: 6px;
   padding: 1rem;
+}
+
+.sites-section, .programs-section {
+  min-height: 120px;
 }
 
 .sites-section h3,
@@ -197,6 +205,7 @@
   justify-content: flex-start;
   padding-top: 1.5rem;
   border-top: 1px solid #e5e7eb;
+  flex-wrap: wrap;
 }
 
 .btn {
@@ -230,6 +239,16 @@
   background-color: #f3f4f6;
   color: #374151;
   border: 1px solid #d1d5db;
+}
+
+.btn-tertiary {
+  background-color: transparent;
+  color: #374151;
+  border: 1px dashed #d1d5db;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.8125rem;
+  margin-left: 6px;
 }
 
 .btn-secondary:hover:not(:disabled) {
