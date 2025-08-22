@@ -152,6 +152,11 @@ export const apiClientFunctions = {
       return response.data; // TODO: Add proper schema validation
     },
 
+    async resetSavedScenarios(): Promise<any> {
+      const response = await apiClient.post('/scenarios/reset');
+      return response.data && response.data.data ? response.data.data : response.data;
+    },
+
   // Additional reference endpoints for staffed beds and baselines
   async getStaffedBeds(scheduleCode = 'Sched-A'): Promise<any[]> {
     const response = await apiClient.get('/reference/staffed-beds', {

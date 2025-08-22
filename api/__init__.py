@@ -4,13 +4,8 @@ Extended API package for healthcare scenarios.
 
 __version__ = "1.0.0"
 
-# Expose the FastAPI application at package level so `uvicorn api:app`
-# works when the package is used as the ASGI module.
-try:
-	from .main import app  # noqa: F401
-except Exception:
-	# Import errors may occur during packaging or static analysis; keep
-	# them silent here so tooling can still import the package.
-	app = None
+# NOTE: Do not export the application at package level to avoid accidental
+# use of `uvicorn api:app` which may import a stale/partial package state.
+# Prefer explicit `uvicorn api.main:app` to run the application.
 
-__all__ = ["__version__", "app"]
+__all__ = ["__version__"]

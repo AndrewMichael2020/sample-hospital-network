@@ -49,28 +49,29 @@ app = FastAPI(
     lifespan=lifespan
 )
 
+# Repository root (use this rather than Path.cwd() so file operations are consistent
+# even when the process current working directory differs, e.g., Codespaces preview)
+REPO_ROOT = Path(__file__).resolve().parents[1]
 
-@app.get('/debug/db')
-async def debug_db():
-    """Return effective DB connection info (debug only).
 
-    This endpoint is intentionally gated by the `debug` setting to avoid
-    leaking configuration in production. It helps diagnose which DB host/user
-    the running process is using (useful for Codespaces / preview environments).
-    """
-    from fastapi import HTTPException
+if settings.debug:
+    @app.get('/debug/db')
+    async def debug_db():
+        """Return effective DB connection info (debug only)."""
 
-    # NOTE: This endpoint is intentionally permissive in this development
-    # environment to help diagnose configuration issues such as the
-    # 'Access denied for user' error seen when the wrong DB credentials are used.
-    return {
-        'mysql_host': settings.mysql_host,
-        'mysql_port': settings.mysql_port,
-        'mysql_user': settings.mysql_user,
-        'mysql_password_set': bool(settings.mysql_password),
-        'env_mysql_user': os.getenv('MYSQL_USER'),
-        'env_mysql_password_set': bool(os.getenv('MYSQL_PASSWORD'))
-    }
+        # NOTE: Only expose this diagnostic endpoint in debug mode to avoid
+        # leaking configuration details in non-development environments.
+        if not getattr(settings, 'debug', False):
+            raise HTTPException(status_code=404, detail='Not found')
+
+        return {
+            'mysql_host': settings.mysql_host,
+            'mysql_port': settings.mysql_port,
+            'mysql_user': settings.mysql_user,
+            'mysql_password_set': bool(settings.mysql_password),
+            'env_mysql_user': os.getenv('MYSQL_USER'),
+            'env_mysql_password_set': bool(os.getenv('MYSQL_PASSWORD'))
+        }
 
 
 # Add CORS middleware
@@ -189,7 +190,7 @@ async def compute_scenario(request: ScenarioRequest):
 async def save_scenario_endpoint(payload: dict):
     """Save a scenario payload to disk and return a save id."""
     try:
-        saves_dir = Path.cwd() / "saved_scenarios"
+        saves_dir = REPO_ROOT / "saved_scenarios"
         saves_dir.mkdir(parents=True, exist_ok=True)
 
         save_id = uuid.uuid4().hex
@@ -217,7 +218,7 @@ async def save_scenario_label(label: str = Query(..., description='Label for sav
         if label not in ('A', 'B', 'C'):
             raise HTTPException(status_code=400, detail='Label must be A, B, or C')
 
-        saves_dir = Path.cwd() / 'saved_scenarios'
+        saves_dir = REPO_ROOT / 'saved_scenarios'
         saves_dir.mkdir(parents=True, exist_ok=True)
         filename = saves_dir / f'scenario_label_{label}.json'
 
@@ -241,7 +242,7 @@ async def save_scenario_label(label: str = Query(..., description='Label for sav
 async def list_labeled_scenarios():
     """Return labelled scenarios A/B/C (dev/demo)."""
     try:
-        saves_dir = Path.cwd() / 'saved_scenarios'
+        saves_dir = REPO_ROOT / 'saved_scenarios'
         result = {}
         for label in ('A', 'B', 'C'):
             p = saves_dir / f'scenario_label_{label}.json'
@@ -264,7 +265,7 @@ async def list_labeled_scenarios():
 async def list_saved_scenarios():
     """List saved scenarios from disk (dev/demo only)."""
     try:
-        saves_dir = Path.cwd() / "saved_scenarios"
+        saves_dir = REPO_ROOT / "saved_scenarios"
         if not saves_dir.exists():
             return ApiResponse(data=[], meta={"count": 0})
 
@@ -285,6 +286,28 @@ async def list_saved_scenarios():
         return ApiResponse(data=entries, meta={"count": len(entries)})
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"List error: {str(e)}")
+
+
+@app.post('/scenarios/reset', response_model=ApiResponse)
+async def reset_saved_scenarios():
+    """Delete all saved scenarios from disk (dev/demo only)."""
+    try:
+        saves_dir = REPO_ROOT / 'saved_scenarios'
+        if not saves_dir.exists():
+            return ApiResponse(data={'deleted': 0}, meta={'count': 0})
+
+        deleted = 0
+        for p in list(saves_dir.glob('*')):
+            try:
+                p.unlink()
+                deleted += 1
+            except Exception:
+                # skip files we cannot remove
+                continue
+
+        return ApiResponse(data={'deleted': deleted}, meta={'count': deleted})
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Reset error: {str(e)}")
 
 
 # Health check

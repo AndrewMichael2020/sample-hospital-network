@@ -87,8 +87,9 @@ export const ScenarioBuilder: React.FC = () => {
   const validateForm = (): boolean => {
     const errors: Record<string, string> = {};
 
-    if (!form.name.trim()) {
-      errors.name = 'Scenario name is required';
+    // Require a scenario label (A, B, or C) from the dropdown
+    if (!['A', 'B', 'C'].includes(String(form.name))) {
+      errors.name = 'Scenario label is required (A, B or C)';
     }
 
     if (form.selected_sites.length === 0) {
@@ -160,14 +161,17 @@ export const ScenarioBuilder: React.FC = () => {
         <div className="form-row">
           <div className="form-group wide">
             <label htmlFor="scenario-name">Scenario Name:</label>
-            <input
+            <select
               id="scenario-name"
-              type="text"
               value={form.name}
               onChange={(e) => setForm(prev => ({ ...prev, name: e.target.value }))}
-              placeholder="Enter scenario name"
               className={validationErrors.name ? 'error' : ''}
-            />
+            >
+              <option value="">Select label</option>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+            </select>
             {validationErrors.name && <span className="error-text">{validationErrors.name}</span>}
           </div>
 
@@ -433,46 +437,11 @@ export const ScenarioBuilder: React.FC = () => {
               'Calculate'
             )}
           </button>
-          <div style={{ display: 'inline-block' }}>
-            <button className="btn btn-secondary" onClick={() => {
-              // Default save (label-less)
-              // eslint-disable-next-line @typescript-eslint/no-floating-promises
-              (async () => {
-                try {
-                  const payload = { form };
-                  const res = await (await import('../api/client')).apiClientFunctions.saveScenario(payload);
-                  alert('Scenario saved');
-                } catch (e) { alert('Save failed'); }
-              })();
-            }}>
-              Save Scenario
-            </button>
-
-            <div className="label-saves" style={{ display: 'inline-block', marginLeft: 8 }}>
-              {(['A','B','C'] as const).map(lbl => (
-                <button
-                  key={lbl}
-                  className="btn btn-tertiary"
-                  onClick={() => {
-                    (async () => {
-                      try {
-                        const payload = { form };
-                        await (await import('../api/client')).apiClientFunctions.saveScenarioLabel(lbl as any, payload);
-                        alert(`Saved as ${lbl}`);
-                      } catch (e) {
-                        alert('Save label failed');
-                      }
-                    })();
-                  }}
-                >
-                  Save as {lbl}
-                </button>
-              ))}
-            </div>
-          </div>
+          {/* Save Scenario removed from builder per UX decision (saved from Calculate page) */}
           <button 
             className="btn btn-secondary" 
-            onClick={() => {
+            onClick={async () => {
+              // Reset local form
               setForm({
                 name: '',
                 preset: 'target',
@@ -483,6 +452,25 @@ export const ScenarioBuilder: React.FC = () => {
                 params: { ...DEFAULT_PARAMS, ...PRESET_PARAMS.target },
               });
               setValidationErrors({});
+
+              // Delete saved scenarios on server (dev-only endpoint)
+              try {
+                // call the reset endpoint via API client so baseURL/proxy is handled
+                await (await import('../api/client')).apiClientFunctions.resetSavedScenarios();
+                // clear cached last scenario so Results doesn't reload previous data from sessionStorage
+                try { sessionStorage.removeItem('lastScenario'); } catch(e) {}
+                // refresh labeled saves and any saved-list UI
+                try {
+                  await (await import('../api/client')).apiClientFunctions.getLabeledScenarios();
+                  // no direct setLabeledSaves here because builder doesn't own that state; Results will refresh on next visit
+                } catch (e) {
+                  // ignore
+                }
+                alert('All saved scenarios deleted');
+              } catch (e) {
+                console.error('Reset saved scenarios failed', e);
+                alert('Failed to delete saved scenarios');
+              }
             }}
           >
             Reset

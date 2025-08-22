@@ -10,23 +10,27 @@ export const ResultsDashboard: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Get the scenario data passed from the builder
-  let scenarioData = location.state?.scenarioData as ScenarioResponse | undefined;
-  let scenarioForm = location.state?.scenarioForm as ScenarioBuilderForm | undefined;
-
-  // Fallback: load lastScenario from sessionStorage if navigation state was lost (page reloads etc)
-  if (!scenarioData || !scenarioForm) {
+  // Initialize scenario data/form state from navigation state or sessionStorage
+  const initialScenario = (() => {
     try {
+      if (location.state?.scenarioData && location.state?.scenarioForm) {
+        return { data: location.state.scenarioData as ScenarioResponse, form: location.state.scenarioForm as ScenarioBuilderForm };
+      }
       const s = sessionStorage.getItem('lastScenario');
       if (s) {
         const parsed = JSON.parse(s);
-        scenarioData = parsed.scenarioData;
-        scenarioForm = parsed.scenarioForm;
+        return { data: parsed.scenarioData as ScenarioResponse, form: parsed.scenarioForm as ScenarioBuilderForm };
       }
     } catch (e) {
-      // ignore
+      // ignore parse errors
     }
-  }
+    return { data: undefined as ScenarioResponse | undefined, form: undefined as ScenarioBuilderForm | undefined };
+  })();
+
+  const [scenarioData, setScenarioData] = useState<ScenarioResponse | undefined>(initialScenario.data);
+  const [scenarioForm, setScenarioForm] = useState<ScenarioBuilderForm | undefined>(initialScenario.form);
+  const [labeledSaves, setLabeledSaves] = useState<Record<string, any> | null>(null);
+  const [loadingLabel, setLoadingLabel] = useState(false);
 
   if (!scenarioData || !scenarioForm) {
     return (
@@ -53,6 +57,23 @@ export const ResultsDashboard: React.FC = () => {
       const payload = { scenarioForm, scenarioData };
       const res = await apiClientFunctions.saveScenario(payload);
       alert(`Scenario saved: ${res.id}`);
+
+      // If the current scenario has a label A/B/C, also save it as a labeled scenario
+      try {
+        const name = (scenarioForm && (scenarioForm as any).name) ? (scenarioForm as any).name : '';
+        if (name === 'A' || name === 'B' || name === 'C') {
+          await apiClientFunctions.saveScenarioLabel(name as 'A' | 'B' | 'C', { scenarioForm, scenarioData });
+          // refresh labeled saves so selector reflects new entry
+          try {
+            const lbls = await apiClientFunctions.getLabeledScenarios();
+            setLabeledSaves(lbls || {});
+          } catch (e) {
+            // ignore
+          }
+        }
+      } catch (e) {
+        console.error('Save label failed', e);
+      }
     } catch (err) {
       console.error('Save failed', err);
       const msg = (err && (err as any).message) ? (err as any).message : JSON.stringify(err);
@@ -60,11 +81,99 @@ export const ResultsDashboard: React.FC = () => {
     }
   };
 
+  // Load labeled saves (A/B/C) on mount so the selector can show available entries
+  useEffect(() => {
+    let mounted = true;
+    (async () => {
+      try {
+        const res = await apiClientFunctions.getLabeledScenarios();
+        // res is a mapping { A: payload|null, B: payload|null, C: payload|null }
+        if (mounted) setLabeledSaves(res || {});
+      } catch (err) {
+        console.error('Failed to load labeled saves', err);
+        if (mounted) setLabeledSaves({});
+      }
+    })();
+    return () => { mounted = false; };
+  }, []);
+
+  // Handler to load a labeled scenario
+  const loadLabeledScenario = async (label: string) => {
+    if (!label) return;
+    if (!labeledSaves) {
+      alert('No labeled saves available');
+      return;
+    }
+    const payload = labeledSaves[label];
+    if (!payload) {
+      alert(`No saved scenario for label ${label}`);
+      return;
+    }
+
+    setLoadingLabel(true);
+    try {
+      // payload shape may be { form: { ... } } or { scenarioForm, scenarioData }
+      if (payload.scenarioData && payload.scenarioForm) {
+        setScenarioForm(payload.scenarioForm);
+        setScenarioData(payload.scenarioData);
+        // persist to sessionStorage
+        try { sessionStorage.setItem('lastScenario', JSON.stringify({ scenarioData: payload.scenarioData, scenarioForm: payload.scenarioForm })); } catch(e) {}
+        return;
+      }
+
+      // payload could be { form: { ... } } from builder saves; only recompute if it includes selected sites
+      const form = payload.form || payload.scenarioForm || null;
+      if (form) {
+        const selectedSites = (form as any).selected_sites || [];
+        if (!selectedSites || selectedSites.length === 0) {
+          // Inform user that labeled form lacks site selection and cannot be recomputed here
+          alert(`Label ${label} contains a saved form but no selected sites. To load this label here, open the builder, select sites, compute, then save as ${label}.`);
+          return;
+        }
+
+        // Recompute and update only on success
+        try {
+          const request = {
+            sites: selectedSites,
+            program_id: (form as any).program_id || 1,
+            baseline_year: (form as any).baseline_year || 2022,
+            horizon_years: (form as any).horizon_years || 3,
+            params: (form as any).params || {},
+          };
+          const result = await apiClientFunctions.calculateScenario(request as any);
+          setScenarioForm(form as ScenarioBuilderForm);
+          setScenarioData(result as ScenarioResponse);
+          try { sessionStorage.setItem('lastScenario', JSON.stringify({ scenarioData: result, scenarioForm: form })); } catch(e) {}
+        } catch (err) {
+          console.error('Recompute failed for labeled scenario', err);
+          alert('Failed to recompute labeled scenario');
+        }
+        return;
+      }
+
+      alert('Unknown labeled payload format');
+    } finally {
+      setLoadingLabel(false);
+    }
+  };
+
   return (
     <div className="results-dashboard">
       <div className="results-header">
-        <h2>Results — Scenario: "{scenarioForm.name || 'Untitled'}"</h2>
-        <span className="baseline-info">(Baseline: {scenarioForm.baseline_year}/{(scenarioForm.baseline_year + 1) % 100})</span>
+        <div className="results-header-left">
+          <h2>Results — Scenario: "{scenarioForm.name || 'Untitled'}"</h2>
+          <span className="baseline-info">(Baseline: {scenarioForm.baseline_year}/{(scenarioForm.baseline_year + 1) % 100})</span>
+        </div>
+        <div className="results-header-right">
+          <span className="scenario-label">Saved:</span>
+          <label htmlFor="scenario-select" className="sr-only">Select scenario</label>
+          <select id="scenario-select" className="scenario-select" value={scenarioForm?.name || ''} onChange={(e) => loadLabeledScenario(e.target.value)} disabled={loadingLabel}>
+            <option value="">Select saved</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+          </select>
+        </div>
       </div>
 
       <div className="kpi-cards-section">
@@ -145,52 +254,13 @@ export const ResultsDashboard: React.FC = () => {
       <div className="action-buttons">
         <button className="btn btn-secondary" onClick={() => navigate('/scenario-builder', { state: { formData: scenarioForm } })}>← Adjust Parameters</button>
         <button className="btn btn-secondary" onClick={onSave}>Save Scenario</button>
-        <button className="btn btn-secondary" disabled>Export to Power BI</button>
+  <button className="btn btn-secondary" onClick={() => navigate('/compare')}>Compare results</button>
       </div>
 
-      <div className="saved-panel">
-        <h3>Saved Scenarios</h3>
-        <SavedList />
-      </div>
+  {/* Saved scenarios panel removed per UX request */}
     </div>
   );
 };
 
 
-const SavedList: React.FC = () => {
-  const [saved, setSaved] = useState<any[] | null>(null);
-
-  useEffect(() => {
-    let mounted = true;
-    const load = async () => {
-      try {
-        const res = await apiClientFunctions.getSavedScenarios();
-        const entries = res && (res as any).data ? (res as any).data : res;
-        if (mounted) setSaved(entries);
-      } catch (err) {
-        console.error('Saved scenarios load error', err);
-        if (mounted) setSaved([]);
-      }
-    };
-    load();
-    return () => { mounted = false; };
-  }, []);
-
-  const onLoadSaved = (entry: any) => {
-    console.log('Load saved payload', entry);
-    alert(`Loaded saved scenario ${entry.id} (check console for payload)`);
-  };
-
-  if (saved === null) return <div>Loading...</div>;
-  if (saved.length === 0) return <div>No saved scenarios</div>;
-
-  return (
-    <ul>
-      {saved.map((s: any) => (
-        <li key={s.id}>
-          <strong>{s.id}</strong> — {s.saved_at} <button onClick={() => onLoadSaved(s)}>Load</button>
-        </li>
-      ))}
-    </ul>
-  );
-};
+// SavedList removed

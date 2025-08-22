@@ -1,0 +1,141 @@
+{
+  "label": "C",
+  "saved_at": "2025-08-22T06:02:16.673969",
+  "payload": {
+    "scenarioForm": {
+      "name": "C",
+      "preset": "best",
+      "baseline_year": 2022,
+      "horizon_years": 3,
+      "selected_sites": [
+        1,
+        3,
+        7,
+        6,
+        4
+      ],
+      "program_id": 6,
+      "selected_programs": [
+        6,
+        5,
+        4,
+        3,
+        2,
+        1
+      ],
+      "params": {
+        "occupancy_target": 0.8,
+        "los_delta": -0.05,
+        "alc_target": 0.08,
+        "growth_pct": 0.01,
+        "schedule_code": "Sched-A",
+        "seasonality": false
+      }
+    },
+    "scenarioData": {
+      "kpis": {
+        "total_required_beds": 5,
+        "total_staffed_beds": 118,
+        "total_capacity_gap": -113,
+        "total_nursing_fte": 4,
+        "avg_occupancy": 0.006,
+        "total_admissions": 515,
+        "avg_los_effective": 0.48
+      },
+      "by_site": [
+        {
+          "site_id": 4,
+          "site_code": "LM-MSC",
+          "site_name": "Mossy Cedar Community",
+          "admissions_projected": 103,
+          "los_effective": 0.54,
+          "patient_days": 55,
+          "census_average": 0.2,
+          "required_beds": 1,
+          "staffed_beds": 18,
+          "capacity_gap": -17,
+          "nursing_fte": 0.8
+        },
+        {
+          "site_id": 1,
+          "site_code": "LM-SNW",
+          "site_name": "Snowberry General",
+          "admissions_projected": 103,
+          "los_effective": 0.47,
+          "patient_days": 48,
+          "census_average": 0.1,
+          "required_beds": 1,
+          "staffed_beds": 23,
+          "capacity_gap": -22,
+          "nursing_fte": 0.8
+        },
+        {
+          "site_id": 6,
+          "site_code": "LM-BRC",
+          "site_name": "Bear Creek Hospital",
+          "admissions_projected": 103,
+          "los_effective": 0.48,
+          "patient_days": 49,
+          "census_average": 0.1,
+          "required_beds": 1,
+          "staffed_beds": 23,
+          "capacity_gap": -22,
+          "nursing_fte": 0.8
+        },
+        {
+          "site_id": 7,
+          "site_code": "LM-DFT",
+          "site_name": "Driftwood Regional",
+          "admissions_projected": 103,
+          "los_effective": 0.51,
+          "patient_days": 52,
+          "census_average": 0.1,
+          "required_beds": 1,
+          "staffed_beds": 24,
+          "capacity_gap": -23,
+          "nursing_fte": 0.8
+        },
+        {
+          "site_id": 3,
+          "site_code": "LM-SLM",
+          "site_name": "Salmon Run Hospital",
+          "admissions_projected": 103,
+          "los_effective": 0.43,
+          "patient_days": 44,
+          "census_average": 0.1,
+          "required_beds": 1,
+          "staffed_beds": 30,
+          "capacity_gap": -29,
+          "nursing_fte": 0.8
+        }
+      ],
+      "metadata": {
+        "request_params": {
+          "sites": [
+            1,
+            3,
+            7,
+            6,
+            4
+          ],
+          "program_id": 6,
+          "program_ids": [
+            6
+          ],
+          "baseline_year": 2022,
+          "horizon_years": 3,
+          "params": {
+            "occupancy_target": 0.8,
+            "los_delta": -0.05,
+            "alc_target": 0.08,
+            "growth_pct": 0.01,
+            "schedule_code": "Sched-A",
+            "seasonality": false
+          }
+        },
+        "calculation_date": "2025-01-01",
+        "model_version": "1.0"
+      }
+    }
+  }
+}

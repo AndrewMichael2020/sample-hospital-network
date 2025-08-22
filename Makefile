@@ -36,7 +36,7 @@ api-setup: setup ## Install API dependencies
 
 api-start: generate ## Start the API server (generates data if needed)
 	@echo "Starting API server on http://localhost:8000"
-	python -m uvicorn api:app --host 0.0.0.0 --port 8000 --reload
+	python -m uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
 
 api-test: generate ## Test API endpoints
 	@echo "Testing API endpoints..."
