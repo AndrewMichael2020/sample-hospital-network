@@ -679,13 +679,6 @@ mysql -h localhost -u root -p -e "SELECT 1;"
 mysql -h localhost -u root -p -e "SHOW DATABASES LIKE 'lm_synth';"
 ```
 
-### Missing Data Files
-```bash
-# Regenerate data files
-make clean
-make generate
-```
-
 ### Foreign Key Constraint Errors
 The loading order matters due to foreign key relationships. The `load_data.py` script loads tables in the correct dependency order.
 
