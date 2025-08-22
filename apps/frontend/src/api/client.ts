@@ -28,7 +28,9 @@ import type {
 // Create axios instance with base configuration
 const createApiClient = (): AxiosInstance => {
   const client = axios.create({
-    baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080',
+    // Use a relative base URL by default so the Vite dev-server proxy handles
+    // requests in development. If VITE_API_BASE_URL is explicitly set, use it.
+    baseURL: import.meta.env.VITE_API_BASE_URL ?? '',
     timeout: 30000,
     headers: {
       'Content-Type': 'application/json',
@@ -64,11 +66,23 @@ const apiClient = createApiClient();
 
 // Generic function to validate response with Zod schema
 function validateResponse<T>(response: AxiosResponse, schema: z.ZodSchema<T>): T {
+  // Some API endpoints return a wrapper { data: ..., meta: ... } while others
+  // return the raw payload. Normalize to the inner `data` when present so
+  // Zod validation checks the expected shape.
+  const payload = (response && response.data && typeof response.data === 'object' && 'data' in response.data)
+    ? response.data.data
+    : response.data;
+
   try {
-    return schema.parse(response.data);
+    return schema.parse(payload);
   } catch (error) {
     if (error instanceof z.ZodError) {
-      console.error('API response validation failed:', error.issues);
+      try {
+        console.error('API response validation failed:', JSON.stringify(error.issues, null, 2));
+        console.error('Response payload:', JSON.stringify(payload, null, 2));
+      } catch (e) {
+        console.error('API response validation failed (could not stringify issues):', error.issues);
+      }
       throw new Error(`Invalid API response: ${error.issues.map(issue => issue.message).join(', ')}`);
     }
     throw error;

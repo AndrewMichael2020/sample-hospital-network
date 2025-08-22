@@ -3,6 +3,7 @@ Database connection and session management.
 """
 
 import asyncmy
+from asyncmy import cursors as asyncmy_cursors
 from typing import AsyncGenerator
 from contextlib import asynccontextmanager
 from .config import settings
@@ -65,7 +66,10 @@ async def execute_query(query: str, params=None) -> list:
 async def execute_query_dict(query: str, params=None) -> list:
     """Execute a SELECT query and return results as dictionaries."""
     async with get_db_connection() as conn:
-        cursor = await conn.cursor(asyncmy.DictCursor)
+        # asyncmy exposes cursor classes under asyncmy.cursors
+        # When passing a cursor class, conn.cursor may return a cursor object directly
+        # so do not await it.
+        cursor = conn.cursor(cursor=asyncmy_cursors.DictCursor)
         try:
             await cursor.execute(query, params or ())
             result = await cursor.fetchall()

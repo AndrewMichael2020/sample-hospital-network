@@ -1,0 +1,18 @@
+USE lm_synth;
+DELETE FROM dim_program;
+INSERT INTO dim_program (program_id, program_name) VALUES (1, 'Medicine');
+INSERT INTO dim_program (program_id, program_name) VALUES (2, 'Inpatient MHSU');
+INSERT INTO dim_program (program_id, program_name) VALUES (3, 'MICY');
+INSERT INTO dim_program (program_id, program_name) VALUES (4, 'Critical Care');
+INSERT INTO dim_program (program_id, program_name) VALUES (5, 'Surgery / Periop');
+INSERT INTO dim_program (program_id, program_name) VALUES (6, 'Emergency');
+INSERT INTO dim_program (program_id, program_name) VALUES (7, 'Cardiac');
+INSERT INTO dim_program (program_id, program_name) VALUES (8, 'Renal');
+INSERT INTO dim_program (program_id, program_name) VALUES (9, 'Rehabilitation');
+INSERT INTO dim_program (program_id, program_name) VALUES (10, 'Primary Health Care');
+INSERT INTO dim_program (program_id, program_name) VALUES (11, 'Chronic Disease Mgmt');
+INSERT INTO dim_program (program_id, program_name) VALUES (12, 'Population & Public Health');
+INSERT INTO dim_program (program_id, program_name) VALUES (13, 'Palliative Care');
+INSERT INTO dim_program (program_id, program_name) VALUES (14, 'Trauma');
+INSERT INTO dim_program (program_id, program_name) VALUES (15, 'Specialized Community Services');
+INSERT INTO dim_program (program_id, program_name) VALUES (16, 'Pain Services');

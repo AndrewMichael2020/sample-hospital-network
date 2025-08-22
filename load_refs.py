@@ -46,16 +46,28 @@ def load_csv_to_mysql(csv_path, table_name, connection):
         cursor.execute(f"DELETE FROM {table_name}")
         
         # Insert new data
+        def to_nullable_int(v):
+            if v is None:
+                return None
+            try:
+                return int(v)
+            except Exception:
+                return None
+
         if table_name == 'staffed_beds_schedule':
             query = """
                 INSERT INTO staffed_beds_schedule 
                 (site_id, program_id, schedule_code, staffed_beds)
                 VALUES (%s, %s, %s, %s)
             """
-            values = [
-                (row['site_id'], row['program_id'], row['schedule_code'], row['staffed_beds'])
-                for _, row in df.iterrows()
-            ]
+            values = []
+            for _, row in df.iterrows():
+                values.append((
+                    to_nullable_int(row['site_id']),
+                    to_nullable_int(row['program_id']),
+                    row['schedule_code'],
+                    row['staffed_beds']
+                ))
             
         elif table_name == 'clinical_baseline':
             query = """
@@ -63,11 +75,15 @@ def load_csv_to_mysql(csv_path, table_name, connection):
                 (site_id, program_id, baseline_year, los_base_days, alc_rate)
                 VALUES (%s, %s, %s, %s, %s)
             """
-            values = [
-                (row['site_id'], row['program_id'], row['baseline_year'], 
-                 row['los_base_days'], row['alc_rate'])
-                for _, row in df.iterrows()
-            ]
+            values = []
+            for _, row in df.iterrows():
+                values.append((
+                    to_nullable_int(row['site_id']),
+                    to_nullable_int(row['program_id']),
+                    to_nullable_int(row['baseline_year']),
+                    row['los_base_days'],
+                    row['alc_rate']
+                ))
             
         elif table_name == 'seasonality_monthly':
             query = """
@@ -75,10 +91,14 @@ def load_csv_to_mysql(csv_path, table_name, connection):
                 (site_id, program_id, month, multiplier)
                 VALUES (%s, %s, %s, %s)
             """
-            values = [
-                (row['site_id'], row['program_id'], row['month'], row['multiplier'])
-                for _, row in df.iterrows()
-            ]
+            values = []
+            for _, row in df.iterrows():
+                values.append((
+                    to_nullable_int(row['site_id']),
+                    to_nullable_int(row['program_id']),
+                    to_nullable_int(row['month']),
+                    row['multiplier']
+                ))
             
         elif table_name == 'staffing_factors':
             query = """
@@ -86,11 +106,15 @@ def load_csv_to_mysql(csv_path, table_name, connection):
                 (program_id, subprogram_id, hppd, annual_hours_per_fte, productivity_factor)
                 VALUES (%s, %s, %s, %s, %s)
             """
-            values = [
-                (row['program_id'], row['subprogram_id'], row['hppd'],
-                 row['annual_hours_per_fte'], row['productivity_factor'])
-                for _, row in df.iterrows()
-            ]
+            values = []
+            for _, row in df.iterrows():
+                values.append((
+                    to_nullable_int(row['program_id']),
+                    to_nullable_int(row.get('subprogram_id') if 'subprogram_id' in row else None),
+                    row['hppd'],
+                    to_nullable_int(row['annual_hours_per_fte']) if 'annual_hours_per_fte' in row else row.get('annual_hours_per_fte'),
+                    row['productivity_factor']
+                ))
         
         cursor.executemany(query, values)
         connection.commit()

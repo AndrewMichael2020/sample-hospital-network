@@ -95,71 +95,67 @@ class ScenarioService:
         staffing_factor: Optional[Dict]
     ) -> Optional[SiteResult]:
         """Calculate results for a single site."""
-        
         # Find baseline data for this site
         site_baseline = next((b for b in baselines if b['site_id'] == site_id), None)
         if not site_baseline:
             return None
-        
+
         # Find staffed beds for this site
         site_beds = next((s for s in staffed_beds if s['site_id'] == site_id), None)
         if not site_beds:
             return None
-        
+
         # Find historical admissions (fallback if not available)
         site_admissions = next((a for a in historical_admissions if a['site_id'] == site_id), None)
         baseline_admissions = site_admissions['admissions_base'] if site_admissions else 100
-        
-        # Apply the compute model
-        g = request.params.growth_pct
-        y = request.horizon_years
-        d = request.params.los_delta
-        occ_t = request.params.occupancy_target
-        alc_t = request.params.alc_target
-        alc_b = site_baseline['alc_rate']
-        los_b = site_baseline['los_base_days']
-        
+
+        # Extract parameters and coerce numeric types
+        g = float(request.params.growth_pct)
+        y = int(request.horizon_years)
+        d = float(request.params.los_delta)
+        occ_t = float(request.params.occupancy_target)
+        alc_t = float(request.params.alc_target)
+        alc_b = float(site_baseline.get('alc_rate', 0))
+        los_b = float(site_baseline.get('los_base_days', 1.0))
+
         # Calculate projections
         admissions_projected = int(baseline_admissions * ((1 + g) ** y))
         los_acute = los_b * (1 + d)
         los_effective = los_acute * (1 + (alc_t - alc_b))
-        
+
         # Apply bounds/guards
         los_effective = max(0.25, los_effective)
-        
+
         # Get seasonality multiplier (using average of year)
         seasonality_factor = 1.0
         if request.params.seasonality:
-            seasonality_factor = await self._get_average_seasonality(
-                site_id, request.program_id
-            )
-        
+            seasonality_factor = await self._get_average_seasonality(site_id, request.program_id)
+
         patient_days = int(admissions_projected * los_effective * seasonality_factor)
-        census_average = patient_days / 365
-        required_beds = math.ceil(census_average / occ_t)
-        
+        census_average = patient_days / 365.0
+        required_beds = math.ceil(census_average / occ_t) if occ_t > 0 else 0
+
         # Calculate nursing FTE if staffing factors available
         nursing_fte = None
         if staffing_factor:
-            hppd = staffing_factor['hppd']
-            annual_hours = staffing_factor['annual_hours_per_fte']
-            productivity = staffing_factor['productivity_factor']
-            
+            hppd = float(staffing_factor.get('hppd', 0))
+            annual_hours = float(staffing_factor.get('annual_hours_per_fte', 1950))
+            productivity = float(staffing_factor.get('productivity_factor', 1.0))
+
             total_hours_needed = required_beds * hppd * 365
-            nursing_fte = total_hours_needed / (annual_hours * productivity)
-            nursing_fte = round(nursing_fte, 1)
-        
+            nursing_fte = round(total_hours_needed / (annual_hours * productivity), 1) if (annual_hours * productivity) > 0 else None
+
         return SiteResult(
             site_id=site_id,
-            site_code=site_baseline['site_code'],
-            site_name=site_baseline['site_name'],
+            site_code=site_baseline.get('site_code', ''),
+            site_name=site_baseline.get('site_name', ''),
             admissions_projected=admissions_projected,
             los_effective=round(los_effective, 2),
             patient_days=patient_days,
             census_average=round(census_average, 1),
             required_beds=required_beds,
-            staffed_beds=site_beds['staffed_beds'],
-            capacity_gap=required_beds - site_beds['staffed_beds'],
+            staffed_beds=site_beds.get('staffed_beds', 0),
+            capacity_gap=required_beds - site_beds.get('staffed_beds', 0),
             nursing_fte=nursing_fte
         )
     
