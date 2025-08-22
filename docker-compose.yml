@@ -1,5 +1,6 @@
 version: '3.8'
 
+version: '3.8'
 services:
   mysql:
     image: mysql:8.0
@@ -7,41 +8,77 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: "devpassword123"
       MYSQL_DATABASE: "lm_synth"
-      # Do not use host MYSQL_USER interpolation here: if the host has MYSQL_USER=root it
-      # causes the container entrypoint to error. Use an explicit app user.
       MYSQL_USER: "hospital_user"
       MYSQL_PASSWORD: "devpassword"
     ports:
       - "${MYSQL_PORT:-3306}:3306"
     volumes:
       - mysql_data:/var/lib/mysql
-      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_0900_ai_ci
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
+      version: '3.8'
 
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: hospital_app
-    environment:
-      MYSQL_HOST: "mysql"
-      MYSQL_PORT: "3306"
-      MYSQL_USER: "hospital_user"
-      MYSQL_PASSWORD: "devpassword"
-      MYSQL_DATABASE: "lm_synth"
-    ports:
-      - "${API_PORT:-8000}:8000"
-    depends_on:
-      mysql:
-        condition: service_healthy
-    volumes:
-      - ./data:/app/data
-  command: ["python", "-m", "uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+      services:
+        mysql:
+          image: mysql:8.0
+          container_name: hospital_mysql
+          environment:
+            MYSQL_ROOT_PASSWORD: "devpassword123"
+            MYSQL_DATABASE: "lm_synth"
+            MYSQL_USER: "hospital_user"
+            MYSQL_PASSWORD: "devpassword"
+          ports:
+            - "${MYSQL_PORT:-3306}:3306"
+          volumes:
+            - mysql_data:/var/lib/mysql
+            - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+          command: --character-set-server=utf8mb4 --collation-server=utf8mb4_0900_ai_ci
+          healthcheck:
+            test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+            version: '3.8'
 
-volumes:
-  mysql_data:
+            services:
+              mysql:
+                image: mysql:8.0
+                container_name: hospital_mysql
+                environment:
+                  MYSQL_ROOT_PASSWORD: "devpassword123"
+                  MYSQL_DATABASE: "lm_synth"
+                  MYSQL_USER: "hospital_user"
+                  MYSQL_PASSWORD: "devpassword"
+                ports:
+                  - "${MYSQL_PORT:-3306}:3306"
+                volumes:
+                  - mysql_data:/var/lib/mysql
+                  - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+                command: --character-set-server=utf8mb4 --collation-server=utf8mb4_0900_ai_ci
+                healthcheck:
+                  test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+                  interval: 10s
+                  timeout: 5s
+                  retries: 5
+
+              app:
+                build:
+                  context: .
+                  dockerfile: Dockerfile
+                container_name: hospital_app
+                environment:
+                  MYSQL_HOST: "mysql"
+                  MYSQL_PORT: "3306"
+                  MYSQL_USER: "hospital_user"
+                  MYSQL_PASSWORD: "devpassword"
+                  MYSQL_DATABASE: "lm_synth"
+                ports:
+                  - "${API_PORT:-8000}:8000"
+                depends_on:
+                  mysql:
+                    condition: service_healthy
+                volumes:
+                  - ./data:/app/data
+                command: ["python", "-m", "uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+
+            volumes:
+              mysql_data: {}
