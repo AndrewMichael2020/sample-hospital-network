@@ -219,7 +219,7 @@ export const ScenarioBuilder: React.FC = () => {
           <div className="left-panel">
             <div className="sites-section">
               <h3>Sites (multi-select)</h3>
-              {isLoading ? (
+              {sitesLoading ? (
                 <Loading size="small" message="Loading sites..." />
               ) : (
                 <div className="sites-list">
