@@ -130,6 +130,18 @@ export const apiClientFunctions = {
     return validateResponse(response, ScenarioResponseSchema);
   },
 
+  async saveScenario(payload: any): Promise<{ id: string; path: string }> {
+    const response = await apiClient.post('/scenarios/save', payload);
+    // response may be wrapped
+    const data = response && response.data && response.data.data ? response.data.data : response.data;
+    return data as { id: string; path: string };
+  },
+  
+    async getSavedScenarios(): Promise<any[]> {
+      const response = await apiClient.get('/scenarios/saved');
+      return response.data; // TODO: Add proper schema validation
+    },
+
   // Additional reference endpoints for staffed beds and baselines
   async getStaffedBeds(scheduleCode = 'Sched-A'): Promise<any[]> {
     const response = await apiClient.get('/reference/staffed-beds', {

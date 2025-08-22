@@ -6,20 +6,46 @@ API test script for the synthetic healthcare API.
 import requests
 import time
 import subprocess
+import os
 import sys
 
 def test_api():
     """Test the API endpoints."""
-    # Start server in background
+    # Start server in background, capture output
     print("Starting API server...")
+    env = os.environ.copy()
+    env['SKIP_DB_INIT'] = '1'
     server_process = subprocess.Popen(
-        ['python', '-m', 'uvicorn', 'api:app', '--host', '127.0.0.1', '--port', '8001'], 
-        stdout=subprocess.DEVNULL, 
-        stderr=subprocess.DEVNULL
+        ['python', '-m', 'uvicorn', 'main_api:app', '--host', '127.0.0.1', '--port', '8001'],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        env=env
     )
-    
-    # Wait for server to start
-    time.sleep(3)
+
+    # Poll for server readiness (max 15s)
+    import requests
+    base_url = 'http://127.0.0.1:8001'
+    ready = False
+    for _ in range(30):
+        try:
+            r = requests.get(f'{base_url}/health', timeout=0.5)
+            if r.status_code == 200:
+                ready = True
+                break
+        except Exception:
+            pass
+        time.sleep(0.5)
+    if not ready:
+        print("\n❌ API server did not start in time. Captured logs:")
+        try:
+            logs = server_process.stdout.read()
+            print(logs)
+        except Exception:
+            print("(Could not read server logs)")
+        server_process.terminate()
+        server_process.wait()
+        assert False, 'API server did not start in time.'
     
     try:
         base_url = 'http://127.0.0.1:8001'
@@ -54,19 +80,19 @@ def test_api():
         r = requests.get(f'{base_url}/api/v1/validation/summary')
         assert r.status_code == 200, f'Validation endpoint failed: {r.status_code}'
         print('✓ Validation endpoint OK')
-        
+
         print('\nAll API tests passed! 🎉')
-        return True
-        
+        assert True
+
     except Exception as e:
         print(f'\n❌ API test failed: {e}')
-        return False
-        
+        assert False, f'API test failed: {e}'
+
     finally:
         # Stop server
         server_process.terminate()
         server_process.wait()
 
 if __name__ == "__main__":
-    success = test_api()
-    sys.exit(0 if success else 1)
+    test_api()
+    sys.exit(0)

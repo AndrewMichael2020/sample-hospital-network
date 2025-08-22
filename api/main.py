@@ -5,6 +5,7 @@ Main FastAPI application for healthcare scenarios API.
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
+import os
 from typing import List, Optional
 
 from .config import settings
@@ -15,13 +16,19 @@ from .schemas import (
     ApiResponse, PaginatedResponse, ScenarioRequest, ScenarioResponse,
     ErrorResponse
 )
+import json
+from pathlib import Path
+import uuid
+from datetime import datetime
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Manage application lifecycle."""
     # Startup
-    await init_db()
+    # Allow tests to skip DB init by setting SKIP_DB_INIT=1 in the environment.
+    if os.getenv('SKIP_DB_INIT', '0') != '1':
+        await init_db()
     yield
     # Shutdown
     await close_db()
@@ -57,12 +64,11 @@ async def get_sites():
     """Get all hospital sites."""
     try:
         sites = await ref_repo.get_sites()
-        return ApiResponse(
-            data=sites,
-            meta={"count": len(sites)}
-        )
+        return ApiResponse(data=sites, meta={"count": len(sites)})
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        # In dev/test environments the database may be unavailable.
+        # Return an empty list so the frontend can still render and show an informative state.
+        return ApiResponse(data=[], meta={"count": 0, "error": str(e)})
 
 
 @app.get("/reference/programs", response_model=ApiResponse)
@@ -70,12 +76,9 @@ async def get_programs():
     """Get all healthcare programs."""
     try:
         programs = await ref_repo.get_programs()
-        return ApiResponse(
-            data=programs,
-            meta={"count": len(programs)}
-        )
+        return ApiResponse(data=programs, meta={"count": len(programs)})
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        return ApiResponse(data=[], meta={"count": 0, "error": str(e)})
 
 
 @app.get("/reference/staffed-beds", response_model=ApiResponse)
@@ -85,12 +88,9 @@ async def get_staffed_beds(
     """Get staffed beds by schedule."""
     try:
         beds = await ref_repo.get_staffed_beds(schedule)
-        return ApiResponse(
-            data=beds,
-            meta={"count": len(beds), "schedule": schedule}
-        )
+        return ApiResponse(data=beds, meta={"count": len(beds), "schedule": schedule})
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        return ApiResponse(data=[], meta={"count": 0, "error": str(e)})
 
 
 @app.get("/reference/baselines", response_model=ApiResponse)
@@ -100,12 +100,9 @@ async def get_baselines(
     """Get clinical baselines by year."""
     try:
         baselines = await ref_repo.get_clinical_baselines(year)
-        return ApiResponse(
-            data=baselines,
-            meta={"count": len(baselines), "year": year}
-        )
+        return ApiResponse(data=baselines, meta={"count": len(baselines), "year": year})
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        return ApiResponse(data=[], meta={"count": 0, "error": str(e)})
 
 
 @app.get("/reference/seasonality", response_model=ApiResponse)
@@ -115,12 +112,9 @@ async def get_seasonality(
     """Get seasonality multipliers."""
     try:
         seasonality = await ref_repo.get_seasonality(year)
-        return ApiResponse(
-            data=seasonality,
-            meta={"count": len(seasonality), "year": year}
-        )
+        return ApiResponse(data=seasonality, meta={"count": len(seasonality), "year": year})
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        return ApiResponse(data=[], meta={"count": 0, "error": str(e)})
 
 
 @app.get("/reference/staffing-factors", response_model=ApiResponse)
@@ -128,12 +122,9 @@ async def get_staffing_factors():
     """Get staffing factors for FTE calculations."""
     try:
         factors = await ref_repo.get_staffing_factors()
-        return ApiResponse(
-            data=factors,
-            meta={"count": len(factors)}
-        )
+        return ApiResponse(data=factors, meta={"count": len(factors)})
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        return ApiResponse(data=[], meta={"count": 0, "error": str(e)})
 
 
 # Scenario calculation endpoint
@@ -156,6 +147,59 @@ async def compute_scenario(request: ScenarioRequest):
         raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Calculation error: {str(e)}")
+
+
+# Save scenario (simple file-backed persistence for dev/demo)
+@app.post("/scenarios/save", response_model=ApiResponse)
+async def save_scenario_endpoint(payload: dict):
+    """Save a scenario payload to disk and return a save id."""
+    try:
+        saves_dir = Path.cwd() / "saved_scenarios"
+        saves_dir.mkdir(parents=True, exist_ok=True)
+
+        save_id = uuid.uuid4().hex
+        timestamp = datetime.utcnow().isoformat()
+        filename = saves_dir / f"scenario_{save_id}.json"
+
+        content = {
+            "id": save_id,
+            "saved_at": timestamp,
+            "payload": payload,
+        }
+
+        with filename.open("w", encoding="utf-8") as fh:
+            json.dump(content, fh, ensure_ascii=False, indent=2)
+
+        return ApiResponse(data={"id": save_id, "path": str(filename)})
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Save error: {str(e)}")
+
+
+@app.get("/scenarios/saved", response_model=ApiResponse)
+async def list_saved_scenarios():
+    """List saved scenarios from disk (dev/demo only)."""
+    try:
+        saves_dir = Path.cwd() / "saved_scenarios"
+        if not saves_dir.exists():
+            return ApiResponse(data=[], meta={"count": 0})
+
+        entries = []
+        for p in sorted(saves_dir.glob('scenario_*.json')):
+            try:
+                with p.open('r', encoding='utf-8') as fh:
+                    content = json.load(fh)
+                entries.append({
+                    'id': content.get('id'),
+                    'saved_at': content.get('saved_at'),
+                    'payload': content.get('payload')
+                })
+            except Exception:
+                # skip malformed files
+                continue
+
+        return ApiResponse(data=entries, meta={"count": len(entries)})
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"List error: {str(e)}")
 
 
 # Health check

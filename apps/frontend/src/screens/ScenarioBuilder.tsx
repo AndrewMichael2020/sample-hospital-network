@@ -51,23 +51,29 @@ export const ScenarioBuilder: React.FC = () => {
     baseline_year: 2022,
     horizon_years: 3,
     selected_sites: [],
-    program_id: 1,
+  program_id: 1,
+  selected_programs: [],
     params: { ...DEFAULT_PARAMS, ...PRESET_PARAMS.target },
   });
 
   const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
 
-  const { data: sites, isLoading: sitesLoading, error: sitesError } = useSites();
-  const { data: programs, isLoading: programsLoading, error: programsError } = usePrograms();
+  const { data: sites, isLoading: sitesLoading, error: sitesError, refetch: refetchSites } = useSites();
+  const { data: programs, isLoading: programsLoading, error: programsError, refetch: refetchPrograms } = usePrograms();
   const calculateScenario = useCalculateScenario({
     onSuccess: (data) => {
       // Navigate to results screen with the calculated data
-      navigate('/results', { state: { scenarioData: data, scenarioForm: form } });
+  // Persist to sessionStorage so Results page can reload even if navigation state is lost
+  try { sessionStorage.setItem('lastScenario', JSON.stringify({ scenarioData: data, scenarioForm: form })); } catch(e) {}
+  navigate('/results', { state: { scenarioData: data, scenarioForm: form } });
     },
   });
 
+  // Only treat calculation errors as fatal for the whole screen.
+  // Reference data errors (sites/programs) are shown inline so the user can still interact
+  // with the builder when reference data is unavailable in dev environments.
   const isLoading = sitesLoading || programsLoading || calculateScenario.isPending;
-  const hasError = sitesError || programsError || calculateScenario.error;
+  const hasError = calculateScenario.error;
 
   // Update form when preset changes
   useEffect(() => {
@@ -138,7 +144,7 @@ export const ScenarioBuilder: React.FC = () => {
   if (hasError) {
     return (
       <ErrorState
-        error={sitesError || programsError || calculateScenario.error || new Error('Unknown error')}
+        error={calculateScenario.error || new Error('Unknown error')}
         onRetry={() => window.location.reload()}
       />
     );
@@ -221,9 +227,16 @@ export const ScenarioBuilder: React.FC = () => {
               <h3>Sites (multi-select)</h3>
               {sitesLoading ? (
                 <Loading size="small" message="Loading sites..." />
+              ) : sitesError ? (
+                <div className="error-block">
+                  <div className="error-text">Failed to load sites: {String((sitesError as any).error ?? sitesError)}</div>
+                  <button className="btn btn-link" onClick={() => refetchSites()}>
+                    Retry
+                  </button>
+                </div>
               ) : (
                 <div className="sites-list">
-                  {sites?.map(site => (
+                  {(sites ?? []).map(site => (
                     <label key={site.site_id} className="checkbox-option">
                       <input
                         type="checkbox"
@@ -239,18 +252,36 @@ export const ScenarioBuilder: React.FC = () => {
             </div>
 
             <div className="programs-section">
-              <h3>Programs (pick 1)</h3>
+                <h3>Programs (multi-select)</h3>
               {programsLoading ? (
                 <Loading size="small" message="Loading programs..." />
+              ) : programsError ? (
+                <div className="error-block">
+                  <div className="error-text">Failed to load programs: {String((programsError as any).error ?? programsError)}</div>
+                  <button className="btn btn-link" onClick={() => refetchPrograms()}>
+                    Retry
+                  </button>
+                </div>
               ) : (
                 <div className="programs-list">
-                  {programs?.map(program => (
-                    <label key={program.program_id} className="radio-option">
+                  {(programs ?? []).map(program => (
+                    <label key={program.program_id} className="checkbox-option">
                       <input
-                        type="radio"
-                        value={program.program_id}
-                        checked={form.program_id === program.program_id}
-                        onChange={(e) => setForm(prev => ({ ...prev, program_id: parseInt(e.target.value) }))}
+                        type="checkbox"
+                        checked={(form.selected_programs ?? []).includes(program.program_id)}
+                        onChange={() => {
+                          setForm(prev => {
+                            const current = prev.selected_programs ?? [];
+                            const isSelected = current.includes(program.program_id);
+                            const next = isSelected ? current.filter(id => id !== program.program_id) : [...current, program.program_id];
+                            return {
+                              ...prev,
+                              selected_programs: next,
+                              // keep program_id in sync with first selected (for API compatibility)
+                              program_id: next.length > 0 ? next[0] : prev.program_id,
+                            };
+                          });
+                        }}
                       />
                       {program.program_name}
                     </label>
@@ -376,6 +407,9 @@ export const ScenarioBuilder: React.FC = () => {
                 <div className={`validation-check ${sites && form.selected_sites.length > 0 ? 'valid' : 'invalid'}`}>
                   {sites && form.selected_sites.length > 0 ? '✓' : '✗'} Coverage matrix valid at selected sites
                 </div>
+                {!sites && !sitesLoading && (
+                  <div className="helper-note">No sites available — the backend reference service may be unreachable. Use the Retry button above.</div>
+                )}
                 <div className="validation-check valid">
                   ✓ Bounds: occ ≥ 0.80; Eff LOS ≥ 0.25 d
                 </div>

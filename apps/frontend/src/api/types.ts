@@ -71,6 +71,7 @@ export interface ScenarioBuilderForm {
   horizon_years: number;
   selected_sites: number[];
   program_id: number;
+  selected_programs?: number[];
   params: ScenarioParams;
   overrides?: {
     program_id: number;

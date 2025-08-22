@@ -4,6 +4,7 @@ Pydantic schemas for the extended API.
 
 from datetime import datetime
 from typing import List, Optional, Dict, Any, Union
+from pydantic import model_validator
 from pydantic import BaseModel, Field
 from decimal import Decimal
 
@@ -95,10 +96,30 @@ class ScenarioParams(BaseModel):
 class ScenarioRequest(BaseModel):
     """Request for scenario calculation."""
     sites: List[int] = Field(..., description="Site IDs to include")
-    program_id: int = Field(..., description="Program ID")
+    # Backwards-compatible: either provide a single `program_id` or a
+    # list `program_ids`. Internally we normalize to `program_ids`.
+    program_id: Optional[int] = Field(None, description="Program ID (deprecated, use program_ids)")
+    program_ids: Optional[List[int]] = Field(None, description="List of Program IDs to include in the calculation")
     baseline_year: int = Field(2022, description="Baseline year")
     horizon_years: int = Field(3, description="Planning horizon in years")
     params: ScenarioParams
+
+    @model_validator(mode='before')
+    def ensure_program_ids(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        # If caller provided program_id but not program_ids, normalize to program_ids
+        pid = values.get('program_id')
+        pids = values.get('program_ids')
+        if not pids and pid is None:
+            raise ValueError('Either program_id or program_ids must be provided')
+        if not pids and pid is not None:
+            values['program_ids'] = [pid]
+        # If program_ids provided but program_id missing, keep program_id as the first value
+        if pids and not pid:
+            try:
+                values['program_id'] = pids[0]
+            except Exception:
+                pass
+        return values
 
 
 class SiteResult(BaseModel):

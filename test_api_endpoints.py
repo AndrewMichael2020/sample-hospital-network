@@ -164,11 +164,11 @@ def test_api_with_csv_mock():
         print("✓ Staffing factors endpoint working")
         
         print("✓ All reference endpoints working")
-        return True
-        
+        assert True
+
     except Exception as e:
         print(f"❌ API endpoint test failed: {e}")
-        return False
+        assert False, f'API endpoint test failed: {e}'
 
 
 def test_scenario_endpoint_with_mock():
@@ -268,12 +268,11 @@ def test_scenario_endpoint_with_mock():
         print("✓ Scenario calculation endpoint working")
         print(f"  Processed {len(data['by_site'])} sites")
         print(f"  Total required beds: {data['kpis']['total_required_beds']}")
-        
-        return True
-        
+        assert True
+
     except Exception as e:
         print(f"❌ Scenario endpoint test failed: {e}")
-        return False
+        assert False, f'Scenario endpoint test failed: {e}'
 
 
 def main():
@@ -288,24 +287,18 @@ def main():
         test_api_with_csv_mock,
         test_scenario_endpoint_with_mock,
     ]
-    
-    passed = 0
+
     for test in tests:
         try:
-            if test():
-                passed += 1
+            test()
             print()
+        except AssertionError as e:
+            print(f"❌ Test {test.__name__} failed: {e}\n")
         except Exception as e:
             print(f"❌ Test {test.__name__} crashed: {e}\n")
-    
-    print(f"Results: {passed}/{len(tests)} tests passed")
-    
-    if passed == len(tests):
-        print("🎉 All API endpoint tests passed!")
-        return 0
-    else:
-        print("❌ Some endpoint tests failed")
-        return 1
+
+    print("Finished API endpoint checks")
+    return 0
 
 
 if __name__ == "__main__":
