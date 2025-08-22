@@ -213,3 +213,18 @@ data/*.parquet
 # SDV generated models (keep private as per instructions)
 sdv_models/*.pkl
 sdv_models/trained_models/
+
+# Process ID files
+*.pid
+
+# Test output files
+*test-output.txt
+*test-results.txt
+verbose-test-output.txt
+
+# Server logs
+nohup.out
+
+# Temporary validation files  
+validation_*.json
+tmp_*.sql
